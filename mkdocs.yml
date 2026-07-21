@@ -1,0 +1,100 @@
+site_name: Azure Mastery Path
+site_description: A structured, module-wise Microsoft Azure training program from entry level to master level, focused on hands-on cloud infrastructure and services.
+site_url: https://sigilipelli.github.io/azure-mastery-path/
+repo_url: https://github.com/SIGILIPELLI/azure-mastery-path
+repo_name: azure-mastery-path
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Home: index.md
+  - Privacy Policy: privacy.md
+  - "Level 1 · Entry":
+      - Overview: level-1/index.md
+      - "01 · Setup & Azure CLI/Portal": level-1/01-setup-cli-portal.md
+      - "02 · Azure AD & RBAC / Security Basics": level-1/02-azure-ad-rbac-security.md
+      - "03 · Virtual Machines": level-1/03-virtual-machines.md
+      - "04 · Blob Storage": level-1/04-blob-storage.md
+      - "05 · Virtual Networks Basics": level-1/05-virtual-networks.md
+      - "06 · Azure SQL Database / Cosmos DB Basics": level-1/06-azure-sql-cosmos-db.md
+      - "07 · Azure Functions": level-1/07-azure-functions.md
+      - "08 · Azure Monitor & Log Analytics": level-1/08-azure-monitor-log-analytics.md
+      - "09 · ARM Templates / Bicep Intro": level-1/09-arm-bicep-intro.md
+      - "10 · Capstone Project": level-1/10-capstone-project.md
+  - "Level 2 · Intermediate":
+      - Overview: level-2/index.md
+      - "01 · App Service & Web Apps Deep Dive": level-2/01-app-service-deep-dive.md
+      - "02 · Storage Deep Dive (Files, Queues, Tables)": level-2/02-storage-deep-dive.md
+      - "03 · Networking Deep Dive (Load Balancer, App Gateway)": level-2/03-networking-deep-dive.md
+      - "04 · Azure Kubernetes Service (AKS) Basics": level-2/04-aks-basics.md
+      - "05 · Azure DevOps & CI/CD Pipelines": level-2/05-azure-devops-cicd.md
+      - "06 · Managed Identities & Key Vault": level-2/06-managed-identities-key-vault.md
+      - "07 · Container Instances & Container Registry": level-2/07-aci-acr.md
+      - "08 · Cosmos DB Deep Dive": level-2/08-cosmos-db-deep-dive.md
+      - "09 · Azure Functions Advanced": level-2/09-azure-functions-advanced.md
+      - "10 · Project — Multi-Tier Web Application": level-2/10-project-multi-tier-app.md
+  - "Level 3 · Advanced":
+      - Overview: level-3/index.md
+      - "01 · Advanced Networking (VPN Gateway, ExpressRoute)": level-3/01-advanced-networking.md
+      - "02 · Infrastructure as Code at Scale (Bicep/Terraform)": level-3/02-iac-at-scale.md
+      - "03 · Advanced AKS (Helm, Ingress, Autoscaling)": level-3/03-advanced-aks.md
+      - "04 · Event-Driven Architecture (Event Grid, Service Bus)": level-3/04-event-driven-architecture.md
+      - "05 · API Management": level-3/05-api-management.md
+      - "06 · Defender for Cloud & Governance (Policy, Blueprints)": level-3/06-defender-governance.md
+      - "07 · High Availability & Disaster Recovery": level-3/07-ha-disaster-recovery.md
+      - "08 · CI/CD for Containers & GitOps": level-3/08-cicd-containers-gitops.md
+      - "09 · Cost Management & Optimization": level-3/09-cost-management-optimization.md
+      - "10 · Project — Highly Available Microservices": level-3/10-project-ha-microservices.md
+  - "Level 4 · Master":
+      - Overview: level-4/index.md
+      - "01 · Enterprise Landing Zones (CAF)": level-4/01-enterprise-landing-zones.md
+      - "02 · Management Groups & Governance at Scale": level-4/02-management-groups-governance.md
+      - "03 · Advanced AKS (Service Mesh, Multi-Cluster)": level-4/03-advanced-aks-service-mesh.md
+      - "04 · Azure Arc & Hybrid Cloud": level-4/04-azure-arc-hybrid-cloud.md
+      - "05 · Advanced Observability (App Insights, Tracing)": level-4/05-advanced-observability.md
+      - "06 · Performance Engineering & Load Testing": level-4/06-performance-load-testing.md
+      - "07 · Security Deep Dive (Sentinel, Zero Trust)": level-4/07-security-sentinel-zero-trust.md
+      - "08 · Data Platform at Scale (Synapse, Data Factory)": level-4/08-data-platform-at-scale.md
+      - "09 · FinOps & Cost Governance at Scale": level-4/09-finops-cost-governance.md
+      - "10 · Capstone Project": level-4/10-capstone-project.md
