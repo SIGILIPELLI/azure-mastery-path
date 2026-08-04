@@ -62,8 +62,19 @@ nav:
       - "08 · Azure Monitor & Log Analytics": level-1/08-azure-monitor-log-analytics.md
       - "09 · ARM Templates / Bicep Intro": level-1/09-arm-bicep-intro.md
       - "10 · Capstone Project": level-1/10-capstone-project.md
+  - "Level 2 · Intermediate":
+      - Overview: level-2/index.md
+      - "01 · App Service & Web Apps Deep Dive": level-2/01-app-service-deep-dive.md
+      - "02 · Storage Deep Dive (Files, Queues, Tables)": level-2/02-storage-deep-dive.md
+      - "03 · Networking Deep Dive (Load Balancer, App Gateway)": level-2/03-networking-deep-dive.md
+      - "04 · Azure Kubernetes Service (AKS) Basics": level-2/04-aks-basics.md
+      - "05 · Azure DevOps & CI/CD Pipelines": level-2/05-azure-devops-cicd.md
+      - "06 · Managed Identities & Key Vault": level-2/06-managed-identities-key-vault.md
+      - "07 · Container Instances & Container Registry": level-2/07-aci-acr.md
+      - "08 · Cosmos DB Deep Dive": level-2/08-cosmos-db-deep-dive.md
+      - "09 · Azure Functions Advanced": level-2/09-azure-functions-advanced.md
+      - "10 · Project — Multi-Tier Web Application": level-2/10-project-multi-tier-app.md
 # --- auto-pruned stub levels (see AdSense low-value-content fix) ---
 exclude_docs: |
-  level-2/*.md
   level-3/*.md
   level-4/*.md
