@@ -1,8 +1,8 @@
 site_name: Azure Mastery Path
 site_description: A structured, module-wise Microsoft Azure training program from entry level to master level, focused on hands-on cloud infrastructure and services.
-site_url: https://sigilipelli.github.io/azure-skillmastery/
-repo_url: https://github.com/SIGILIPELLI/azure-skillmastery
-repo_name: azure-skillmastery
+site_url: https://sigilipelli.github.io/azure-mastery-path/
+repo_url: https://github.com/SIGILIPELLI/azure-mastery-path
+repo_name: azure-mastery-path
 
 theme:
   name: material
