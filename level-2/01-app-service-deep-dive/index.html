@@ -1149,6 +1149,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2272,6 +2283,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2512,6 +2534,37 @@ app.zip --type zip</code> push local code directly.</p>
 <code>production</code> directly). For zero-downtime releases, target the <code>staging</code>
 slot with CI and swap manually (or via a pipeline gate) rather than
 letting every push go straight to production.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>An App Service Plan is a <strong>pool of worker VM instances (a "scale set" under
+the hood, though Azure never exposes it as one)</strong> that your Web App is
+deployed onto — multiple apps on the same plan share those same worker
+instances, isolated from each other by process/container boundaries and
+IIS's (or, on Linux, a per-app container's) app-pool sandboxing rather than
+by separate VMs, which is exactly why apps on the same plan compete for the
+plan's CPU/memory and why moving to a Premium/Isolated tier that gives you
+dedicated workers is the fix for noisy-neighbor problems. Deployment slots
+are not separate App Service Plans — they're <strong>additional site directories
+and app-pool processes on the same underlying worker instances</strong>, each with
+its own hostname and site-extension state; a <strong>slot swap</strong> doesn't copy
+files or restart cold — it performs a coordinated warm-up of the target
+slot's worker process and then atomically swaps the routing rules (and, for
+non-sticky settings, the app settings) between the two slots' virtual IPs,
+which is why swap is near-instant and why "sticky" app settings are
+implemented as a flag that tells the swap engine to leave that specific
+setting bound to the slot rather than following the code.</p>
+<p>Autoscale rules are evaluated by a separate <strong>Azure Monitor Autoscale</strong>
+service polling your plan's metrics on its own schedule (not a background
+thread inside your app) — when a rule's threshold is crossed over its
+configured window, Autoscale calls the same ARM <code>Microsoft.Web</code> scale API
+you'd call manually to add/remove worker instances, then waits out its
+cooldown period before evaluating again. Continuous deployment via GitHub
+Actions or Azure DevOps works by triggering a <strong>Kudu deployment</strong>: Kudu
+(App Service's built-in deployment engine, itself a separate site
+alongside your app) receives the push, runs your build/deploy script inside
+an isolated deployment container, and finally syncs the output into
+<code>/home/site/wwwroot</code> on the worker's shared file storage (Azure Files-backed),
+which is also why all instances of a scaled-out app see the same deployed
+files without you copying anything per-instance.</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

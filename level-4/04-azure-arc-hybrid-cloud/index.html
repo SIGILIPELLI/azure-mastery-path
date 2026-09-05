@@ -1985,6 +1985,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2272,6 +2283,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2449,6 +2471,31 @@ switching modes later is not a simple config change.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Azure Arc</strong> extends ARM's control plane to resources that don't
+physically run in Azure by installing a lightweight <strong>Arc agent</strong> (the
+Connected Machine agent, for servers; the Arc-enabled Kubernetes agent's
+Helm-deployed operators, for clusters) that establishes an <em>outbound</em>
+HTTPS connection to Azure and registers the on-prem/multi-cloud resource as
+a proxy ARM resource — critically, this means the resource gets a real
+resource ID, RBAC, tags, and Policy applicability exactly like a native
+Azure resource, but Azure has no inbound network path to it at all; every
+control action (running a policy remediation, deploying a Kubernetes
+config via GitOps) is delivered by the outbound-connected agent <em>polling</em>
+Azure for pending work rather than Azure pushing to it, mirroring the same
+pull-based trust model as the GitOps controller from Level 3.</p>
+<p><strong>Arc-enabled data services</strong> and <strong>Arc-enabled Kubernetes configuration</strong>
+extend this further using the exact GitOps mechanism from Level 3, Module 8:
+Arc deploys a Flux-based configuration operator onto the connected cluster,
+which pulls manifests from a Git repo you specify and reconciles them
+locally — Azure never needs to reach into the cluster to apply anything, it
+only needs to know (via the agent's periodic status push) whether the
+cluster's Flux operator reports the deployment as synced. This is the
+concrete reason Arc's governance story (Azure Policy applied to on-prem
+Kubernetes, for instance via Gatekeeper policy definitions pushed the same
+GitOps way) can claim consistent governance across hybrid infrastructure:
+it's reusing the identical pull-based reconciliation loop already proven
+inside native AKS, just pointed at infrastructure Azure doesn't own.</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

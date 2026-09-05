@@ -1194,6 +1194,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2250,6 +2261,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2461,6 +2483,35 @@ but any client resolving the hostname normally still gets the public IP
 until the private DNS zone is created, linked, and populated. Test with
 <code>nslookup &lt;account&gt;.blob.core.windows.net</code> from inside the VNet and confirm
 it resolves to the <code>10.x</code> private IP, not a public one.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>User-Defined Routes (UDRs)</strong> override Azure's default system routes by
+being programmed into the same VFP layer described in Module 5 — a route
+table attached to a subnet inserts entries into every VM's effective route
+table there, so traffic destined for an address you've routed through an
+NVA (say, <code>0.0.0.0/0 → 10.0.1.4</code>) is forwarded to that next hop's private IP
+at the SDN layer before the packet leaves the sending host, with no
+involvement from the NVA's own OS routing until the packet actually arrives
+there. <strong>Azure Load Balancer</strong> (Layer 4) works by programming the same VFP
+rules to rewrite the destination IP/port of an inbound packet from the
+load balancer's frontend IP to a chosen backend instance's private IP — for
+each new flow, it selects a backend using a 5-tuple hash and then
+Direct-Server-Return-style forwards subsequent packets in that same flow
+without re-hashing, all done at the host networking layer without the
+packet ever passing through a separate load-balancing appliance VM.</p>
+<p><strong>Private Endpoints</strong> work by injecting a NIC with a private IP from your
+VNet directly into the PaaS service's own network path via <strong>Azure Private
+Link</strong>: DNS for the PaaS resource (e.g. a storage account's
+<code>.blob.core.windows.net</code>) is overridden by a <strong>Private DNS Zone</strong> linked to
+your VNet so the name now resolves to that private IP instead of the
+public one, and traffic to it never leaves the Microsoft backbone or
+traverses the public internet — this is a genuinely different data path
+from a Service Endpoint, which instead just tags outbound traffic on your
+VNet's existing route so the resource provider's firewall can identify and
+allow it, while the traffic still egresses to the service's public IP
+range. That distinction — new private IP + DNS override vs. tagged
+traffic on the existing public path — is the actual mechanism behind why
+Private Endpoints work across peered VNets and on-prem via ExpressRoute/VPN
+while Service Endpoints do not.</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

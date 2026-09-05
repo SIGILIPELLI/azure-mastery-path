@@ -885,6 +885,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2272,6 +2283,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2442,6 +2464,33 @@ covered further in <a href="../../level-3/01-advanced-networking/">Level 3, Modu
 <p>Passing <code>--nsg ""</code> tells <code>az vm create</code> <em>not</em> to generate its own NIC-level
 NSG, since the subnet-level <code>nsg-web</code> already governs traffic — avoiding
 duplicate, possibly conflicting rule sets.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>A Virtual Network isn't a physical network segment — it's a <strong>software-
+defined overlay</strong> implemented entirely in Azure's host-level virtual
+switches. When you define an address space (<code>10.0.0.0/16</code>) and subnets, no
+actual routing hardware is provisioned; instead, Azure's SDN controller
+programs a distributed set of rules (Azure calls this the <strong>VFP — Virtual
+Filtering Platform</strong>, running on the Hyper-V host below every VM) that
+encapsulate your VM's traffic and forward it across Azure's physical
+backbone network using an internal mapping between your VNet's private IPs
+and the physical host IPs actually carrying the packets. This is why two
+VMs in the same VNet but different Availability Zones can still talk over
+a "local" private IP with sub-millisecond latency — the physical path is
+invisible to you, but the SDN layer is doing real encapsulation/decapsulation
+per packet.</p>
+<p><strong>Network Security Groups</strong> are stateful packet filters enforced in that
+same VFP layer, evaluated in priority order (lowest number first) before a
+packet is delivered to the VM's vNIC or subnet — a match on an early rule
+short-circuits evaluation, which is the mechanical reason rule <em>priority</em>
+number (not order in the Portal list) determines behavior. "Stateful" means
+the VFP tracks the flow's 5-tuple once a request is allowed outbound, so the
+matching inbound response is auto-permitted without needing a mirrored
+inbound rule. <strong>VNet peering</strong> doesn't create a tunnel or route data through
+any intermediary — it directly programs the Microsoft backbone's routing
+tables so that peered VNets' address spaces become directly reachable at
+the SDN layer, which is why peered traffic never leaves Microsoft's network
+and has no bandwidth charge for same-region peering (cross-region peering
+does traverse the physical backbone between regions, hence its cost).</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

@@ -958,6 +958,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2362,6 +2373,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2581,6 +2603,38 @@ in depth in <a href="../../level-2/08-cosmos-db-deep-dive/">Level 2, Module 08</
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Azure SQL Database runs on a <strong>multi-tenant, geo-distributed fabric</strong> of SQL
+Server engine instances managed by Azure's own control plane rather than a
+VM you provision — when you pick a DTU or vCore tier, you're really
+reserving a slice of CPU/memory/IO on a shared (or, at Business Critical
+tier, dedicated) cluster of nodes, and Azure's fabric can transparently
+migrate your database's files to a healthier node during a hardware fault
+with only a brief failover, not a restore. Business Critical tier keeps
+<strong>4 replicas in an Always On availability group</strong> (1 primary + 3 secondaries)
+so a node failure fails over in seconds; General Purpose tier instead
+separates compute from storage (data files live on remote Azure Premium
+Storage), which is cheaper but means a compute-node failure means
+reattaching storage to a new node, taking longer to recover.</p>
+<p>Cosmos DB is architecturally unrelated to SQL Server underneath — it's a
+<strong>globally distributed, partitioned key-value store</strong> with pluggable API
+surfaces (SQL/Core, MongoDB, Cassandra, Gremlin, Table) layered on top of
+the same physical replication engine. Every item is hashed by its
+<strong>partition key</strong> into a logical partition, and logical partitions are
+packed into <strong>physical partitions</strong>, each independently replicated across
+(by default) 4 replicas within a region using a Paxos-based consensus
+protocol — this is the real mechanism behind Cosmos's throughput scaling:
+provisioned RU/s is divided across physical partitions, so a poorly chosen
+partition key that concentrates traffic on one partition ("hot partition")
+throttles you (429s) even though your account-level RU/s looks
+under-utilized. Consistency levels (Strong, Bounded Staleness, Session,
+Consistent Prefix, Eventual) are implemented by how many replicas must
+acknowledge a write, and how reads are quorum-checked against the replica
+set, before Cosmos returns success — Session consistency (the default) works
+by attaching a per-client "session token" (a vector of per-partition
+logical sequence numbers) that the SDK sends on every request so your own
+writes are guaranteed visible to your own subsequent reads, without paying
+the latency cost of full quorum reads for every request.</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

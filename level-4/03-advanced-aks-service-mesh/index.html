@@ -1957,6 +1957,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2272,6 +2283,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2449,6 +2471,35 @@ sidecar hasn't received the latest config from <code>istiod</code> — traffic r
 just applied (like the canary split above) won't take effect for that pod
 until it resyncs, which is a frequent explanation for "I updated the
 <code>VirtualService</code> but nothing changed for this one pod."</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>A service mesh (Istio/Linkerd on AKS, or the managed Istio-based AKS
+add-on) works by injecting a <strong>sidecar proxy</strong> (Envoy, for Istio) into
+every pod alongside your application container — Kubernetes' admission
+webhook mechanism intercepts pod creation and mutates the pod spec to add
+the sidecar container automatically, and an <code>iptables</code> (or eBPF, in newer
+ambient-mode meshes) rule installed in the pod's network namespace
+transparently redirects all inbound and outbound traffic through that
+sidecar before your application ever sees it — this is why the mesh can
+enforce mTLS, retries, and traffic splitting entirely at the network layer
+with zero application code changes: your app's traffic is being
+intercepted and re-routed at the kernel/proxy level, not modified by a
+library you import.</p>
+<p><strong>mTLS between services</strong> is issued and rotated by the mesh's control
+plane (Istiod) acting as a private certificate authority: each sidecar
+requests a short-lived workload certificate over a secure channel at
+startup, Istiod signs it against its own CA key, and sidecars mutually
+present and validate these certificates on every connection — because
+certificates typically rotate every 24 hours automatically, this
+eliminates the manual cert-rotation problem that Key Vault-issued certs
+(Module 6, Level 2) would otherwise require you to manage yourself for
+inter-service traffic. <strong>Observability with the mesh</strong> comes for free
+because every sidecar, sitting in the actual data path, can emit consistent
+request-level metrics (latency, status code, retries) and distributed
+trace spans regardless of what language each service is written in — this
+is a materially different mechanism from application-level instrumentation
+(Module 5 ahead), which requires each service to independently emit its
+own telemetry, versus the mesh capturing it uniformly at the proxy layer
+that already sees every request.</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

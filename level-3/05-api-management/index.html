@@ -1637,6 +1637,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2272,6 +2283,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2427,6 +2449,32 @@ subscription key.</p>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>--api-id<span class="w"> </span>orders-api<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span>--api-revision<span class="w"> </span><span class="m">2</span>
 </code></pre></div>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Azure API Management sits as a reverse-proxy <strong>gateway</strong> in front of your
+backend: every inbound call first hits APIM's gateway component, which runs
+a <strong>policy pipeline</strong> — an XML-defined sequence of inbound policies
+(validate-jwt, rate-limit, set-header, transform body via C# expressions
+compiled at policy-save time into the gateway's execution engine) — before
+the request is ever forwarded to your actual backend URL, and a mirrored
+outbound pipeline processes the backend's response before it reaches the
+caller. This is why APIM can enforce OAuth token validation, throttling,
+and response caching entirely at the edge, with your backend never seeing
+traffic that fails a policy — the policy engine, not your application
+code, is the actual enforcement point.</p>
+<p><strong>Versions and revisions</strong> are handled by different mechanisms: a
+<strong>revision</strong> is a non-breaking, in-place edit to an existing API definition
+that APIM tracks with its own revision number, letting you stage a change
+and test it via a special <code>;rev=N</code> URL suffix before making it "current"
+(an atomic pointer flip in APIM's own metadata store, not a redeploy);
+a <strong>version</strong> creates a genuinely separate API resource (with its own
+policies and revision history) exposed under a distinct URL path/header/query
+parameter, because versions are meant for breaking changes that must
+coexist with the old version rather than replace it. Rate limiting
+policies (<code>rate-limit</code>, <code>rate-limit-by-key</code>) are enforced by counters APIM
+maintains per key (subscription, IP, custom expression) in its own
+internal cache, checked and decremented atomically on every request at the
+gateway before forwarding — so throttling happens even if your backend has
+no rate-limiting logic of its own.</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

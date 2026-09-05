@@ -795,6 +795,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2316,6 +2327,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2495,6 +2517,30 @@ within the same region for private networking). List available regions:</p>
 and reproducible, but everything shown also has a Portal equivalent if you
 prefer clicking through — the Portal is a good place to double check what a
 command actually created.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><code>az login</code> doesn't hand your password to the CLI. It runs the <strong>OAuth 2.0
+authorization code flow</strong> against Microsoft Entra ID (Azure AD): a browser
+tab opens to Entra's <code>/authorize</code> endpoint, you authenticate there, and
+Entra redirects back to a localhost port the CLI is listening on with a
+short-lived authorization code. The CLI exchanges that code for an <strong>access
+token</strong> (a signed JWT, ~1 hour lifetime) and a <strong>refresh token</strong>, both cached
+under <code>~/.azure/msal_token_cache.json</code>. Every subsequent <code>az</code> command reads
+the cached access token (silently refreshing it with the refresh token when
+expired) and attaches it as a <code>Bearer</code> header on calls to the <strong>Azure
+Resource Manager (ARM)</strong> REST API at <code>management.azure.com</code> — the CLI, the
+Portal, and Bicep/Terraform are all just different clients of that one HTTP
+API surface.</p>
+<p>A <strong>subscription</strong> is not a resource — it's a billing and RBAC scope
+recorded against your Entra tenant. <code>az account set</code> doesn't talk to the
+network at all; it just rewrites which subscription ID gets stamped into the
+URL path (<code>/subscriptions/{id}/...</code>) of future ARM calls. A <strong>resource
+group</strong> is metadata plus a scoping boundary, tracked in ARM's own store — it
+holds no compute of its own. <code>az group delete</code> doesn't delete resources one
+by one from the client; it submits a single delete operation to ARM, which
+then fans out delete calls to each resource provider (Compute, Storage,
+Network, ...) that owns a resource in the group, tracked as one long-running
+operation you can poll — which is why <code>--no-wait</code> returns instantly while
+the underlying teardown still takes minutes.</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

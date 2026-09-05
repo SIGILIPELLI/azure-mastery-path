@@ -2069,6 +2069,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2272,6 +2283,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2455,6 +2477,33 @@ existence.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Microsoft Sentinel</strong> is built directly on top of the Log Analytics
+workspace and Kusto engine already covered in Level 1 and Module 5 above —
+enabling Sentinel on a workspace doesn't add a new data store, it adds a
+<strong>detection and orchestration layer</strong> on top: scheduled <strong>analytics rules</strong>
+are, mechanically, KQL queries the Sentinel engine runs against the
+workspace on a fixed interval, and a rule's match becomes an "incident"
+object tracked in Sentinel's own incident data model, which is distinct
+from Defender for Cloud's alerts (Module 6, Level 3) even though both
+ultimately correlate signals in the same workspace — Sentinel additionally
+supports <strong>automation rules and playbooks</strong>, where a matched incident can
+trigger a Logic App (the same Logic Apps engine used for general workflow
+automation) to auto-remediate, e.g. calling the Entra API to disable a
+compromised account, closing the loop from detection to response inside
+one platform.</p>
+<p><strong>Zero Trust</strong> as implemented via Entra Conditional Access is not a single
+feature but a <strong>policy evaluation gate inserted into the OAuth token-
+issuance flow</strong> itself: when a user or app requests a token from Entra
+(the same <code>/authorize</code> and <code>/token</code> endpoints from Module 1's <code>az login</code>),
+Entra evaluates every applicable Conditional Access policy's conditions
+(user risk score from Entra ID Protection's ML-based sign-in risk model,
+device compliance state reported by Intune, network location, requested
+resource) <em>before</em> issuing the token, and can deny, require MFA step-up, or
+grant a token restricted to a session-bound scope — this is the mechanical
+reason Zero Trust policies apply uniformly across every Azure/Microsoft 365
+service: they're enforced at the shared token-issuance chokepoint every
+one of those services relies on, not re-implemented per application.</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

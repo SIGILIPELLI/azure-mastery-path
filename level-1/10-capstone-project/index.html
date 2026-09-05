@@ -1053,6 +1053,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2328,6 +2339,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2592,6 +2614,31 @@ Module 3 or 6:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>az<span class="w"> </span>group<span class="w"> </span>list<span class="w"> </span>--output<span class="w"> </span>table
 </code></pre></div>
 <p>Delete anything you don't recognize as intentionally kept, the same way.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>This capstone wires together every provisioning path covered so far — CLI
+imperative calls, Bicep declarative templates, and the Portal — against the
+same underlying target: the <strong>ARM control plane</strong>. Regardless of which tool
+issues a request, ARM performs the identical sequence for every resource:
+authenticate the caller's token against Entra ID, evaluate <strong>Azure RBAC</strong>
+role assignments at every scope from the resource up through resource
+group, subscription, and management group to authorize the specific
+operation (e.g. <code>Microsoft.Storage/storageAccounts/write</code>), run any
+applicable <strong>Azure Policy</strong> definitions against the request body before
+allowing it through (a <code>deny</code> effect policy rejects the PUT at this stage,
+before the resource provider ever sees it), and only then forward the
+validated request to the owning resource provider. This is why a resource
+you're permitted to create by RBAC can still be blocked — Policy and RBAC
+are two independent gates evaluated in sequence, not one merged check.</p>
+<p>The resource group itself is the unit ARM uses to track a deployment's
+history: every <code>az deployment group create</code> call is recorded as a
+<strong>correlated deployment object</strong> inside the group, with its own template
+snapshot, parameters, and operation-level status for every resource it
+touched — which is exactly what lets you inspect "what got deployed and in
+what order" after the fact via <code>az deployment group show</code>, and what <code>az
+group delete</code> walks when tearing the whole project down: it doesn't need
+the original template at all, since deletion is driven purely by "what
+resources currently exist in this group," each deleted through its own
+resource provider's delete API in parallel where dependencies allow.</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

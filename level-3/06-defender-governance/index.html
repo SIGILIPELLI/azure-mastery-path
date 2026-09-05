@@ -1665,6 +1665,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2272,6 +2283,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2419,6 +2441,34 @@ migration rather than extending it further — Microsoft's guidance is that
 existing Blueprint assignments continue to function but no new features
 land there, and net-new governance-as-code should use Policy initiatives +
 Template Specs / deployment stacks instead.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Microsoft Defender for Cloud</strong> doesn't run as an agent you deploy
+manually into every subscription — it operates by continuously querying
+the ARM control plane's resource graph (the same underlying inventory
+<code>az resource list</code> reads from) against a set of <strong>security
+recommendations</strong>, each backed by a specific ARM/API check (e.g. "is
+<code>Microsoft.Storage/storageAccounts.properties.minimumTlsVersion</code> set to
+TLS1_2") evaluated on a recurring scan cycle; for deeper runtime signals
+(process activity, network connections inside a VM) it deploys the Azure
+Monitor Agent or relies on Defender's own sensors sending telemetry to a
+Log Analytics workspace, where Defender's detection engine correlates that
+stream against known attack patterns to raise alerts — recommendations
+(posture) and alerts (active threats) are genuinely two different pipelines
+feeding the same Secure Score.</p>
+<p><strong>Azure Blueprints</strong> (and their successor, Template Specs + deployment
+stacks) work by packaging a set of ARM/Bicep artifacts — role assignments,
+policy assignments, and resource templates — into one <strong>versioned,
+lockable bundle</strong>; assigning a blueprint to a subscription doesn't just
+deploy the artifacts once, it creates a tracked blueprint assignment
+resource that can enforce <strong>resource locks</strong> the blueprint itself defines,
+preventing someone from deleting or modifying an artifact the blueprint
+created even if their RBAC role would otherwise permit it — the lock is
+checked by ARM at request time exactly like a manually-applied
+<code>CanNotDelete</code> lock, just applied and lifecycle-managed by the blueprint
+assignment instead of a person. This is the mechanical difference between
+a blueprint and a plain template deployment: the blueprint assignment
+persists as a governance object ARM continues to enforce, not just a
+one-time provisioning action.</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

@@ -1710,6 +1710,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2250,6 +2261,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2428,6 +2450,30 @@ plain blue/green swap.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>GitOps</strong> inverts the normal CI/CD push model at the mechanical level: a
+controller running <em>inside</em> the cluster (Flux or Argo CD, both built on
+Kubernetes' own controller-runtime pattern) continuously polls a Git
+repository for the desired-state manifests, diffs them against the
+cluster's actual live objects via the Kubernetes API server, and applies
+any delta itself — your pipeline's job is only to update the manifests in
+Git (usually by bumping an image tag after a successful build/push to
+ACR), never to run <code>kubectl apply</code> against the cluster directly. This is
+the concrete reason GitOps clusters can run with no inbound deployment
+credentials or open network path from CI at all: the pull-based controller
+inside the cluster is the only thing that ever needs API server access to
+write changes, reversing the trust direction of a traditional push
+pipeline.</p>
+<p>Under a traditional push pipeline, <code>kubectl apply</code> (or a pipeline's
+equivalent Helm/kubectl task) authenticates to the AKS API server using a
+kubeconfig token derived from either an Entra-integrated RBAC binding or a
+cluster-issued service account token, and the API server validates that
+token against Kubernetes RBAC role bindings before admitting the request —
+this is a separate authorization layer from Azure RBAC on the AKS resource
+itself (which only controls who can manage the <em>cluster resource</em>, e.g.
+via <code>az aks</code> commands), which is why a user can have full Azure RBAC
+Contributor on an AKS cluster and still be denied by Kubernetes RBAC when
+trying to deploy a workload into it, or vice versa.</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

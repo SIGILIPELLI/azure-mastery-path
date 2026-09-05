@@ -1940,6 +1940,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2294,6 +2305,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2473,6 +2495,33 @@ you just made, rather than assuming the dashboard is live.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Management groups</strong> exist purely as a scoping node in ARM's authorization
+hierarchy — creating one doesn't provision any resource, it inserts an
+entry into your tenant's management-group tree that RBAC role assignments
+and Azure Policy assignments can target, and ARM's authorization check
+(from Level 1's capstone) walks <em>up</em> this tree from a resource through its
+resource group, subscription, and every management group above it when
+evaluating whether a caller's role assignment or a deny-effect policy
+applies — this upward walk, not any per-resource configuration, is the
+actual mechanism behind policy/RBAC inheritance. <strong>Azure Policy's
+<code>DeployIfNotExists</code> and <code>Modify</code> effects</strong>, when assigned at a management
+group, are evaluated per-resource at the resource's own scope during the
+same compliance-scan cycle from Level 3's IaC module, but the <em>remediation</em>
+deployment they trigger runs under a managed identity created for the
+policy assignment at the management-group scope — which is why that
+identity needs RBAC roles granted explicitly at each subscription it must
+remediate resources in, even though the policy assignment itself lives
+several levels above.</p>
+<p><strong>Blueprints/deployment stacks vs. Policy vs. RBAC</strong> are three different
+enforcement points in that same request pipeline: RBAC gates <em>who</em> can call
+an operation, Policy gates <em>what</em> a request's properties are allowed to be
+(evaluated inline, before the resource provider processes it), and a
+deployment stack (or Blueprint) additionally tracks a <em>set</em> of resources as
+a unit so it can apply lifecycle protections (deny-delete on managed
+resources) and detect drift against the originally deployed template — the
+three mechanisms compose because they intercept the request lifecycle at
+genuinely different stages, not because one supersedes another.</p>
 <h2 id="cheat-sheet">Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
