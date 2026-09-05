@@ -159,6 +159,34 @@ az group delete --name rg-vm-demo --yes --no-wait
 Deleting the resource group removes the VM, its disk, public IP, NIC, and
 NSG together — the fastest way to make sure nothing keeps billing.
 
+## How It Actually Works
+
+When you run `az vm create`, ARM doesn't provision a VM directly — it hands
+the request to the **Compute Resource Provider**, which schedules the VM
+onto a physical host in an **Azure datacenter cluster** (a "scale unit" of
+racks managed by the Azure Fabric Controller). The VM itself is a set of
+independent ARM sub-resources wired together: a Network Interface Card
+(NIC), one or more Managed Disks, and the VM object referencing both — this
+is why `az vm show` can return NIC and disk IDs as separate resource
+references rather than embedded data. A **Managed Disk** is itself a
+page-blob stored in Azure Storage, but Azure hides the storage account from
+you and instead exposes a fixed IOPS/throughput SKU (Standard HDD, Standard
+SSD, Premium SSD, Ultra) — the disk is replicated per the SKU's storage
+redundancy setting independently of the VM's own lifecycle.
+
+VM sizing (`Standard_B1s`, `Standard_D2s_v5`, etc.) maps to a specific
+physical host generation and NUMA/vCPU:memory ratio; when you resize a VM,
+Azure has to find capacity for the new size on hardware in the same
+placement group, which is why a resize can fail with an
+`OverconstrainedAllocationRequest` on a busy region. The public IP and NSG
+rules you attach live at the **network layer**, enforced by Azure's
+software-defined networking (SDN) stack on the host's virtual switch before
+traffic ever reaches the VM's virtual NIC — so an NSG deny rule blocks a
+packet without the guest OS ever seeing it. `az vm deallocate` releases the
+compute allocation (you stop paying for the VM size) while the disks persist
+in storage and keep billing separately — this is the actual mechanical
+reason "stopped" (still allocated) and "deallocated" bill differently.
+
 ## Cheat sheet
 
 | Command | Purpose |

@@ -152,6 +152,37 @@ above) before the schedule takes effect.
 | **Best for** | Predictable, heavy BI workloads | Ad-hoc queries over lake files | Large-scale ETL, ML |
 | **Cost control** | Pause when idle | Partition data, filter well | Autoscale/auto-terminate |
 
+## How It Actually Works
+
+Modern Azure data warehousing engines (Synapse Analytics dedicated SQL
+pools, Microsoft Fabric's warehouse) get their scale from **massively
+parallel processing (MPP)**: a query is compiled into a distributed plan
+and split across many **compute nodes**, each responsible for a slice of
+the data determined by the table's distribution strategy (hash-distributed
+on a key column, round-robin, or replicated for small dimension tables) —
+a hash-distributed join on the same key column can execute entirely
+node-local because matching rows are guaranteed to live on the same node,
+while a join on a non-distribution column forces a data-movement step
+(shuffling rows across nodes over the internal network) before the join
+can proceed, which is the actual mechanical cause of the "avoid data
+movement" warehouse design guidance. Storage is separated from compute in
+this architecture — data at rest lives in Azure Data Lake Storage as
+columnar Parquet/Delta files, and compute nodes pull only the columns and
+row groups a query actually needs (columnar pruning + predicate pushdown),
+which is why scaling compute up or down doesn't require any data
+migration.
+
+**Data pipelines** in Synapse/Data Factory execute as directed-acyclic-
+graph (DAG) definitions submitted to a managed **Integration Runtime** — a
+pool of compute (Azure-hosted by default, or a self-hosted IR agent
+polling Azure for work when on-prem data must be reached, using the same
+outbound-poll pattern as Arc's agent) that actually performs each
+activity's data movement or transformation, while the orchestration
+service tracks the DAG's execution state and dependencies the same way
+ARM tracks a deployment's resource graph — the pipeline definition is
+purely declarative; the Integration Runtime is what does the real I/O
+work.
+
 ## Cheat sheet
 
 | Command | Purpose |

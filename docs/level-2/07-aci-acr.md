@@ -174,6 +174,37 @@ az aks update \
 This grants the AKS cluster's kubelet identity `AcrPull` on the registry
 automatically — no image pull secret to create or rotate manually.
 
+## How It Actually Works
+
+**Azure Container Registry** stores images as content-addressable
+**OCI-spec layers and manifests** in blob storage: pushing an image
+uploads each filesystem layer as an independent, deduplicated blob keyed by
+its SHA-256 digest and a small JSON manifest that references those layer
+digests plus config — two images sharing a base layer (e.g. the same
+`python:3.12-slim`) physically store that layer's bytes only once in the
+registry, which is why layer caching on push/pull is a real storage
+optimization, not just a display trick. `az acr build` doesn't build on
+your machine — it uploads your build context to the registry's ACR Tasks
+service, which runs the Docker build inside a managed, ephemeral build
+container in Azure and pushes the resulting image straight back into the
+same registry, meaning your local machine never needs Docker installed at
+all for that path.
+
+**Azure Container Instances** runs a container group by allocating it
+directly onto Azure's own multi-tenant container hosting fabric (Azure
+calls this the "hyper-scale" hosting substrate) using a lightweight
+Hyper-V-isolated sandbox **per container group** rather than a shared
+Kubernetes-style node pool — this is why ACI containers get their own
+dedicated vCPU/memory allocation with no noisy-neighbor risk from other
+tenants' containers, and why there's no cluster to manage or node to patch:
+the isolation boundary is the container group itself, enforced by the
+hypervisor. Pulling from ACR into ACI (or AKS) authenticates via either the
+registry's admin credentials or, in the RBAC-integrated path, a managed
+identity granted the `AcrPull` role — that role assignment is checked by
+ACR's own data-plane API on every pull/token-exchange request, independent
+of whatever RBAC role the identity holds on the AKS cluster or ACI resource
+itself.
+
 ## Cheat sheet
 
 | Command | Purpose |

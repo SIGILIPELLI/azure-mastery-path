@@ -175,6 +175,34 @@ retrieving an **Archive**-tier blob (via `az storage blob set-tier --tier
 Hot`, i.e. rehydration) can take hours, so don't apply aggressive archive
 rules to anything you might need back on short notice.
 
+## How It Actually Works
+
+Storage account **redundancy** options are really different replication
+topologies layered on the same partition-and-stamp architecture from Module
+4: ZRS synchronously writes to 3 fault domains spread across separate
+**Availability Zones** (physically distinct datacenters with independent
+power/cooling/networking) within a region rather than within one building,
+so ZRS survives a full datacenter outage that LRS cannot, at the cost of the
+extra cross-zone network round-trip on every write. GZRS layers GRS's
+async cross-region leg on top of ZRS's zone-redundant primary, giving you
+both zone and region resilience — this is a genuine combination of two
+independent replication mechanisms, not a marketing tier.
+
+**Lifecycle management policies** don't run continuously — they're
+evaluated by a background job the Storage service runs **once per day**
+against each account's rule set, scanning blob metadata (last-modified
+time, current tier, tags) and issuing the same internal tier-change or
+delete operations you'd trigger manually; this is why a lifecycle rule you
+just saved doesn't immediately move blobs — you're waiting on the next
+daily sweep, not a real-time trigger. **Immutable storage / WORM policies**
+(time-based retention, legal hold) are enforced at the blob-service API
+layer itself: once a policy is locked, the service rejects overwrite/delete
+calls for the retention period regardless of the caller's RBAC permissions
+or even the storage account key — the immutability check happens inside
+the partition server handling the request, before any write is committed,
+which is what makes it compliant with regulatory WORM requirements rather
+than just an access-control convention that an owner could bypass.
+
 ## Cheat sheet
 
 | Command | Purpose |

@@ -126,6 +126,38 @@ the main queue.
 | **Max message size** | 1 MB | 256 KB (Standard) / 100 MB (Premium) | 64 KB |
 | **Use case** | React to Azure resource/system events, fan-out | Transactional workflows, ordered processing | Simple, cheap decoupling |
 
+## How It Actually Works
+
+**Event Grid** is a publish-subscribe *routing* system, not a message
+store: when an event source (a resource provider, or your own custom
+topic) publishes an event, Event Grid's intake immediately fans it out to
+every matching subscription's endpoint via an HTTP POST (or an Azure-native
+handler), retrying with exponential backoff on failure for up to 24 hours
+by default before dead-lettering — critically, Event Grid does not hold
+events for a subscriber to pull later, so a subscriber that's down when an
+event fires only gets it via that retry window, not on reconnect. **Service
+Bus**, by contrast, is a genuine broker with durable storage: messages sent
+to a queue or topic are persisted (backed internally by a partitioned,
+replicated log store) until a consumer explicitly receives and completes
+them, which is what enables Service Bus's session support, FIFO ordering
+within a session, and true competing-consumer semantics that Event Grid's
+fire-and-forget push model cannot offer.
+
+**Storage Queues** sit architecturally between the two: messages are
+stored as blob-like entities in the storage account's queue service (same
+partitioned storage stamp as Blob/Table storage), and consumers **poll**
+for them — a dequeued message becomes invisible for a configurable
+visibility timeout rather than being deleted, and if the consumer crashes
+before calling delete, the message automatically reappears after that
+timeout for another consumer to pick up, which is the actual mechanism
+behind Storage Queue's at-least-once delivery guarantee and why duplicate
+processing is possible and must be handled idempotently by the consumer.
+Choosing between the three in practice comes down to which of these
+underlying mechanisms — push fan-out with no storage (Event Grid), a
+persistent ordered broker (Service Bus), or simple poll-based durable
+storage (Storage Queues) — actually matches the delivery and ordering
+guarantee your architecture needs.
+
 ## Cheat sheet
 
 | Command | Purpose |

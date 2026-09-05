@@ -136,6 +136,37 @@ nodes can host and they sit `Pending` until the new node is ready; size
 `--min-count` with enough headroom that this window doesn't cause visible
 latency for real spikes you expect.
 
+## How It Actually Works
+
+The **cluster autoscaler** is a controller pod running inside your AKS
+cluster (deployed and managed by AKS, but scheduled like any other
+workload) that watches for pods stuck in `Pending` state because no node
+has enough allocatable capacity — when it finds one, it calls the Azure
+VMSS API directly to increase the node pool's instance count, then waits
+for the new VM to boot, join the cluster via kubelet registration, and
+report Ready before the scheduler places the pending pod there; scale-down
+works by the same controller identifying underutilized nodes whose pods
+could be safely rescheduled elsewhere, cordoning and draining them, and
+then shrinking the VMSS — this is a fundamentally different, slower loop
+than the Horizontal Pod Autoscaler, which only adds/removes pod replicas
+within existing node capacity by polling the metrics-server API on a much
+shorter interval.
+
+**Node pools with taints and tolerations** work through the scheduler's own
+predicate logic: a taint is metadata written onto the node object in etcd,
+and the scheduler's filtering phase excludes any pod without a matching
+toleration from being scheduled there at all — this is enforced purely at
+placement time, not by any network or runtime isolation, which is why a
+tainted GPU node pool genuinely prevents non-GPU workloads from landing on
+expensive nodes without needing separate clusters. **Azure CNI Overlay**
+(a newer mode than the plain Azure CNI from Module 4) assigns pod IPs from
+a private overlay address space that's *not* part of the VNet, encapsulating
+pod-to-pod traffic across nodes with VXLAN, which solves Azure CNI's IP-
+exhaustion problem by trading direct VNet routability of pod IPs for
+address-space efficiency — pods still reach VNet resources via NAT at the
+node boundary, a materially different packet path than either kubenet or
+plain Azure CNI.
+
 ## Cheat sheet
 
 | Command | Purpose |

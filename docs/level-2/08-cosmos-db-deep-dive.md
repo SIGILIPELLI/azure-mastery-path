@@ -168,6 +168,37 @@ document, not a diff of what fields changed — if you need to know
 specifically *which* field changed, you must compare against a
 previously stored version yourself; Cosmos DB doesn't hand you a delta.
 
+## How It Actually Works
+
+The **change feed** is not a message queue Cosmos maintains separately —
+it's a persistent, ordered log view derived directly from each physical
+partition's internal write log: every insert/update (deletes are not
+captured by default) is appended in the order it was committed to that
+partition, and a change feed processor client keeps a **lease** (itself
+stored as documents in a separate "lease container") recording which
+partition and which point in that log it has consumed up to — this is why
+scaling out change-feed consumers works by having multiple processor
+instances each claim a different partition's lease, and why a Cosmos DB
+container's partition count is the real ceiling on change-feed read
+parallelism.
+
+Cosmos's **multi-region writes** (multi-master) work by having every region
+you enable act as an independent write replica running the same
+consensus/replication protocol described in Module 6 within its own set of
+physical partitions, with **conflict resolution policies** (last-writer-
+wins by a system or custom timestamp property, or a merge procedure you
+supply) executed by Cosmos itself when two regions concurrently write
+conflicting versions of the same item — this happens asynchronously as
+part of cross-region replication, after each region's own write has
+already been locally acknowledged, which is the actual mechanism behind
+multi-region writes' low write latency (you're never blocked waiting on a
+remote region) at the cost of eventual, resolved consistency across
+regions. Composite/range indexes are maintained automatically by Cosmos's
+write path — every insert updates an inverted index structure per
+indexed property in the same partition write, which is why Cosmos DB
+indexes everything by default and why excluding paths from indexing is
+purely a write-cost and storage optimization, not a correctness concern.
+
 ## Cheat sheet
 
 | Command / concept | Purpose |

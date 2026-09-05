@@ -206,6 +206,37 @@ $ az sentinel alert-rule list -g rg-orders-platform --workspace-name law-platfor
   alert gives days of lead time to intervene before the money is spent;
   an actual-spend alert only confirms the overrun already happened.
 
+## How It Actually Works
+
+This capstone's landing zone + AKS + service mesh + Sentinel + FinOps stack
+is a composition of every control-plane mechanism covered across all four
+levels operating on the same substrate: every resource, regardless of
+which service it belongs to, is still created through one ARM request
+pipeline (authenticate via Entra token → evaluate RBAC at every scope up
+the management-group tree → evaluate Azure Policy → forward to the owning
+resource provider) from Level 1's capstone; every network boundary,
+whether a landing-zone hub, a service-mesh sidecar, or a Private Endpoint,
+is still enforced by the same SDN/VFP packet-filtering substrate from
+Level 1's networking module; and every piece of telemetry feeding Sentinel
+and the FinOps dashboards is still landing in the identical Log Analytics/
+Kusto workspace architecture from Level 1's Monitor module. Building this
+capstone successfully is really evidence that these independently-learned
+mechanisms compose correctly under one governance hierarchy, not that a
+new mechanism has been introduced.
+
+The genuinely new thing this capstone tests is **cross-cutting consistency
+enforcement**: a management-group-scoped Policy assignment (Level 4,
+Module 2) must correctly cascade down through the landing zone's
+subscriptions to constrain what the AKS cluster's Bicep/Terraform module
+(Level 3) is even allowed to deploy, while the service mesh's mTLS
+certificates (Module 3) and Sentinel's Conditional Access-gated
+Zero Trust policies (Module 7) both ultimately depend on the same Entra
+token-issuance chokepoint from Module 1's `az login` — verifying the full
+build means confirming that chokepoint's policies apply uniformly whether
+the caller is a human via the Portal, a pipeline's service principal, or a
+workload identity federated from AKS, because all three are just different
+callers of the identical OAuth token endpoint.
+
 ## Stretch goals
 
 1. Add a second AKS cluster in a different region, join it to the same

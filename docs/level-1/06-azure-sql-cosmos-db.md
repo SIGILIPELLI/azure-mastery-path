@@ -184,6 +184,41 @@ for item in container.read_all_items():
 | **Best for** | Existing relational data, strong consistency, complex joins/transactions | High-scale, low-latency, globally distributed apps, semi-structured data |
 | **Free tier** | 1 free database (100K vCore-seconds/mo) | 1000 RU/s + 25 GB, always free |
 
+## How It Actually Works
+
+Azure SQL Database runs on a **multi-tenant, geo-distributed fabric** of SQL
+Server engine instances managed by Azure's own control plane rather than a
+VM you provision — when you pick a DTU or vCore tier, you're really
+reserving a slice of CPU/memory/IO on a shared (or, at Business Critical
+tier, dedicated) cluster of nodes, and Azure's fabric can transparently
+migrate your database's files to a healthier node during a hardware fault
+with only a brief failover, not a restore. Business Critical tier keeps
+**4 replicas in an Always On availability group** (1 primary + 3 secondaries)
+so a node failure fails over in seconds; General Purpose tier instead
+separates compute from storage (data files live on remote Azure Premium
+Storage), which is cheaper but means a compute-node failure means
+reattaching storage to a new node, taking longer to recover.
+
+Cosmos DB is architecturally unrelated to SQL Server underneath — it's a
+**globally distributed, partitioned key-value store** with pluggable API
+surfaces (SQL/Core, MongoDB, Cassandra, Gremlin, Table) layered on top of
+the same physical replication engine. Every item is hashed by its
+**partition key** into a logical partition, and logical partitions are
+packed into **physical partitions**, each independently replicated across
+(by default) 4 replicas within a region using a Paxos-based consensus
+protocol — this is the real mechanism behind Cosmos's throughput scaling:
+provisioned RU/s is divided across physical partitions, so a poorly chosen
+partition key that concentrates traffic on one partition ("hot partition")
+throttles you (429s) even though your account-level RU/s looks
+under-utilized. Consistency levels (Strong, Bounded Staleness, Session,
+Consistent Prefix, Eventual) are implemented by how many replicas must
+acknowledge a write, and how reads are quorum-checked against the replica
+set, before Cosmos returns success — Session consistency (the default) works
+by attaching a per-client "session token" (a vector of per-partition
+logical sequence numbers) that the SDK sends on every request so your own
+writes are guaranteed visible to your own subsequent reads, without paying
+the latency cost of full quorum reads for every request.
+
 ## Cheat sheet
 
 | Command | Purpose |

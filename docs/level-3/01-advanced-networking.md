@@ -171,6 +171,37 @@ reach on-premises through the hub's gateway at all — a very common
 first-peering mistake that manifests as spokes losing on-prem connectivity
 even though the peering itself shows `Connected`.
 
+## How It Actually Works
+
+**Hub-and-spoke** topology is a purely logical/organizational pattern built
+from the same peering and UDR primitives from Level 2 — a hub VNet with a
+shared NVA/Azure Firewall peers with each spoke, and spokes get a UDR
+routing `0.0.0.0/0` (and often the spoke's own address space, to force
+intra-region traffic through inspection too) via the hub's firewall
+private IP as next hop; because peering isn't transitive at the network
+layer, spoke-to-spoke traffic actually requires the hub's NVA to explicitly
+route between them — Azure doesn't auto-forward across two independent
+peering connections, which is exactly why "spokes can't reach each other"
+is the default and UDRs through the hub are what make it work.
+**Azure Firewall** itself runs as a managed, auto-scaling set of instances
+behind a single static IP, inspecting traffic that's been routed to it via
+those UDRs using both L3/L4 rules (evaluated first, cheaply) and L7/FQDN
+rules (which require reconstructing the TLS SNI or HTTP Host header from
+the packet stream, a heavier per-connection cost — the actual reason FQDN
+filtering rules are evaluated after network rules in Azure Firewall's
+processing order).
+
+**ExpressRoute** doesn't tunnel your traffic over the public internet at
+all — it's a Layer 3 BGP peering session established over a dedicated,
+provider-supplied physical circuit connecting your on-prem router to a
+Microsoft edge router at a peering location, exchanging routes so your
+on-prem address space and Azure VNet address space become directly
+reachable to each other's routing tables, the same way two peered VNets'
+address spaces become reachable — this is the actual reason ExpressRoute
+traffic never touches the public internet and gets more consistent latency
+than a Site-to-Site VPN, which instead does encrypt and tunnel over the
+public internet using IPsec between a VPN Gateway and your on-prem device.
+
 ## Cheat sheet
 
 | Command | Purpose |

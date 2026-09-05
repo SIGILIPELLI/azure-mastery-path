@@ -154,6 +154,36 @@ Passing `--nsg ""` tells `az vm create` *not* to generate its own NIC-level
 NSG, since the subnet-level `nsg-web` already governs traffic — avoiding
 duplicate, possibly conflicting rule sets.
 
+## How It Actually Works
+
+A Virtual Network isn't a physical network segment — it's a **software-
+defined overlay** implemented entirely in Azure's host-level virtual
+switches. When you define an address space (`10.0.0.0/16`) and subnets, no
+actual routing hardware is provisioned; instead, Azure's SDN controller
+programs a distributed set of rules (Azure calls this the **VFP — Virtual
+Filtering Platform**, running on the Hyper-V host below every VM) that
+encapsulate your VM's traffic and forward it across Azure's physical
+backbone network using an internal mapping between your VNet's private IPs
+and the physical host IPs actually carrying the packets. This is why two
+VMs in the same VNet but different Availability Zones can still talk over
+a "local" private IP with sub-millisecond latency — the physical path is
+invisible to you, but the SDN layer is doing real encapsulation/decapsulation
+per packet.
+
+**Network Security Groups** are stateful packet filters enforced in that
+same VFP layer, evaluated in priority order (lowest number first) before a
+packet is delivered to the VM's vNIC or subnet — a match on an early rule
+short-circuits evaluation, which is the mechanical reason rule *priority*
+number (not order in the Portal list) determines behavior. "Stateful" means
+the VFP tracks the flow's 5-tuple once a request is allowed outbound, so the
+matching inbound response is auto-permitted without needing a mirrored
+inbound rule. **VNet peering** doesn't create a tunnel or route data through
+any intermediary — it directly programs the Microsoft backbone's routing
+tables so that peered VNets' address spaces become directly reachable at
+the SDN layer, which is why peered traffic never leaves Microsoft's network
+and has no bandwidth charge for same-region peering (cross-region peering
+does traverse the physical backbone between regions, hence its cost).
+
 ## Cheat sheet
 
 | Command | Purpose |

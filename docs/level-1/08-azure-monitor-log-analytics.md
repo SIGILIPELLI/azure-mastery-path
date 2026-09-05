@@ -149,6 +149,36 @@ and queried with the same KQL, just against different tables (`AppRequests`,
 knowing it exists as you design apps at this level, since wiring it in early
 is far easier than retrofitting it later.
 
+## How It Actually Works
+
+Azure Monitor isn't one product — it's a **collection pipeline** that every
+Azure resource provider emits telemetry into by default. Platform metrics
+(CPU %, disk IOPS, request count) are pushed by each resource's own agent or
+control-plane instrumentation into a shared, high-frequency numeric
+time-series store optimized for near-real-time (1-minute granularity)
+aggregation — this is why the Metrics blade in the Portal renders instantly
+even over 30-day ranges: it's reading pre-aggregated rollups, not scanning
+raw events. Logs are a completely different storage engine underneath: when
+you enable **diagnostic settings** to send resource logs to a **Log
+Analytics workspace**, the events are ingested into a workspace backed by
+**Azure Data Explorer (Kusto)**, a column-store engine built for fast
+ad-hoc analytical queries over huge event volumes — which is exactly why
+Log Analytics uses **KQL (Kusto Query Language)** rather than SQL: it's the
+native query language of the underlying Kusto cluster, not a bolted-on
+abstraction.
+
+When you write `AzureActivity | where ...` in Log Analytics, that query
+compiles to a distributed Kusto query plan executed across the shards
+(extents) that store your workspace's ingested data, scanning only the
+columns referenced (columnar storage skips irrelevant fields entirely,
+which is why KQL queries over billions of rows return in seconds). Metric
+**alerts** run as periodic evaluation jobs inside the Azure Monitor service
+itself (not inside your resource) that poll the metric store on your
+configured cadence and fire an action group (webhook, email, Function,
+Logic App) when the threshold expression evaluates true across the
+evaluation window — the "fired" state is itself a small state machine Azure
+Monitor tracks per alert rule so it also knows when to auto-resolve.
+
 ## Cheat sheet
 
 | Command | Purpose |

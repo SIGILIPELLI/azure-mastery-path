@@ -202,6 +202,39 @@ az functionapp deployment slot swap \
 If you need zero-downtime function deploys, that alone can be the deciding
 factor to move off Consumption despite losing scale-to-zero.
 
+## How It Actually Works
+
+The **Durable Functions** extension implements long-running orchestrations
+without keeping a process alive the whole time, using a pattern called
+**event sourcing**: every action an orchestrator function takes (calling an
+activity, waiting for an external event, a timer) is appended as an event
+to a history table (backed, on the default storage provider, by Azure
+Table Storage plus queues for dispatch), and whenever the orchestration
+needs to resume, the Durable Task Framework doesn't restart your
+orchestrator function from scratch conceptually — it **replays** your
+orchestrator code from the top, feeding it the recorded history so each
+previously-completed `await` returns its cached result instantly rather
+than re-executing, and only new code past the last recorded point actually
+runs. This replay mechanism is exactly why orchestrator functions must be
+deterministic (no `DateTime.Now`, no random, no direct I/O) — any
+non-deterministic call would diverge from the recorded history on replay
+and corrupt the orchestration's state.
+
+**Deployment slots** for Function Apps work identically to the App Service
+mechanism in Module 1 of this level — separate site directories and worker
+processes swapped via Kudu — but with an added wrinkle for Consumption-plan
+apps: because Consumption instances are ephemeral (spun up per invocation
+by the scale controller), a "swap" there really just repoints which
+deployment package's storage container the scale controller pulls from
+when it next cold-starts an instance, rather than swapping a live running
+process the way a dedicated-plan slot does. **Premium plan** ("Elastic
+Premium") pre-warms a configurable number of instances specifically to
+eliminate the cold-start problem described in Module 7 — those pre-warmed
+instances sit idle with the language worker already loaded, and the scale
+controller promotes them to serving traffic before provisioning any
+additional cold instance, which is the concrete mechanism behind Premium's
+"no cold start" guarantee for traffic within your pre-warmed capacity.
+
 ## Cheat sheet
 
 | Concept | Purpose |

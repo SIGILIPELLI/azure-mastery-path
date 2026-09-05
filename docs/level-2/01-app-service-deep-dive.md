@@ -198,6 +198,40 @@ app.zip --type zip` push local code directly.
 slot with CI and swap manually (or via a pipeline gate) rather than
 letting every push go straight to production.
 
+## How It Actually Works
+
+An App Service Plan is a **pool of worker VM instances (a "scale set" under
+the hood, though Azure never exposes it as one)** that your Web App is
+deployed onto — multiple apps on the same plan share those same worker
+instances, isolated from each other by process/container boundaries and
+IIS's (or, on Linux, a per-app container's) app-pool sandboxing rather than
+by separate VMs, which is exactly why apps on the same plan compete for the
+plan's CPU/memory and why moving to a Premium/Isolated tier that gives you
+dedicated workers is the fix for noisy-neighbor problems. Deployment slots
+are not separate App Service Plans — they're **additional site directories
+and app-pool processes on the same underlying worker instances**, each with
+its own hostname and site-extension state; a **slot swap** doesn't copy
+files or restart cold — it performs a coordinated warm-up of the target
+slot's worker process and then atomically swaps the routing rules (and, for
+non-sticky settings, the app settings) between the two slots' virtual IPs,
+which is why swap is near-instant and why "sticky" app settings are
+implemented as a flag that tells the swap engine to leave that specific
+setting bound to the slot rather than following the code.
+
+Autoscale rules are evaluated by a separate **Azure Monitor Autoscale**
+service polling your plan's metrics on its own schedule (not a background
+thread inside your app) — when a rule's threshold is crossed over its
+configured window, Autoscale calls the same ARM `Microsoft.Web` scale API
+you'd call manually to add/remove worker instances, then waits out its
+cooldown period before evaluating again. Continuous deployment via GitHub
+Actions or Azure DevOps works by triggering a **Kudu deployment**: Kudu
+(App Service's built-in deployment engine, itself a separate site
+alongside your app) receives the push, runs your build/deploy script inside
+an isolated deployment container, and finally syncs the output into
+`/home/site/wwwroot` on the worker's shared file storage (Azure Files-backed),
+which is also why all instances of a scaled-out app see the same deployed
+files without you copying anything per-instance.
+
 ## Cheat sheet
 
 | Command | Purpose |

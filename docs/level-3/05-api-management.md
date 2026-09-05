@@ -136,6 +136,35 @@ az apim api revision create \
   --api-revision 2
 ```
 
+## How It Actually Works
+
+Azure API Management sits as a reverse-proxy **gateway** in front of your
+backend: every inbound call first hits APIM's gateway component, which runs
+a **policy pipeline** — an XML-defined sequence of inbound policies
+(validate-jwt, rate-limit, set-header, transform body via C# expressions
+compiled at policy-save time into the gateway's execution engine) — before
+the request is ever forwarded to your actual backend URL, and a mirrored
+outbound pipeline processes the backend's response before it reaches the
+caller. This is why APIM can enforce OAuth token validation, throttling,
+and response caching entirely at the edge, with your backend never seeing
+traffic that fails a policy — the policy engine, not your application
+code, is the actual enforcement point.
+
+**Versions and revisions** are handled by different mechanisms: a
+**revision** is a non-breaking, in-place edit to an existing API definition
+that APIM tracks with its own revision number, letting you stage a change
+and test it via a special `;rev=N` URL suffix before making it "current"
+(an atomic pointer flip in APIM's own metadata store, not a redeploy);
+a **version** creates a genuinely separate API resource (with its own
+policies and revision history) exposed under a distinct URL path/header/query
+parameter, because versions are meant for breaking changes that must
+coexist with the old version rather than replace it. Rate limiting
+policies (`rate-limit`, `rate-limit-by-key`) are enforced by counters APIM
+maintains per key (subscription, IP, custom expression) in its own
+internal cache, checked and decremented atomically on every request at the
+gateway before forwarding — so throttling happens even if your backend has
+no rate-limiting logic of its own.
+
 ## Cheat sheet
 
 | Command | Purpose |

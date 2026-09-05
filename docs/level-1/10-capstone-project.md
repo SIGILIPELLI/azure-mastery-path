@@ -274,6 +274,34 @@ az group list --output table
 
 Delete anything you don't recognize as intentionally kept, the same way.
 
+## How It Actually Works
+
+This capstone wires together every provisioning path covered so far — CLI
+imperative calls, Bicep declarative templates, and the Portal — against the
+same underlying target: the **ARM control plane**. Regardless of which tool
+issues a request, ARM performs the identical sequence for every resource:
+authenticate the caller's token against Entra ID, evaluate **Azure RBAC**
+role assignments at every scope from the resource up through resource
+group, subscription, and management group to authorize the specific
+operation (e.g. `Microsoft.Storage/storageAccounts/write`), run any
+applicable **Azure Policy** definitions against the request body before
+allowing it through (a `deny` effect policy rejects the PUT at this stage,
+before the resource provider ever sees it), and only then forward the
+validated request to the owning resource provider. This is why a resource
+you're permitted to create by RBAC can still be blocked — Policy and RBAC
+are two independent gates evaluated in sequence, not one merged check.
+
+The resource group itself is the unit ARM uses to track a deployment's
+history: every `az deployment group create` call is recorded as a
+**correlated deployment object** inside the group, with its own template
+snapshot, parameters, and operation-level status for every resource it
+touched — which is exactly what lets you inspect "what got deployed and in
+what order" after the fact via `az deployment group show`, and what `az
+group delete` walks when tearing the whole project down: it doesn't need
+the original template at all, since deletion is driven purely by "what
+resources currently exist in this group," each deleted through its own
+resource provider's delete API in parallel where dependencies allow.
+
 ## Cheat sheet
 
 | Command | Purpose |

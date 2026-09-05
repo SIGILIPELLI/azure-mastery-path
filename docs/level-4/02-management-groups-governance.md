@@ -126,6 +126,36 @@ you just made, rather than assuming the dashboard is live.
 | RBAC role assignment | Any scope | Grant access to act | Yes — via `az role assignment list` |
 | Custom role | Any scope | Narrow a grant beyond built-ins | Yes, but `NotActions` isn't a deny |
 
+## How It Actually Works
+
+**Management groups** exist purely as a scoping node in ARM's authorization
+hierarchy — creating one doesn't provision any resource, it inserts an
+entry into your tenant's management-group tree that RBAC role assignments
+and Azure Policy assignments can target, and ARM's authorization check
+(from Level 1's capstone) walks *up* this tree from a resource through its
+resource group, subscription, and every management group above it when
+evaluating whether a caller's role assignment or a deny-effect policy
+applies — this upward walk, not any per-resource configuration, is the
+actual mechanism behind policy/RBAC inheritance. **Azure Policy's
+`DeployIfNotExists` and `Modify` effects**, when assigned at a management
+group, are evaluated per-resource at the resource's own scope during the
+same compliance-scan cycle from Level 3's IaC module, but the *remediation*
+deployment they trigger runs under a managed identity created for the
+policy assignment at the management-group scope — which is why that
+identity needs RBAC roles granted explicitly at each subscription it must
+remediate resources in, even though the policy assignment itself lives
+several levels above.
+
+**Blueprints/deployment stacks vs. Policy vs. RBAC** are three different
+enforcement points in that same request pipeline: RBAC gates *who* can call
+an operation, Policy gates *what* a request's properties are allowed to be
+(evaluated inline, before the resource provider processes it), and a
+deployment stack (or Blueprint) additionally tracks a *set* of resources as
+a unit so it can apply lifecycle protections (deny-delete on managed
+resources) and detect drift against the originally deployed template — the
+three mechanisms compose because they intercept the request lifecycle at
+genuinely different stages, not because one supersedes another.
+
 ## Cheat sheet
 
 | Command | Purpose |

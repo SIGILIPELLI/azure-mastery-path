@@ -313,6 +313,32 @@ az group list --output table                        # sanity-check nothing else 
   [Module 03](03-networking-deep-dive.md)'s comparison table, is the
   piece that would actually make the whole stack multi-region).
 
+## How It Actually Works
+
+Wiring App Service, Key Vault, Azure SQL, and a VNet together in one
+project exercises the same authorization chain end to end: your Web App's
+managed identity requests a token from the metadata endpoint (Module 6),
+presents it to Key Vault's data-plane API to fetch the SQL connection
+secret (authorized by the RBAC role you granted the identity on the vault),
+and separately authenticates to Azure SQL directly via Entra
+authentication if configured, or via the retrieved SQL credential — at no
+point does a plaintext secret sit in your App Service configuration or
+code, because the identity token, not a stored password, is what's actually
+changing hands at each hop. Traffic between the Web App and SQL Database
+over a **Private Endpoint** takes the private-IP-plus-DNS-override path
+from Module 3's networking deep dive, meaning the multi-tier app's inter-
+service traffic never transits the public internet even though App Service
+and Azure SQL are both "PaaS" services with public control planes.
+
+The reason this whole topology deploys cleanly from one Bicep template is
+ARM's dependency-graph execution model from Level 1's IaC module: the
+template's symbolic references (a Web App's identity block referencing the
+Key Vault resource, the Key Vault access policy referencing the Web App's
+principal ID) let ARM correctly sequence "create the Web App and its
+identity" before "grant that identity access to the vault" without you
+writing manual wait logic, because ARM resolves the graph rather than
+executing resources in file order.
+
 ## Cheat sheet
 
 | Command | Purpose |

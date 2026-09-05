@@ -140,6 +140,34 @@ switching modes later is not a simple config change.
 | **Enables** | Policy, Monitor, Update Manager | GitOps, Policy, Monitor | Managed patching/backup, unified billing |
 | **Connectivity direction** | Outbound only | Outbound only | Outbound (mode-dependent detail) |
 
+## How It Actually Works
+
+**Azure Arc** extends ARM's control plane to resources that don't
+physically run in Azure by installing a lightweight **Arc agent** (the
+Connected Machine agent, for servers; the Arc-enabled Kubernetes agent's
+Helm-deployed operators, for clusters) that establishes an *outbound*
+HTTPS connection to Azure and registers the on-prem/multi-cloud resource as
+a proxy ARM resource — critically, this means the resource gets a real
+resource ID, RBAC, tags, and Policy applicability exactly like a native
+Azure resource, but Azure has no inbound network path to it at all; every
+control action (running a policy remediation, deploying a Kubernetes
+config via GitOps) is delivered by the outbound-connected agent *polling*
+Azure for pending work rather than Azure pushing to it, mirroring the same
+pull-based trust model as the GitOps controller from Level 3.
+
+**Arc-enabled data services** and **Arc-enabled Kubernetes configuration**
+extend this further using the exact GitOps mechanism from Level 3, Module 8:
+Arc deploys a Flux-based configuration operator onto the connected cluster,
+which pulls manifests from a Git repo you specify and reconciles them
+locally — Azure never needs to reach into the cluster to apply anything, it
+only needs to know (via the agent's periodic status push) whether the
+cluster's Flux operator reports the deployment as synced. This is the
+concrete reason Arc's governance story (Azure Policy applied to on-prem
+Kubernetes, for instance via Gatekeeper policy definitions pushed the same
+GitOps way) can claim consistent governance across hybrid infrastructure:
+it's reusing the identical pull-based reconciliation loop already proven
+inside native AKS, just pointed at infrastructure Azure doesn't own.
+
 ## Cheat sheet
 
 | Command | Purpose |

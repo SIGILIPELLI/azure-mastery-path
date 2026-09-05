@@ -138,6 +138,36 @@ Azure CLI login) — the same code runs unchanged locally (using your `az
 login` session) and in production (using the managed identity), with zero
 `if environment == "prod"` branching.
 
+## How It Actually Works
+
+A **system-assigned managed identity** is implemented by Azure creating a
+hidden service principal in your Entra tenant tied 1:1 to the resource's
+lifecycle, and injecting a small **metadata endpoint** into that resource's
+runtime environment (a link-local address, `169.254.169.254`, unreachable
+from outside the instance) that your code calls to fetch a token — when
+your app requests a token from that endpoint, the underlying platform
+(App Service, a VM's IMDS extension, etc.) authenticates on your app's
+behalf to Entra ID using a certificate it manages entirely outside your
+code, and hands back a short-lived access token. This is the actual reason
+managed identities eliminate secrets from your code: your application
+never sees or handles any credential at all — only the token, which expires
+in about an hour and is silently refreshed by the same metadata call.
+
+**Key Vault** doesn't store secrets in a general-purpose database — secrets,
+keys, and certificates are held in a **hardware security module (HSM)-backed
+or software-isolated vault** (Premium tier uses FIPS 140-2 Level 2 HSMs)
+where cryptographic keys never leave the HSM boundary in plaintext: an
+operation like "decrypt with this key" is executed *inside* the HSM and
+only the result crosses back over the API, which is why Key Vault can
+offer "keys that can't be exported" as a real security property, not just a
+policy setting. Access to a vault is authorized by two independent layers —
+Azure RBAC (or the older vault access policy model) determines whether the
+calling identity's token is allowed to call a given Key Vault data-plane
+operation, and the vault's own firewall/private-endpoint rules determine
+whether the network path is even allowed to reach the vault at all — both
+gates must pass, mirroring the RBAC + network-boundary pattern used
+throughout Azure's other data-plane services.
+
 ## Cheat sheet
 
 | Command | Purpose |

@@ -174,6 +174,35 @@ fulfillment-worker-scaler   apps/v1.Deployment    fulfillment-worker    1     20
   metric — KEDA's Service Bus scaler reacts to the actual backlog driving
   the work, which is the signal that matters for a queue-consuming worker.
 
+## How It Actually Works
+
+This project's end-to-end path — Front Door/Application Gateway → AKS
+(with the cluster autoscaler and pod autoscaling from Module 3) → Service
+Bus for async work (Module 4) → geo-replicated data tier — is a composite
+of every mechanism covered this level operating together: **Azure Front
+Door** terminates global traffic at Microsoft's edge Points of Presence and
+routes to the closest healthy backend using active health probes it
+issues independently of user traffic, so a regional AKS cluster failing
+those probes is removed from rotation at the edge before user requests
+ever reach it, which is a materially faster failover than DNS-based
+failover (no client-side DNS TTL to wait out). Inside the cluster, the
+Horizontal Pod Autoscaler and cluster autoscaler operate as two
+independent control loops on different timescales (pod-level scaling
+reacts in seconds to a metrics-server poll; node-level scaling reacts in
+minutes because it's gated on real VM boot time) — verifying the whole
+path means confirming both loops actually fire under load, not just that
+the app returns 200s.
+
+The resilience claim of this architecture rests specifically on Service
+Bus's durable, at-least-once delivery (Module 4) decoupling the
+availability of the synchronous request path from the availability of
+downstream processing — if a downstream consumer is down, messages queue
+durably in Service Bus's replicated log rather than being dropped or
+blocking the API tier, which is the actual mechanism (not just a design
+label) behind calling this pattern "highly available": you're trading
+immediate consistency for a durability guarantee enforced by Service Bus's
+own storage replication, not by anything your application code does.
+
 ## Stretch goals
 
 1. Add Azure Firewall in the hub VNet and force spoke egress through it via

@@ -160,6 +160,38 @@ until the private DNS zone is created, linked, and populated. Test with
 `nslookup <account>.blob.core.windows.net` from inside the VNet and confirm
 it resolves to the `10.x` private IP, not a public one.
 
+## How It Actually Works
+
+**User-Defined Routes (UDRs)** override Azure's default system routes by
+being programmed into the same VFP layer described in Module 5 — a route
+table attached to a subnet inserts entries into every VM's effective route
+table there, so traffic destined for an address you've routed through an
+NVA (say, `0.0.0.0/0 → 10.0.1.4`) is forwarded to that next hop's private IP
+at the SDN layer before the packet leaves the sending host, with no
+involvement from the NVA's own OS routing until the packet actually arrives
+there. **Azure Load Balancer** (Layer 4) works by programming the same VFP
+rules to rewrite the destination IP/port of an inbound packet from the
+load balancer's frontend IP to a chosen backend instance's private IP — for
+each new flow, it selects a backend using a 5-tuple hash and then
+Direct-Server-Return-style forwards subsequent packets in that same flow
+without re-hashing, all done at the host networking layer without the
+packet ever passing through a separate load-balancing appliance VM.
+
+**Private Endpoints** work by injecting a NIC with a private IP from your
+VNet directly into the PaaS service's own network path via **Azure Private
+Link**: DNS for the PaaS resource (e.g. a storage account's
+`.blob.core.windows.net`) is overridden by a **Private DNS Zone** linked to
+your VNet so the name now resolves to that private IP instead of the
+public one, and traffic to it never leaves the Microsoft backbone or
+traverses the public internet — this is a genuinely different data path
+from a Service Endpoint, which instead just tags outbound traffic on your
+VNet's existing route so the resource provider's firewall can identify and
+allow it, while the traffic still egresses to the service's public IP
+range. That distinction — new private IP + DNS override vs. tagged
+traffic on the existing public path — is the actual mechanism behind why
+Private Endpoints work across peered VNets and on-prem via ExpressRoute/VPN
+while Service Endpoints do not.
+
 ## Cheat sheet
 
 | Command | Purpose |

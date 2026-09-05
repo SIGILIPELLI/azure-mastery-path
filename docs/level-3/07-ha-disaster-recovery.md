@@ -140,6 +140,37 @@ one-way, non-reversible operation you trigger, not something automatic.
 | **RPO** | Near-zero | Near-zero | Seconds to minutes (async) |
 | **Failover** | Automatic | Automatic | Manual or scripted trigger |
 
+## How It Actually Works
+
+**Availability Zones** provide HA within a region by placing replicas in
+physically separate datacenters with independent power, cooling, and
+network — a zone-redundant resource (ZRS storage, a zonal VM Scale Set, a
+zone-redundant Application Gateway) is synchronously replicated or load-
+balanced across zones, so a single zone's outage doesn't interrupt service,
+but this only protects against a *regional* infrastructure failure, not a
+region-wide event, because all zones in a region still share the same
+regional network backbone and, for some services, the same regional control
+plane. **Azure Site Recovery**, used for cross-region DR, works by
+continuously replicating a VM's disk writes at the block level to a target
+region — an ASR-installed process on the source VM (or, for Azure-to-Azure,
+a platform-level replication agent) intercepts writes and asynchronously
+ships them to a matching disk in the target region, maintaining crash-
+consistent (and periodically application-consistent) recovery points; a DR
+failover then boots pre-staged, replicated disks as new VMs in the target
+region rather than provisioning and restoring from scratch, which is what
+gets ASR's RTO down to minutes instead of hours.
+
+The RPO/RTO differences across HA/DR patterns trace directly back to which
+of these replication mechanisms is in play: synchronous same-region
+replication (Availability Zones, ZRS) gives RPO ≈ 0 because a write isn't
+acknowledged until replicated; asynchronous cross-region replication
+(GRS, ASR) gives RPO > 0 (seconds to minutes) because the primary
+acknowledges before the remote copy catches up; and active-active
+multi-region write patterns (Cosmos DB multi-master from Level 2) trade
+strict consistency for both regions being simultaneously writable — three
+different underlying replication protocols producing three different
+availability guarantees, not three settings on the same mechanism.
+
 ## Cheat sheet
 
 | Command | Purpose |

@@ -138,6 +138,35 @@ facing latency alert, giving actual lead time to react.
 | **Dependency tracking** | Application Insights SDK | Finding which downstream call is slow |
 | **Custom events** | Application Insights SDK (`trackEvent`) | Business-level signals (checkout completed) |
 
+## How It Actually Works
+
+**Application Insights**' distributed tracing works by having its SDK
+inject a `traceparent` header (the W3C Trace Context standard) into every
+outbound HTTP call your instrumented service makes, and by reading that
+same header on every inbound request — each service in a call chain then
+reports its own span (start time, duration, dependency calls) tagged with
+a shared trace/operation ID, which Application Insights' backend later
+stitches together into one **end-to-end transaction view** purely by
+grouping all spans sharing that operation ID, not through any special
+network-level correlation. This is architecturally the same telemetry
+pattern a service mesh's sidecars produce automatically (Module 3) — the
+difference is Application Insights instruments at the application/SDK
+layer, so it captures logical spans your code defines (a specific method,
+a specific SQL call) rather than only proxy-visible HTTP boundaries.
+
+Under the hood, all of this — platform metrics, resource logs, App
+Insights traces — converges on the same **Log Analytics workspace /ADX
+Kusto engine** from Level 1's Monitor module; **KQL cross-resource queries**
+work because every ingested record, regardless of source, is tagged with
+its originating resource ID and stored in the workspace's shared column
+store, letting one query correlate an AKS pod's logs with the Application
+Gateway's access logs and a Cosmos DB's request-unit metrics by joining on
+timestamp and correlation fields. **Workbooks and dashboards** are not
+separate data stores — they're saved KQL query definitions plus
+visualization metadata, re-executed against the live workspace/metrics
+store each time they're opened, which is why a workbook's data is always
+current as of query time rather than a cached snapshot.
+
 ## Cheat sheet
 
 | Command | Purpose |

@@ -124,6 +124,36 @@ security-critical code requiring review, not a one-off script.
 | **Network egress** | Forced through hub NVA/firewall | May egress directly, depending on design |
 | **Policy strictness** | High (internal data) | High but includes internet-facing baselines (WAF required, DDoS Standard) |
 
+## How It Actually Works
+
+A **landing zone** is fundamentally a specific arrangement of the primitives
+from earlier levels — management groups, Azure Policy, RBAC, and Bicep/
+Terraform modules — deployed as one coherent hierarchy rather than a new
+Azure feature: the **management group tree** (Tenant Root → Intermediate
+Root → platform/landing-zone groups) is a pure authorization and policy
+scoping construct held in Entra/ARM, with policy and RBAC assignments at
+each level inherited downward to every subscription beneath it — a policy
+assigned at the "Corp" management group is enforced identically to one
+assigned directly on a subscription, just evaluated at a broader scope in
+the same ARM request pipeline from Level 1's capstone. The **Corp vs.
+Online archetypes** differ only in which policy set and network topology
+template get applied to landing-zone subscriptions under them (e.g. Corp
+enforcing mandatory hub connectivity via forced-tunneling UDRs, Online
+allowing direct internet egress) — the underlying enforcement mechanism
+(policy evaluation + UDR-based routing) is identical to what you've already
+used, just templated for repeatable subscription vending.
+
+**Subscription vending** — provisioning a new landing-zone subscription for
+a team — works by an automated pipeline calling the `Microsoft.Subscription`
+resource provider to create the subscription itself, then immediately
+running a Bicep/Terraform deployment scoped to that new subscription to
+apply the standard policy assignments, RBAC role assignments, and network
+peering to the hub, all before handing the subscription to the requesting
+team — this is why a landing zone platform can guarantee every team's
+subscription starts in a compliant baseline state: the guardrails are
+applied by the same automated ARM deployment that creates the subscription,
+not by after-the-fact audit.
+
 ## Cheat sheet
 
 | Command | Purpose |

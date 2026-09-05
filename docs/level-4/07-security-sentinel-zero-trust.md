@@ -143,6 +143,36 @@ existence.
 | **Response** | Recommendations, some auto-remediation | Playbooks (Logic Apps), automation rules |
 | **Best for** | "Is this VM/storage account configured securely?" | "Is there a coordinated attack across my environment?" |
 
+## How It Actually Works
+
+**Microsoft Sentinel** is built directly on top of the Log Analytics
+workspace and Kusto engine already covered in Level 1 and Module 5 above —
+enabling Sentinel on a workspace doesn't add a new data store, it adds a
+**detection and orchestration layer** on top: scheduled **analytics rules**
+are, mechanically, KQL queries the Sentinel engine runs against the
+workspace on a fixed interval, and a rule's match becomes an "incident"
+object tracked in Sentinel's own incident data model, which is distinct
+from Defender for Cloud's alerts (Module 6, Level 3) even though both
+ultimately correlate signals in the same workspace — Sentinel additionally
+supports **automation rules and playbooks**, where a matched incident can
+trigger a Logic App (the same Logic Apps engine used for general workflow
+automation) to auto-remediate, e.g. calling the Entra API to disable a
+compromised account, closing the loop from detection to response inside
+one platform.
+
+**Zero Trust** as implemented via Entra Conditional Access is not a single
+feature but a **policy evaluation gate inserted into the OAuth token-
+issuance flow** itself: when a user or app requests a token from Entra
+(the same `/authorize` and `/token` endpoints from Module 1's `az login`),
+Entra evaluates every applicable Conditional Access policy's conditions
+(user risk score from Entra ID Protection's ML-based sign-in risk model,
+device compliance state reported by Intune, network location, requested
+resource) *before* issuing the token, and can deny, require MFA step-up, or
+grant a token restricted to a session-bound scope — this is the mechanical
+reason Zero Trust policies apply uniformly across every Azure/Microsoft 365
+service: they're enforced at the shared token-issuance chokepoint every
+one of those services relies on, not re-implemented per application.
+
 ## Cheat sheet
 
 | Command | Purpose |

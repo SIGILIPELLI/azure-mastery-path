@@ -170,6 +170,35 @@ az functionapp function keys list \
   --function-name HttpHello
 ```
 
+## How It Actually Works
+
+An Azure Function isn't a standalone process waiting for traffic — it's
+code hosted by the **Azure Functions runtime host**, which itself runs
+inside a language worker process (`dotnet`, `node`, `python`, ...) supervised
+by the **Azure Functions Host**. On the Consumption plan, that host process
+doesn't run continuously: Azure's **scale controller** monitors the trigger
+source (queue depth, HTTP request rate, timer due time) out-of-band, and
+when work appears it allocates a fresh sandboxed container on shared
+infrastructure, cold-starts the language worker inside it, and only then
+invokes your function — that cold-start (JIT/interpreter startup + your
+package's dependency loading) is the actual mechanical cause of first-request
+latency, not network delay. Because the whole app can scale to zero
+containers when idle, you're billed per-execution (GB-seconds + invocation
+count) rather than for reserved compute.
+
+Triggers and bindings are implemented via the **extension/binding
+framework**: a Blob trigger, for instance, doesn't have Azure Functions
+poll storage directly for most trigger types — it registers an Event Grid
+subscription (or, on the older polling model, has the host scan blob
+container logs) so the host is woken by an event rather than by continuously
+listing blobs. An HTTP trigger runs the Function host as an ASP.NET Core-
+based web server behind Azure's **Front Door / load balancer edge**, which
+routes the request into whichever scaled-out instance is available. The
+Functions Host itself is the same open-source WebJobs SDK-based engine
+whether you're on Consumption, Premium, or a dedicated App Service plan —
+what changes across plans is only how instances are provisioned and scaled,
+not the execution model your code runs under.
+
 ## Cheat sheet
 
 | Command | Purpose |

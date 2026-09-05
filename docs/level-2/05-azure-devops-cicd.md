@@ -160,6 +160,36 @@ YAML alone can't fully express this, since it's tied to the **Environment**
 object, not the pipeline file. Once configured, the `Deploy` stage above
 pauses and emails/notifies the designated approvers before it proceeds.
 
+## How It Actually Works
+
+An Azure Pipelines run isn't executed by the Azure DevOps service itself —
+YAML pipeline definitions are compiled into a **job graph**, and each job is
+dispatched to an **agent**: either a Microsoft-hosted agent (a fresh,
+ephemeral VM image spun up per job from a pool of pre-imaged VMs and
+destroyed after, which is why hosted-agent builds always start from a clean
+environment) or a self-hosted agent (a long-lived process you register that
+polls the Azure DevOps service for queued jobs over an outbound HTTPS
+connection — this is why self-hosted agents work behind a firewall with no
+inbound ports open at all: the agent always initiates the connection).
+Each pipeline stage's artifacts are published to a service-managed blob
+store scoped to the pipeline run, and a later stage's `download` step pulls
+from that same store — stages don't share a filesystem or VM.
+
+**Approvals and gates** on multi-stage pipelines are implemented as a
+pause the orchestration engine inserts before a stage's jobs are dispatched
+to any agent: the pipeline run's state machine transitions to "pending
+approval" and literally does not queue the stage's job until an authorized
+approver acts (or the approval times out), which is why an approval gate
+costs nothing in agent minutes while it's waiting. A **service connection**
+to Azure is, under the hood, either a stored service-principal client
+secret/certificate or an Entra **workload identity federation** trust
+(newer, secret-less) — the pipeline's agent exchanges that credential for a
+short-lived ARM access token at deploy time using the exact same OAuth
+client-credentials flow a service principal uses anywhere else, meaning
+deployment permissions are entirely governed by whatever RBAC role that
+service principal holds, independent of the human who authored the
+pipeline.
+
 ## Cheat sheet
 
 | Command / concept | Purpose |

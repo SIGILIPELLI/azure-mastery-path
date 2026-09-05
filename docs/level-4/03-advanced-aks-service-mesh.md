@@ -146,6 +146,38 @@ just applied (like the canary split above) won't take effect for that pod
 until it resyncs, which is a frequent explanation for "I updated the
 `VirtualService` but nothing changed for this one pod."
 
+## How It Actually Works
+
+A service mesh (Istio/Linkerd on AKS, or the managed Istio-based AKS
+add-on) works by injecting a **sidecar proxy** (Envoy, for Istio) into
+every pod alongside your application container — Kubernetes' admission
+webhook mechanism intercepts pod creation and mutates the pod spec to add
+the sidecar container automatically, and an `iptables` (or eBPF, in newer
+ambient-mode meshes) rule installed in the pod's network namespace
+transparently redirects all inbound and outbound traffic through that
+sidecar before your application ever sees it — this is why the mesh can
+enforce mTLS, retries, and traffic splitting entirely at the network layer
+with zero application code changes: your app's traffic is being
+intercepted and re-routed at the kernel/proxy level, not modified by a
+library you import.
+
+**mTLS between services** is issued and rotated by the mesh's control
+plane (Istiod) acting as a private certificate authority: each sidecar
+requests a short-lived workload certificate over a secure channel at
+startup, Istiod signs it against its own CA key, and sidecars mutually
+present and validate these certificates on every connection — because
+certificates typically rotate every 24 hours automatically, this
+eliminates the manual cert-rotation problem that Key Vault-issued certs
+(Module 6, Level 2) would otherwise require you to manage yourself for
+inter-service traffic. **Observability with the mesh** comes for free
+because every sidecar, sitting in the actual data path, can emit consistent
+request-level metrics (latency, status code, retries) and distributed
+trace spans regardless of what language each service is written in — this
+is a materially different mechanism from application-level instrumentation
+(Module 5 ahead), which requires each service to independently emit its
+own telemetry, versus the mesh capturing it uniformly at the proxy layer
+that already sees every request.
+
 ## Cheat sheet
 
 | Command | Purpose |

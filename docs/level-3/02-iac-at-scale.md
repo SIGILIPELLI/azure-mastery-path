@@ -187,6 +187,40 @@ corrupted state file, which is a much worse afternoon than waiting.
 | **Modules** | `.bicep` files | Registry or local modules |
 | **Drift detection** | `az deployment group what-if` | `terraform plan` shows drift |
 
+## How It Actually Works
+
+**Bicep modules** compile independently and get inlined into the parent
+template's ARM JSON as nested/linked deployments — when you reference a
+module, the CLI's compiler resolves it at build time into either an
+embedded template (for local files) or a separate deployment resource
+pointing at a template uploaded to a storage account/template spec (for
+remote modules), and ARM then executes that nested deployment as its own
+tracked deployment object inside the same dependency graph as everything
+else — nested deployments simply add another level to the same
+topological-sort execution engine from Level 1, not a different mechanism.
+**Terraform**, by contrast, does not talk to ARM's declarative deployment
+API at all for most resources — the AzureRM provider makes direct,
+imperative CRUD calls against each resource provider's REST API itself,
+and Terraform's own **state file** is what tracks desired-vs-actual state
+across runs (ARM has no concept of a Terraform run), which is the root
+cause of Terraform/Bicep state drift differing: Bicep re-derives "what
+changed" from ARM's own deployment history and current resource state on
+every run, while Terraform's correctness depends entirely on its state file
+staying in sync with reality.
+
+**Azure Policy at scale** (assigned at a management group) is evaluated at
+two different times through two different mechanisms: at **deployment
+time**, a `deny` effect policy intercepts the ARM PUT/PATCH request before
+the resource provider processes it, exactly as in Level 1's capstone; for
+resources that already exist or drift out of compliance, a separate
+**compliance scan** (run roughly every 24 hours, or on-demand) re-evaluates
+each policy's condition against the resource's current properties and
+updates a compliance state record — `DeployIfNotExists` and `Modify`
+effects go further, actually triggering a remediation deployment (itself
+an ARM deployment under a system-assigned managed identity the policy
+assignment holds) to bring non-compliant resources into line after the
+fact, rather than only blocking new ones.
+
 ## Cheat sheet
 
 | Command | Purpose |

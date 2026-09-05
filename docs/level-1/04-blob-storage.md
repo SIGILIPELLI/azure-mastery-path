@@ -187,6 +187,36 @@ For a custom domain and CDN caching in front of this endpoint, pair it with
 Azure CDN or Azure Front Door — beyond this level's scope, but the storage
 side is exactly what you just did.
 
+## How It Actually Works
+
+A storage account is a namespace mapped onto Azure's internal **partition
+layer**: every blob's URL (`https://<account>.blob.core.windows.net/
+<container>/<blob>`) resolves through DNS to a set of front-end servers that
+route the request, by partition key, to the specific partition server
+holding that blob's metadata and pointing at its data on the storage
+stamp's disks. Blob storage's durability comes from **synchronous
+replication inside the stamp**: with Locally Redundant Storage (LRS), every
+write is committed to three replicas across separate fault domains
+(different racks/power/network paths) within one datacenter *before* the
+write call returns success — so a single write acknowledges only after
+triple-replication. Geo-Redundant Storage (GRS) adds a second, asynchronous
+replication leg to a paired region hundreds of kilometers away, which is why
+GRS failover can lose the last few seconds of writes (RPO > 0) while LRS
+writes are synchronously durable within the region the instant they return.
+
+Access tiers (Hot/Cool/Archive) don't move data between different storage
+technologies for Hot and Cool — they change the billing model (cheaper
+storage, pricier reads) while data stays on the same fast disks. Archive
+tier is different: data is physically migrated off the hot storage stamp,
+which is why rehydrating an archived blob takes hours, not milliseconds — you're
+waiting on an actual data-movement job, not a metadata flag flip. A **SAS
+token** is not a credential Azure looks up — it's a URL query string signed
+with the account's own storage key (or, for user-delegation SAS, a key
+derived from an Entra token) using HMAC-SHA256; the blob service
+re-computes that signature from the account key on each request and just
+compares digests, so a SAS token remains valid until it expires or the
+signing key is rotated, with no server-side revocation list to check.
+
 ## Cheat sheet
 
 | Command | Purpose |

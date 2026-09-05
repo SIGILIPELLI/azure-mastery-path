@@ -133,6 +133,37 @@ existing Blueprint assignments continue to function but no new features
 land there, and net-new governance-as-code should use Policy initiatives +
 Template Specs / deployment stacks instead.
 
+## How It Actually Works
+
+**Microsoft Defender for Cloud** doesn't run as an agent you deploy
+manually into every subscription — it operates by continuously querying
+the ARM control plane's resource graph (the same underlying inventory
+`az resource list` reads from) against a set of **security
+recommendations**, each backed by a specific ARM/API check (e.g. "is
+`Microsoft.Storage/storageAccounts.properties.minimumTlsVersion` set to
+TLS1_2") evaluated on a recurring scan cycle; for deeper runtime signals
+(process activity, network connections inside a VM) it deploys the Azure
+Monitor Agent or relies on Defender's own sensors sending telemetry to a
+Log Analytics workspace, where Defender's detection engine correlates that
+stream against known attack patterns to raise alerts — recommendations
+(posture) and alerts (active threats) are genuinely two different pipelines
+feeding the same Secure Score.
+
+**Azure Blueprints** (and their successor, Template Specs + deployment
+stacks) work by packaging a set of ARM/Bicep artifacts — role assignments,
+policy assignments, and resource templates — into one **versioned,
+lockable bundle**; assigning a blueprint to a subscription doesn't just
+deploy the artifacts once, it creates a tracked blueprint assignment
+resource that can enforce **resource locks** the blueprint itself defines,
+preventing someone from deleting or modifying an artifact the blueprint
+created even if their RBAC role would otherwise permit it — the lock is
+checked by ARM at request time exactly like a manually-applied
+`CanNotDelete` lock, just applied and lifecycle-managed by the blueprint
+assignment instead of a person. This is the mechanical difference between
+a blueprint and a plain template deployment: the blueprint assignment
+persists as a governance object ARM continues to enforce, not just a
+one-time provisioning action.
+
 ## Cheat sheet
 
 | Command | Purpose |

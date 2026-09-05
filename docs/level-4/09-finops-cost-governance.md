@@ -157,6 +157,34 @@ them, and keep subscription-level budgets as a fallback layer regardless.
 | **Walk** | Tag policy enforced, per-team showback dashboards, monthly reviews |
 | **Run** | Automated chargeback, forecasted budget alerts, reservation utilization actively managed, cost baked into architecture decisions upfront |
 
+## How It Actually Works
+
+**FinOps maturity** progresses through mechanisms this course has already
+covered individually now being operated as a continuous feedback loop:
+the "Inform" phase relies on the tag-scoped usage records from Level 3's
+cost module (Cost Management reports built on per-meter, per-hour billing
+data tagged at usage-emission time) to attribute spend to teams/products;
+"Optimize" acts on Azure Advisor's utilization-based recommendations
+(Level 3) plus Reservation/Savings Plan purchases matched retroactively at
+billing time; and "Operate" closes the loop by wiring **budget alerts**
+(Azure Monitor-style threshold evaluations run against the Cost Management
+service's own aggregated spend data on a daily cadence) to automation —
+typically an Action Group triggering a Logic App or Function that can, for
+example, call the same `Microsoft.Compute` deallocate API from Level 1 to
+shut down non-production resources automatically when a budget threshold
+fires, turning a passive alert into an enforced control.
+
+**Cost allocation showback/chargeback** in a FinOps program depends
+entirely on tag governance being enforced at resource-creation time via
+Azure Policy's `Modify` effect (Module 2 in this level) — a policy that
+appends a mandatory `CostCenter` tag during the same ARM request pipeline
+that creates the resource guarantees every subsequent usage record for
+that resource carries the tag from its very first hour of billing, which
+is the only way showback reports can be complete; tags added after the
+fact, as noted in Level 3's cost module, never retroactively populate
+historical usage records because those records are immutable once
+emitted.
+
 ## Cheat sheet
 
 | Command | Purpose |

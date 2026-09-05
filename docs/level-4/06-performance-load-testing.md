@@ -161,6 +161,35 @@ load test or incident, then reduce sampling back down.
 | Autoscaling timeline correlated | Confirm scale-up lag is within tolerance |
 | Profiler sampling reduced after use | Avoid leaving overhead on indefinitely |
 
+## How It Actually Works
+
+**Azure Load Testing** doesn't generate load from a single client machine —
+it runs your Apache JMeter test plan across a fleet of managed, ephemeral
+**engine instances** provisioned specifically for the test run, each
+executing a share of the configured virtual users in parallel and
+streaming results back to the Load Testing service's aggregation layer,
+which is why the service can realistically simulate tens of thousands of
+concurrent users: the load is genuinely distributed across many
+short-lived compute instances rather than one machine's network/CPU
+ceiling. Real-time metrics during a run (response time percentiles, error
+rate) are computed by that aggregation layer incrementally as engine
+instances report batched results, not by waiting for the run to finish and
+post-processing a log file — this is what lets you abort a test early when
+you see it already failing thresholds.
+
+A load test's results are only as informative as what's actually being
+measured under the hood at the target: for an App Service or AKS-hosted
+app, the same autoscale mechanisms from Levels 2–3 (Azure Monitor
+Autoscale polling metrics, the Kubernetes HPA/cluster autoscaler) are
+reacting to the injected load in real time on their own evaluation
+cadence, which is why a load test's ramp-up profile matters mechanically —
+a too-fast ramp can outpace the autoscaler's polling interval and cooldown
+period, causing throttling/errors that reflect the autoscaler's reaction
+lag rather than the application code's actual capacity ceiling. This is
+also why performance test result interpretation has to separate "the app
+code is slow" from "the platform hadn't finished scaling yet" — two
+different bottlenecks with completely different underlying causes.
+
 ## Cheat sheet
 
 | Command | Purpose |

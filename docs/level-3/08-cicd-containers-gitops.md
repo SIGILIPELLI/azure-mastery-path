@@ -130,6 +130,33 @@ plain blue/green swap.
 | **Cluster credentials** | Pipeline needs cluster access | Only the in-cluster agent needs it |
 | **Audit trail** | Pipeline run logs | Git history |
 
+## How It Actually Works
+
+**GitOps** inverts the normal CI/CD push model at the mechanical level: a
+controller running *inside* the cluster (Flux or Argo CD, both built on
+Kubernetes' own controller-runtime pattern) continuously polls a Git
+repository for the desired-state manifests, diffs them against the
+cluster's actual live objects via the Kubernetes API server, and applies
+any delta itself — your pipeline's job is only to update the manifests in
+Git (usually by bumping an image tag after a successful build/push to
+ACR), never to run `kubectl apply` against the cluster directly. This is
+the concrete reason GitOps clusters can run with no inbound deployment
+credentials or open network path from CI at all: the pull-based controller
+inside the cluster is the only thing that ever needs API server access to
+write changes, reversing the trust direction of a traditional push
+pipeline.
+
+Under a traditional push pipeline, `kubectl apply` (or a pipeline's
+equivalent Helm/kubectl task) authenticates to the AKS API server using a
+kubeconfig token derived from either an Entra-integrated RBAC binding or a
+cluster-issued service account token, and the API server validates that
+token against Kubernetes RBAC role bindings before admitting the request —
+this is a separate authorization layer from Azure RBAC on the AKS resource
+itself (which only controls who can manage the *cluster resource*, e.g.
+via `az aks` commands), which is why a user can have full Azure RBAC
+Contributor on an AKS cluster and still be denied by Kubernetes RBAC when
+trying to deploy a workload into it, or vice versa.
+
 ## Cheat sheet
 
 | Command | Purpose |

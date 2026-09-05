@@ -161,6 +161,37 @@ kubectl describe pod <pod-name>         # events: scheduling failures, image pul
 tells you why (can't pull the image, no node has enough CPU/memory free,
 liveness probe failing, and so on).
 
+## How It Actually Works
+
+An AKS cluster's **control plane** (API server, etcd, scheduler,
+controller-manager) is fully managed by Azure and runs on Microsoft-owned
+infrastructure invisible to you — `az aks show` never returns a VM for it
+because there isn't one you're billed for or can SSH into; what you do see
+and pay for is the **node pool**, which is a Virtual Machine Scale Set
+(VMSS) that AKS provisions and keeps registered with that hidden control
+plane via the `kubelet` running on each node. When you run `kubectl apply`,
+the request goes to the managed API server, gets persisted to etcd (also
+hidden), and the **scheduler** picks a node by matching the pod's resource
+requests against each node's reported allocatable capacity — kubelet then
+pulls the container image and starts it via the node's container runtime
+(containerd), all of which is standard upstream Kubernetes; Azure's
+contribution is entirely in provisioning/patching/scaling the
+infrastructure underneath, not in a modified control plane.
+
+Networking inside AKS depends on the CNI plugin chosen at cluster creation:
+**kubenet** assigns pod IPs from a separate, non-routable range and relies
+on Azure UDRs plus NAT to get pods talking to the VNet, while **Azure CNI**
+assigns each pod a real IP directly from your VNet's subnet — a materially
+different mechanism that's why Azure CNI pods can be reached directly by
+other VNet resources but consume subnet address space per pod (this is the
+actual cause of AKS subnets needing to be sized much larger than the pod
+count would suggest). `kubectl logs`/`exec` don't reach the pod directly —
+they're proxied through the managed API server, which opens a connection
+back to the kubelet on the node hosting that pod, which is why cluster
+logs/exec commands fail specifically when the API server can't reach a
+node's kubelet (e.g. NSG blocking the control plane's outbound IP range),
+not when your own client's network is fine.
+
 ## Cheat sheet
 
 | Command | Purpose |

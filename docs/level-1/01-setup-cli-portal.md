@@ -147,6 +147,33 @@ and reproducible, but everything shown also has a Portal equivalent if you
 prefer clicking through — the Portal is a good place to double check what a
 command actually created.
 
+## How It Actually Works
+
+`az login` doesn't hand your password to the CLI. It runs the **OAuth 2.0
+authorization code flow** against Microsoft Entra ID (Azure AD): a browser
+tab opens to Entra's `/authorize` endpoint, you authenticate there, and
+Entra redirects back to a localhost port the CLI is listening on with a
+short-lived authorization code. The CLI exchanges that code for an **access
+token** (a signed JWT, ~1 hour lifetime) and a **refresh token**, both cached
+under `~/.azure/msal_token_cache.json`. Every subsequent `az` command reads
+the cached access token (silently refreshing it with the refresh token when
+expired) and attaches it as a `Bearer` header on calls to the **Azure
+Resource Manager (ARM)** REST API at `management.azure.com` — the CLI, the
+Portal, and Bicep/Terraform are all just different clients of that one HTTP
+API surface.
+
+A **subscription** is not a resource — it's a billing and RBAC scope
+recorded against your Entra tenant. `az account set` doesn't talk to the
+network at all; it just rewrites which subscription ID gets stamped into the
+URL path (`/subscriptions/{id}/...`) of future ARM calls. A **resource
+group** is metadata plus a scoping boundary, tracked in ARM's own store — it
+holds no compute of its own. `az group delete` doesn't delete resources one
+by one from the client; it submits a single delete operation to ARM, which
+then fans out delete calls to each resource provider (Compute, Storage,
+Network, ...) that owns a resource in the group, tracked as one long-running
+operation you can poll — which is why `--no-wait` returns instantly while
+the underlying teardown still takes minutes.
+
 ## Cheat sheet
 
 | Command | Purpose |

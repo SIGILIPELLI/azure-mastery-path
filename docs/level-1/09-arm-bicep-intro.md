@@ -188,6 +188,36 @@ az bicep build --file main.bicep
 you export from the Portal (every resource's blade has an "Export template"
 option that gives you its current ARM JSON).
 
+## How It Actually Works
+
+Bicep isn't a separate deployment engine — it's a **domain-specific language
+that compiles down to ARM JSON** (`az deployment group create` on a `.bicep`
+file first transpiles it to the equivalent ARM template in memory, then
+submits that JSON to the exact same ARM deployment API used by hand-written
+templates or the Portal's "Export template" feature). ARM itself processes
+a deployment as a **declarative graph**: it parses the template's
+`resources` array, builds a dependency graph from explicit `dependsOn`
+entries and implicit references (`reference()`/symbolic references pulled
+from one resource's properties into another's), topologically sorts that
+graph, and then provisions resources in parallel wherever the graph allows
+it — this is why two unrelated resources in the same template deploy
+concurrently while a NIC correctly waits for its VNet/subnet to exist first,
+without you writing any explicit ordering logic.
+
+**Idempotency** is enforced by ARM computing a diff against the resource's
+last-known desired state (tracked per deployment in the resource group's
+deployment history) rather than blindly re-running create calls — re-
+deploying an unchanged template is a no-op at the resource-provider level
+because ARM detects no property delta and skips the PUT. **What-if**
+(`az deployment group what-if`) works by having ARM run this same diff
+engine against your *proposed* template without actually calling any
+resource provider's write API, which is how it can report additions/
+modifications/deletions before you commit. Because Bicep compiles to plain
+ARM JSON, there's no runtime dependency on Bicep at deployment time — the
+CLI's compile step is purely a client-side convenience, and the resource
+group's deployment history only ever stores the resulting ARM template, not
+your original Bicep source.
+
 ## Cheat sheet
 
 | Command / syntax | Purpose |
