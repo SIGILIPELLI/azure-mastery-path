@@ -135,6 +135,10 @@ blocks the overwhelming majority of account-takeover attempts and costs you
 one extra tap on your phone per sign-in — turn it on before you go any
 further in this course.
 
+## How It Actually Works
+
+When you sign in, Entra ID doesn't hand your app your password — it issues a signed JSON Web Token (JWT) after checking your credentials against its own directory, and every subsequent request just carries that token. The token's claims (`oid`, `roles`, `groups`) are what RBAC actually reads: when Azure Resource Manager evaluates "can this principal do this action on this scope," it isn't checking a live database on every call — it's decrypting and verifying the token's signature against Microsoft's public keys, then matching the claims against the role assignments cached at the scope (subscription/resource group/resource) you're hitting. That's why revoking a role assignment doesn't kill an already-issued token instantly — the token stays valid until it expires (typically ~1 hour) or you explicitly revoke the session, which is why conditional access policies and short token lifetimes matter more than they first appear to.
+
 ## Cheat sheet
 
 | Command / concept | Purpose |
