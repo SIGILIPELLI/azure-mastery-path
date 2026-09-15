@@ -1,3 +1,7 @@
+---
+description: "Azure Functions Advanced — Level 1, Module 07 covered the basics: triggers, bindings, the Consumption plan. This module covers what you need once a single…"
+---
+
 # 09 · Azure Functions Advanced
 
 [Level 1, Module 07](../level-1/07-azure-functions.md) covered the basics:

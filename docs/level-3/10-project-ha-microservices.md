@@ -1,3 +1,7 @@
+---
+description: "Project — Highly Available Microservices — This project combines everything from Level 3: networking, AKS, event-driven messaging, API Management…"
+---
+
 # 10 · Project — Highly Available Microservices
 
 This project combines everything from Level 3: networking, AKS, event-driven

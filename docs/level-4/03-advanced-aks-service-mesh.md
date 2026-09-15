@@ -1,3 +1,7 @@
+---
+description: "Advanced AKS (Service Mesh, Multi-Cluster) — Level 3, Module 03 covered Helm, ingress, and autoscaling on a single cluster. At enterprise scale you…"
+---
+
 # 03 · Advanced AKS (Service Mesh, Multi-Cluster)
 
 [Level 3, Module 03](../level-3/03-advanced-aks.md) covered Helm, ingress,

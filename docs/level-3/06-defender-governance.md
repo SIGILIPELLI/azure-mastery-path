@@ -1,3 +1,7 @@
+---
+description: "Defender for Cloud & Governance (Policy, Blueprints) — Individually secure resources don't add up to a secure environment without something enforcing…"
+---
+
 # 06 · Defender for Cloud & Governance (Policy, Blueprints)
 
 Individually secure resources don't add up to a secure environment without

@@ -1,3 +1,7 @@
+---
+description: "FinOps & Cost Governance at Scale — Level 3, Module 09 covered cost levers for a single subscription. At enterprise scale, cost management becomes an…"
+---
+
 # 09 · FinOps & Cost Governance at Scale
 
 [Level 3, Module 09](../level-3/09-cost-management-optimization.md) covered

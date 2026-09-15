@@ -1,3 +1,7 @@
+---
+description: "Enterprise Landing Zones (CAF) — Everything through Level 3 assumed a single subscription. Real enterprises run dozens to hundreds, each needing…"
+---
+
 # 01 · Enterprise Landing Zones (CAF)
 
 Everything through Level 3 assumed a single subscription. Real enterprises

@@ -1,3 +1,7 @@
+---
+description: "Event-Driven Architecture (Event Grid, Service Bus) — Synchronous request/response (App Service calling App Service, or an API calling a database…"
+---
+
 # 04 · Event-Driven Architecture (Event Grid, Service Bus)
 
 Synchronous request/response (App Service calling App Service, or an API

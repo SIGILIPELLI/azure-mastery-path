@@ -1,3 +1,7 @@
+---
+description: "Project — Multi-Tier Web Application — This project combines almost everything from Level 2 into one system: a containerized API on AKS, behind an…"
+---
+
 # 10 · Project — Multi-Tier Web Application
 
 This project combines almost everything from Level 2 into one system: a

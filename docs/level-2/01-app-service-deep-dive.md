@@ -1,3 +1,7 @@
+---
+description: "App Service & Web Apps Deep Dive — A deployment slot is a fully separate, independently deployable copy of your app running on the same plan — a staging…"
+---
+
 # 01 · App Service & Web Apps Deep Dive
 
 **Azure App Service** is Azure's fully managed platform for hosting web

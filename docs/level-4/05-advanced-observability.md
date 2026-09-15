@@ -1,3 +1,7 @@
+---
+description: "Advanced Observability (App Insights, Tracing) — Basic Azure Monitor metrics tell you a VM's CPU is high; they don't tell you which downstream call inside…"
+---
+
 # 05 · Advanced Observability (App Insights, Tracing)
 
 Basic Azure Monitor metrics tell you a VM's CPU is high; they don't tell

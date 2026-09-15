@@ -1,3 +1,7 @@
+---
+description: "Security Deep Dive (Sentinel, Zero Trust) — Level 3, Module 06 covered Defender for Cloud (posture and per-resource threat detection) and Policy…"
+---
+
 # 07 · Security Deep Dive (Sentinel, Zero Trust)
 
 [Level 3, Module 06](../level-3/06-defender-governance.md) covered

@@ -1,3 +1,7 @@
+---
+description: "Advanced AKS (Helm, Ingress, Autoscaling) — Level 2, Module 04 covered creating a cluster and deploying a plain manifest. This module covers running AKS…"
+---
+
 # 03 · Advanced AKS (Helm, Ingress, Autoscaling)
 
 [Level 2, Module 04](../level-2/04-aks-basics.md) covered creating a

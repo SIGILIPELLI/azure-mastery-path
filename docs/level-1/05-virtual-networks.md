@@ -1,3 +1,7 @@
+---
+description: "Virtual Networks Basics — A Virtual Network (VNet) is your private, isolated slice of Azure's network — resources you put inside it can talk to each other…"
+---
+
 # 05 · Virtual Networks Basics
 
 A **Virtual Network (VNet)** is your private, isolated slice of Azure's

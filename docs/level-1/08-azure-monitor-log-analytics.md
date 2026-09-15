@@ -1,3 +1,7 @@
+---
+description: "Azure Monitor & Log Analytics — Every Azure resource emits platform metrics automatically, at no extra cost, for free — no setup required."
+---
+
 # 08 · Azure Monitor & Log Analytics
 
 **Azure Monitor** is the umbrella platform that collects metrics, logs, and

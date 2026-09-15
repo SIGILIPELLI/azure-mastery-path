@@ -1,3 +1,7 @@
+---
+description: "Storage Deep Dive (Files, Queues, Tables) — Level 1, Module 04 covered Blob Storage — one of four data services that live inside every storage account.…"
+---
+
 # 02 · Storage Deep Dive (Files, Queues, Tables)
 
 [Level 1, Module 04](../level-1/04-blob-storage.md) covered Blob Storage —

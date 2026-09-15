@@ -1,3 +1,7 @@
+---
+description: "Cost Management & Optimization — Provisioning resources without a cost-review habit is how a dev subscription quietly turns into a five-figure monthly…"
+---
+
 # 09 · Cost Management & Optimization
 
 Provisioning resources without a cost-review habit is how a dev

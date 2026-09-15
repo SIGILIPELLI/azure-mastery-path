@@ -1,3 +1,7 @@
+---
+description: "Azure Kubernetes Service (AKS) Basics — az aks get-credentials merges the cluster's connection details into your local ~/.kube/config, so kubectl…"
+---
+
 # 04 · Azure Kubernetes Service (AKS) Basics
 
 **Azure Kubernetes Service (AKS)** is Azure's managed Kubernetes control

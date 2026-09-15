@@ -1,3 +1,7 @@
+---
+description: "Virtual Machines — Azure Virtual Machines (VMs) are the IaaS building block — a full Linux or Windows operating system running on Microsoft's hardware…"
+---
+
 # 03 · Virtual Machines
 
 Azure **Virtual Machines (VMs)** are the IaaS building block — a full

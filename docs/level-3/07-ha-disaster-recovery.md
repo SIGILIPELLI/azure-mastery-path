@@ -1,3 +1,7 @@
+---
+description: "High Availability & Disaster Recovery — An Availability Set spreads VMs across fault domains (racks with separate power/network) and update domains within…"
+---
+
 # 07 · High Availability & Disaster Recovery
 
 **Availability** keeps a single-region deployment resilient to individual

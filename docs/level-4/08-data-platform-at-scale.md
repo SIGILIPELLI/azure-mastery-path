@@ -1,3 +1,7 @@
+---
+description: "Data Platform at Scale (Synapse, Data Factory) — Level 2, Module 08 covered a transactional NoSQL database for application workloads. This module covers…"
+---
+
 # 08 · Data Platform at Scale (Synapse, Data Factory)
 
 [Level 2, Module 08](../level-2/08-cosmos-db-deep-dive.md) covered a

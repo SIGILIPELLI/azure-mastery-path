@@ -1,3 +1,7 @@
+---
+description: "Networking Deep Dive (Load Balancer, App Gateway) — Level 1, Module 05 covered VNets, subnets, NSGs, and route tables. This module covers the layer that…"
+---
+
 # 03 · Networking Deep Dive (Load Balancer, App Gateway)
 
 [Level 1, Module 05](../level-1/05-virtual-networks.md) covered VNets,

@@ -1,3 +1,7 @@
+---
+description: "Managed Identities & Key Vault — Every module so far that needed a secret (a Cosmos DB key, a storage account key) put it in an app setting or environment…"
+---
+
 # 06 · Managed Identities & Key Vault
 
 Every module so far that needed a secret (a Cosmos DB key, a storage

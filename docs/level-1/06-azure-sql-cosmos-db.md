@@ -1,3 +1,7 @@
+---
+description: "Azure SQL Database / Cosmos DB Basics — Azure offers fully managed databases so you don't patch, back up, or provision hardware yourself. This module…"
+---
+
 # 06 · Azure SQL Database / Cosmos DB Basics
 
 Azure offers fully managed databases so you don't patch, back up, or

@@ -1,3 +1,7 @@
+---
+description: "CI/CD for Containers & GitOps — Level 2, Module 05 covered a straightforward build-and-deploy pipeline. Container workloads on AKS benefit from a…"
+---
+
 # 08 · CI/CD for Containers & GitOps
 
 [Level 2, Module 05](../level-2/05-azure-devops-cicd.md) covered a

@@ -1,3 +1,7 @@
+---
+description: "Blob Storage — A storage account is Azure's namespace for durable, highly available storage — inside it you get Blob Storage (unstructured object storage…"
+---
+
 # 04 · Blob Storage
 
 A **storage account** is Azure's namespace for durable, highly available

@@ -1,3 +1,7 @@
+---
+description: "Capstone Project — This capstone combines every Level 4 module into one enterprise platform build-out: a management group hierarchy with governed landing…"
+---
+
 # 10 · Capstone Project
 
 This capstone combines every Level 4 module into one enterprise

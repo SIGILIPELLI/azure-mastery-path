@@ -1,3 +1,7 @@
+---
+description: "Performance Engineering & Load Testing — Observability (Module 05) tells you what's happening in production; load testing tells you what will happen…"
+---
+
 # 06 · Performance Engineering & Load Testing
 
 Observability (Module 05) tells you what's happening in production; **load

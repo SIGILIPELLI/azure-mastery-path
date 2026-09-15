@@ -1,3 +1,7 @@
+---
+description: "Cosmos DB Deep Dive — Level 1's capstone used Cosmos DB as a black box: create account, create container, read/write items. This module opens the box …"
+---
+
 # 08 · Cosmos DB Deep Dive
 
 [Level 1's capstone](../level-1/10-capstone-project.md) used Cosmos DB as

@@ -1,3 +1,7 @@
+---
+description: "Container Instances & Container Registry — Module 04 deployed containers to AKS, using a public image (mcr.microsoft.com/...). This module covers the…"
+---
+
 # 07 · Container Instances & Container Registry
 
 [Module 04](04-aks-basics.md) deployed containers to AKS, using a public

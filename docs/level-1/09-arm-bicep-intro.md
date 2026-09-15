@@ -1,3 +1,7 @@
+---
+description: "ARM Templates / Bicep Intro — Every command you've run in this course so far (az group create, az vm create, ...) is imperative: you tell Azure the steps…"
+---
+
 # 09 · ARM Templates / Bicep Intro
 
 Every command you've run in this course so far (`az group create`,

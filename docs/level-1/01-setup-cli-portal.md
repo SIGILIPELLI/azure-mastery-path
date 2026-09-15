@@ -1,3 +1,7 @@
+---
+description: "Setup & Azure CLI/Portal — Microsoft Azure is Microsoft's public cloud platform: virtual machines, storage, databases, networking, and hundreds of managed…"
+---
+
 # 01 · Setup & Azure CLI/Portal
 
 Microsoft Azure is Microsoft's public cloud platform: virtual machines,

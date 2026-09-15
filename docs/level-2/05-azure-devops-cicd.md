@@ -1,3 +1,7 @@
+---
+description: "Azure DevOps & CI/CD Pipelines — Module 01 used GitHub Actions for continuous deployment. Azure DevOps is Microsoft's own alternative: Repos (Git…"
+---
+
 # 05 · Azure DevOps & CI/CD Pipelines
 
 [Module 01](01-app-service-deep-dive.md) used GitHub Actions for

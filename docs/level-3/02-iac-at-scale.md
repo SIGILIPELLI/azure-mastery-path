@@ -1,3 +1,7 @@
+---
+description: "Infrastructure as Code at Scale (Bicep/Terraform) — Level 1, Module 09 introduced a single Bicep file deploying a handful of resources. At scale you're…"
+---
+
 # 02 · Infrastructure as Code at Scale (Bicep/Terraform)
 
 [Level 1, Module 09](../level-1/09-arm-bicep-intro.md) introduced a single

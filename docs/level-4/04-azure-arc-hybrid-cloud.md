@@ -1,3 +1,7 @@
+---
+description: "Azure Arc & Hybrid Cloud — Everything so far assumed workloads run in Azure. Real enterprises usually have on-premises servers, other clouds, or edge…"
+---
+
 # 04 · Azure Arc & Hybrid Cloud
 
 Everything so far assumed workloads run in Azure. Real enterprises usually

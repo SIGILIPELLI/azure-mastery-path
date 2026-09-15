@@ -1,3 +1,7 @@
+---
+description: "Management Groups & Governance at Scale — Level 4, Module 01 built the management group tree; this module goes deeper on the mechanics of governing…"
+---
+
 # 02 · Management Groups & Governance at Scale
 
 [Level 4, Module 01](01-enterprise-landing-zones.md) built the management

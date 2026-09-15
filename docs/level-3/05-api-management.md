@@ -1,3 +1,7 @@
+---
+description: "API Management — Once you have more than a couple of backend APIs, exposing each one directly to consumers means every client hardcodes URLs, every…"
+---
+
 # 05 · API Management
 
 Once you have more than a couple of backend APIs, exposing each one

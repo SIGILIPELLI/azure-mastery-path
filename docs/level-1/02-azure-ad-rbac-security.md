@@ -1,3 +1,7 @@
+---
+description: "Azure AD & RBAC / Security Basics — Before you create anything else, it's worth understanding who is allowed to do what in your subscription. Azure's…"
+---
+
 # 02 · Azure AD & RBAC / Security Basics
 
 Before you create anything else, it's worth understanding *who* is allowed to

@@ -1,3 +1,7 @@
+---
+description: "Azure Functions — The Consumption plan is the default serverless hosting plan: Azure allocates compute only while your function runs, scales to zero when…"
+---
+
 # 07 · Azure Functions
 
 **Azure Functions** is Azure's serverless compute service: you write a small

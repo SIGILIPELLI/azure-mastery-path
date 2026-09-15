@@ -1,3 +1,7 @@
+---
+description: "Advanced Networking (VPN Gateway, ExpressRoute) — Level 2, Module 03 covered Load Balancer, Application Gateway, and private endpoints — all ways to route…"
+---
+
 # 01 · Advanced Networking (VPN Gateway, ExpressRoute)
 
 [Level 2, Module 03](../level-2/03-networking-deep-dive.md) covered Load
