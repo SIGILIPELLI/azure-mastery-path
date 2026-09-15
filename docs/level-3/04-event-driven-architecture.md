@@ -173,6 +173,11 @@ guarantee your architecture needs.
 | `az servicebus topic subscription rule create --filter-sql-expression` | Filter which messages a subscription receives. |
 | `az servicebus queue show --query messageCount` | Check current queue depth. |
 
+## 🔀 Related lessons on other tracks
+
+- [IBM Cloud — 04 · Event-Driven Architecture (Event Streams / Kafka)](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-3/04-event-driven-architecture/)
+- [REST API — 07 · Event-Driven APIs & Async Patterns](https://sigilipelli.github.io/rest-api-mastery-path/level-4/07-event-driven-apis/)
+
 ## Exercise
 
 1. Create an Event Grid topic and subscribe a webhook endpoint; publish a

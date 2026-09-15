@@ -219,3 +219,8 @@ own storage replication, not by anything your application code does.
    `westus2` and measure actual RTO against your documented target.
 5. Add a second APIM product ("partner") with stricter rate limits and
    require subscription approval, separate from the default product.
+
+## 🔀 Related lessons on other tracks
+
+- [IBM Cloud — 10 · Project — Highly Available Web App](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-2/10-project-ha-web-app/)
+- [Server Ops — 10 · Capstone — Highly Available Web Service Design](https://sigilipelli.github.io/server-ops-mastery-path/level-3/10-capstone-ha-web-service-design/)

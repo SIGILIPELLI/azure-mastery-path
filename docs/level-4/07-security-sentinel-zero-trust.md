@@ -188,6 +188,10 @@ one of those services relies on, not re-implemented per application.
 | `az logic workflow create` | Create the Logic App playbook itself. |
 | PIM `roleAssignmentScheduleRequests` (Graph API) | Request just-in-time privileged role activation. |
 
+## 🔀 Related lessons on other tracks
+
+- [Cybersecurity — 03 · Zero Trust Architecture](https://sigilipelli.github.io/cybersecurity-mastery-path/level-4/03-zero-trust-architecture/)
+
 ## Exercise
 
 1. Onboard Sentinel on a Log Analytics workspace and enable the Azure AD

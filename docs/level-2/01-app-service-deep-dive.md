@@ -251,6 +251,10 @@ files without you copying anything per-instance.
 | `az webapp config ssl create/bind` | Issue and bind a free managed certificate. |
 | `az webapp deployment github-actions add` | Wire up GitHub Actions CI/CD. |
 
+## 🔀 Related lessons on other tracks
+
+- [Server Ops — 10 · Capstone — Highly Available Web Service Design](https://sigilipelli.github.io/server-ops-mastery-path/level-3/10-capstone-ha-web-service-design/)
+
 ## Exercise
 
 1. Create an S1 App Service Plan and a Linux web app on it, and confirm you

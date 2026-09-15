@@ -181,6 +181,10 @@ one-time provisioning action.
 | `az policy set-definition create` | Group policies into an initiative. |
 | `az ts create` | Create a versioned Template Spec (Blueprints replacement). |
 
+## 🔀 Related lessons on other tracks
+
+- [GCP — 08 · Compliance & Governance (Assured Workloads, Policy Intelligence)](https://sigilipelli.github.io/gcp-mastery-path/level-4/08-compliance-governance/)
+
 ## Exercise
 
 1. Enable the `Standard` Defender plan for `StorageAccounts` and read the

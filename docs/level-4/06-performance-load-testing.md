@@ -204,6 +204,12 @@ different bottlenecks with completely different underlying causes.
 | `az load test-run show --query status` | Check run status/results. |
 | `az monitor app-insights component update --set properties.SamplingPercentage` | Adjust Profiler sampling rate. |
 
+## 🔀 Related lessons on other tracks
+
+- [AWS — Chaos Engineering & Resilience Testing](https://sigilipelli.github.io/aws-mastery-path/level-4/09-chaos-engineering-resilience/)
+- [GCP — 09 · Chaos Engineering & Resilience Testing](https://sigilipelli.github.io/gcp-mastery-path/level-4/09-chaos-engineering-resilience/)
+- [IBM Cloud — 05 · Performance & Scalability Engineering](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-4/05-performance-scalability-engineering/)
+
 ## Exercise
 
 1. Create an Azure Load Testing resource and run a basic JMeter-based test

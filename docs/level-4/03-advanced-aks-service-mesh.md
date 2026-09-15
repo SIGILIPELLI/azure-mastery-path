@@ -193,6 +193,10 @@ that already sees every request.
 | `az fleet create` / `az fleet member create` | Group clusters for coordinated upgrades. |
 | `istioctl proxy-status` | Check sidecar config sync state. |
 
+## 🔀 Related lessons on other tracks
+
+- [Server Ops — 07 · Service Mesh & Internal Networking Concepts](https://sigilipelli.github.io/server-ops-mastery-path/level-3/07-service-mesh-internal-networking/)
+
 ## Exercise
 
 1. Enable the AKS mesh add-on, label one namespace for injection, and

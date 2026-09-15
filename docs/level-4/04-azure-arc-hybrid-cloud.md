@@ -182,6 +182,11 @@ inside native AKS, just pointed at infrastructure Azure doesn't own.
 | `az k8s-configuration flux create --cluster-type connectedClusters` | Apply GitOps to an Arc-enabled cluster. |
 | `az policy assignment create --mi-system-assigned` | Create a policy assignment with a remediation identity. |
 
+## 🔀 Related lessons on other tracks
+
+- [ETL & Data Lake — 07 · Multi-Cloud & Hybrid Data Lake Strategy](https://sigilipelli.github.io/etl-datalake-mastery-path/level-4/07-multi-cloud-hybrid-strategy/)
+- [IBM Cloud — 03 · Hybrid Cloud with Satellite](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-4/03-hybrid-cloud-satellite/)
+
 ## Exercise
 
 1. Generate an onboarding script with

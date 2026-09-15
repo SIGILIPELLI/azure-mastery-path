@@ -182,6 +182,10 @@ plain Azure CNI.
 | `kubectl get hpa` | Check current vs. target utilization and replica count. |
 | `az aks update --enable-cluster-autoscaler` | Turn on node autoscaling with min/max bounds. |
 
+## 🔀 Related lessons on other tracks
+
+- [Kubernetes — 10 · Project — Ingress-Fronted Helm App](https://sigilipelli.github.io/kubernetes-mastery-path/level-2/10-project-helm-ingress-app/)
+
 ## Exercise
 
 1. Install the `ingress-nginx` chart via Helm with 2 replicas, then

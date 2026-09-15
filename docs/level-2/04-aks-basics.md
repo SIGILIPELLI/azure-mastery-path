@@ -209,6 +209,10 @@ not when your own client's network is fine.
 | `az aks update --enable-cluster-autoscaler --min-count --max-count` | Enable node-level autoscale. |
 | `kubectl logs` / `exec -it` / `describe pod` | Debug a running or failing pod. |
 
+## 🔀 Related lessons on other tracks
+
+- [IBM Cloud — 03 · Kubernetes Service (IKS) Basics](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-2/03-kubernetes-service-basics/)
+
 ## Exercise
 
 1. Create a 2-node AKS cluster and confirm `kubectl get nodes` shows both

@@ -171,6 +171,10 @@ genuinely different stages, not because one supersedes another.
 | `az policy state summarize --management-group` | Get an aggregate compliance view. |
 | `az policy state trigger-scan` | Force an on-demand compliance re-evaluation. |
 
+## 🔀 Related lessons on other tracks
+
+- [IBM Cloud — 07 · Cost Management & Governance](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-3/07-cost-management-governance/)
+
 ## Exercise
 
 1. Assign a policy at a management group scope and confirm (via

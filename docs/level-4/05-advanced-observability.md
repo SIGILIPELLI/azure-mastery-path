@@ -182,6 +182,11 @@ current as of query time rather than a cached snapshot.
 | `az monitor metrics alert create` | Alert on a built-in platform metric. |
 | `az monitor scheduled-query create` | Alert on a custom KQL condition. |
 
+## 🔀 Related lessons on other tracks
+
+- [LLM Dev — 09 · Observability & Tracing](https://sigilipelli.github.io/llm-dev-mastery-path/level-3/09-observability-tracing/)
+- [RAG — 09 · Observability & Tracing](https://sigilipelli.github.io/rag-mastery-path/level-3/09-observability/)
+
 ## Exercise
 
 1. Create a workspace-based Application Insights resource and wire its

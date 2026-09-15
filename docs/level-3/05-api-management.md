@@ -181,6 +181,10 @@ no rate-limiting logic of its own.
 | `<rate-limit-by-key>` policy | Throttle calls per subscription/IP/custom key. |
 | `<validate-jwt>` policy | Require and validate a bearer token before the backend. |
 
+## 🔀 Related lessons on other tracks
+
+- [IBM Cloud — 09 · API Management (API Connect)](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-3/09-api-management/)
+
 ## Exercise
 
 1. Create a Developer-tier APIM instance and import a public OpenAPI spec

@@ -187,6 +187,12 @@ availability guarantees, not three settings on the same mechanism.
 | `az sql failover-group set-primary` | Trigger a manual failover. |
 | `az storage account failover` | Manually fail over RA-GRS storage (irreversible). |
 
+## 🔀 Related lessons on other tracks
+
+- [Freertos — Fault-Tolerant & High-Availability Design](https://sigilipelli.github.io/freertos-mastery-path/level-4/07-fault-tolerant-design/)
+- [REST API — 06 · Multi-Region & High Availability APIs](https://sigilipelli.github.io/rest-api-mastery-path/level-4/06-multi-region-ha/)
+- [Server Ops — 01 · High Availability Concepts (redundancy, failover, health checks)](https://sigilipelli.github.io/server-ops-mastery-path/level-3/01-ha-concepts/)
+
 ## Exercise
 
 1. Create two VMs pinned to different Availability Zones in a region that

@@ -209,6 +209,11 @@ while Service Endpoints do not.
 | `az network private-dns link vnet create` | Link the zone to a VNet so names resolve privately. |
 | `az network private-endpoint dns-zone-group create` | Auto-populate DNS records for the endpoint. |
 
+## 🔀 Related lessons on other tracks
+
+- [IBM Cloud — 02 · Advanced Networking (Transit Gateway, VPN, Direct Link)](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-3/02-advanced-networking/)
+- [Server Ops — 02 · DNS & Load Balancer HA Patterns](https://sigilipelli.github.io/server-ops-mastery-path/level-3/02-dns-lb-ha-patterns/)
+
 ## Exercise
 
 1. Create a Standard SKU load balancer with a health probe on port 80 and a

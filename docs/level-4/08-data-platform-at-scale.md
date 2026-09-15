@@ -198,6 +198,12 @@ work.
 | `OPENROWSET(BULK ... FORMAT='PARQUET')` | Query lake files directly via serverless SQL. |
 | `az datafactory pipeline-run query-by-factory` | Check pipeline run history and status. |
 
+## 🔀 Related lessons on other tracks
+
+- [Data Engineering — 01 · Enterprise Data Platform Architecture](https://sigilipelli.github.io/data-engineering-mastery-path/level-4/01-enterprise-platform-architecture/)
+- [Data Science — 03 · Building a Data Science Platform](https://sigilipelli.github.io/data-science-mastery-path/level-4/03-data-science-platform/)
+- [ETL & Data Lake — 09 · Building a Data Platform Team](https://sigilipelli.github.io/etl-datalake-mastery-path/level-4/09-building-a-platform-team/)
+
 ## Exercise
 
 1. Create a Data Factory pipeline copying data from one linked service to

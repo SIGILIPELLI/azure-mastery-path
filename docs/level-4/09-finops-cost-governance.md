@@ -199,6 +199,11 @@ emitted.
 | `az consumption budget create --scope <mg-id>` | Set a budget at management group scope. |
 | `--notifications` with `thresholdType: Forecasted` | Alert before overrun happens, not after. |
 
+## 🔀 Related lessons on other tracks
+
+- [ETL & Data Lake — 08 · Cost Governance at Platform Scale](https://sigilipelli.github.io/etl-datalake-mastery-path/level-4/08-cost-governance-platform-scale/)
+- [IBM Cloud — 07 · Cost Management & Governance](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-3/07-cost-management-governance/)
+
 ## Exercise
 
 1. Create a policy requiring a `CostCenter` tag and assign it at a

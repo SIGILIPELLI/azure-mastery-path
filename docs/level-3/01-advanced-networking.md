@@ -219,6 +219,11 @@ public internet using IPsec between a VPN Gateway and your on-prem device.
 | `az network vnet peering create --allow-gateway-transit` | Let a spoke use the hub's gateway (set on hub side). |
 | `az network vnet peering create --use-remote-gateways` | Consume the hub's gateway from a spoke (set on spoke side). |
 
+## 🔀 Related lessons on other tracks
+
+- [IBM Cloud — 02 · Advanced Networking (Transit Gateway, VPN, Direct Link)](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-3/02-advanced-networking/)
+- [AWS — Advanced VPC (Peering, Transit Gateway, VPN)](https://sigilipelli.github.io/aws-mastery-path/level-3/01-advanced-vpc/)
+
 ## Exercise
 
 1. Create a hub VNet with a `GatewaySubnet` and provision a `VpnGw2`

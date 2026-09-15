@@ -237,6 +237,11 @@ fact, rather than only blocking new ones.
 | `terraform apply plan.tfplan` | Apply a previously reviewed plan. |
 | `terraform force-unlock <ID>` | Clear a stale state lock (confirm first). |
 
+## 🔀 Related lessons on other tracks
+
+- [GCP — 09 · Infrastructure as Code (Terraform on GCP)](https://sigilipelli.github.io/gcp-mastery-path/level-1/09-terraform-intro/)
+- [Server Ops — 05 · Infrastructure as Code Overview](https://sigilipelli.github.io/server-ops-mastery-path/level-3/05-infrastructure-as-code-overview/)
+
 ## Exercise
 
 1. Split a single-file Bicep deployment into a `modules/` folder with at
