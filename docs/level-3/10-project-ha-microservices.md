@@ -222,5 +222,5 @@ own storage replication, not by anything your application code does.
 
 ## 🔀 Related lessons on other tracks
 
-- [IBM Cloud — 10 · Project — Highly Available Web App](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-2/10-project-ha-web-app/)
-- [Server Ops — 10 · Capstone — Highly Available Web Service Design](https://sigilipelli.github.io/server-ops-mastery-path/level-3/10-capstone-ha-web-service-design/)
+- [IBM Cloud — 10 · Project — Highly Available Web App](https://learnmasterypath.com/ibm-cloud-mastery-path/level-2/10-project-ha-web-app/)
+- [Server Ops — 10 · Capstone — Highly Available Web Service Design](https://learnmasterypath.com/server-ops-mastery-path/level-3/10-capstone-ha-web-service-design/)

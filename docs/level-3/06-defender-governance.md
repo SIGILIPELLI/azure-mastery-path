@@ -183,7 +183,7 @@ one-time provisioning action.
 
 ## 🔀 Related lessons on other tracks
 
-- [GCP — 08 · Compliance & Governance (Assured Workloads, Policy Intelligence)](https://sigilipelli.github.io/gcp-mastery-path/level-4/08-compliance-governance/)
+- [GCP — 08 · Compliance & Governance (Assured Workloads, Policy Intelligence)](https://learnmasterypath.com/gcp-mastery-path/level-4/08-compliance-governance/)
 
 ## Exercise
 

@@ -184,7 +184,7 @@ plain Azure CNI.
 
 ## 🔀 Related lessons on other tracks
 
-- [Kubernetes — 10 · Project — Ingress-Fronted Helm App](https://sigilipelli.github.io/kubernetes-mastery-path/level-2/10-project-helm-ingress-app/)
+- [Kubernetes — 10 · Project — Ingress-Fronted Helm App](https://learnmasterypath.com/kubernetes-mastery-path/level-2/10-project-helm-ingress-app/)
 
 ## Exercise
 

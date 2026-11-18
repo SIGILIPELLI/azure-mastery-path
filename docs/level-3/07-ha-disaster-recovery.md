@@ -189,9 +189,9 @@ availability guarantees, not three settings on the same mechanism.
 
 ## 🔀 Related lessons on other tracks
 
-- [Freertos — Fault-Tolerant & High-Availability Design](https://sigilipelli.github.io/freertos-mastery-path/level-4/07-fault-tolerant-design/)
-- [REST API — 06 · Multi-Region & High Availability APIs](https://sigilipelli.github.io/rest-api-mastery-path/level-4/06-multi-region-ha/)
-- [Server Ops — 01 · High Availability Concepts (redundancy, failover, health checks)](https://sigilipelli.github.io/server-ops-mastery-path/level-3/01-ha-concepts/)
+- [Freertos — Fault-Tolerant & High-Availability Design](https://learnmasterypath.com/freertos-mastery-path/level-4/07-fault-tolerant-design/)
+- [REST API — 06 · Multi-Region & High Availability APIs](https://learnmasterypath.com/rest-api-mastery-path/level-4/06-multi-region-ha/)
+- [Server Ops — 01 · High Availability Concepts (redundancy, failover, health checks)](https://learnmasterypath.com/server-ops-mastery-path/level-3/01-ha-concepts/)
 
 ## Exercise
 

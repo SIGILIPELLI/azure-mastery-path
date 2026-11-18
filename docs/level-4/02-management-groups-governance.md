@@ -173,7 +173,7 @@ genuinely different stages, not because one supersedes another.
 
 ## 🔀 Related lessons on other tracks
 
-- [IBM Cloud — 07 · Cost Management & Governance](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-3/07-cost-management-governance/)
+- [IBM Cloud — 07 · Cost Management & Governance](https://learnmasterypath.com/ibm-cloud-mastery-path/level-3/07-cost-management-governance/)
 
 ## Exercise
 

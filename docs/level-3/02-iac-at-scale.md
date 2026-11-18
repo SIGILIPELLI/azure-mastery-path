@@ -239,8 +239,8 @@ fact, rather than only blocking new ones.
 
 ## 🔀 Related lessons on other tracks
 
-- [GCP — 09 · Infrastructure as Code (Terraform on GCP)](https://sigilipelli.github.io/gcp-mastery-path/level-1/09-terraform-intro/)
-- [Server Ops — 05 · Infrastructure as Code Overview](https://sigilipelli.github.io/server-ops-mastery-path/level-3/05-infrastructure-as-code-overview/)
+- [GCP — 09 · Infrastructure as Code (Terraform on GCP)](https://learnmasterypath.com/gcp-mastery-path/level-1/09-terraform-intro/)
+- [Server Ops — 05 · Infrastructure as Code Overview](https://learnmasterypath.com/server-ops-mastery-path/level-3/05-infrastructure-as-code-overview/)
 
 ## Exercise
 

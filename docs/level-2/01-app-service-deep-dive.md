@@ -253,7 +253,7 @@ files without you copying anything per-instance.
 
 ## 🔀 Related lessons on other tracks
 
-- [Server Ops — 10 · Capstone — Highly Available Web Service Design](https://sigilipelli.github.io/server-ops-mastery-path/level-3/10-capstone-ha-web-service-design/)
+- [Server Ops — 10 · Capstone — Highly Available Web Service Design](https://learnmasterypath.com/server-ops-mastery-path/level-3/10-capstone-ha-web-service-design/)
 
 ## Exercise
 

@@ -184,8 +184,8 @@ inside native AKS, just pointed at infrastructure Azure doesn't own.
 
 ## 🔀 Related lessons on other tracks
 
-- [ETL & Data Lake — 07 · Multi-Cloud & Hybrid Data Lake Strategy](https://sigilipelli.github.io/etl-datalake-mastery-path/level-4/07-multi-cloud-hybrid-strategy/)
-- [IBM Cloud — 03 · Hybrid Cloud with Satellite](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-4/03-hybrid-cloud-satellite/)
+- [ETL & Data Lake — 07 · Multi-Cloud & Hybrid Data Lake Strategy](https://learnmasterypath.com/etl-datalake-mastery-path/level-4/07-multi-cloud-hybrid-strategy/)
+- [IBM Cloud — 03 · Hybrid Cloud with Satellite](https://learnmasterypath.com/ibm-cloud-mastery-path/level-4/03-hybrid-cloud-satellite/)
 
 ## Exercise
 

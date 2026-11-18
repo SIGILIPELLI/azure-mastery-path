@@ -211,8 +211,8 @@ while Service Endpoints do not.
 
 ## 🔀 Related lessons on other tracks
 
-- [IBM Cloud — 02 · Advanced Networking (Transit Gateway, VPN, Direct Link)](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-3/02-advanced-networking/)
-- [Server Ops — 02 · DNS & Load Balancer HA Patterns](https://sigilipelli.github.io/server-ops-mastery-path/level-3/02-dns-lb-ha-patterns/)
+- [IBM Cloud — 02 · Advanced Networking (Transit Gateway, VPN, Direct Link)](https://learnmasterypath.com/ibm-cloud-mastery-path/level-3/02-advanced-networking/)
+- [Server Ops — 02 · DNS & Load Balancer HA Patterns](https://learnmasterypath.com/server-ops-mastery-path/level-3/02-dns-lb-ha-patterns/)
 
 ## Exercise
 

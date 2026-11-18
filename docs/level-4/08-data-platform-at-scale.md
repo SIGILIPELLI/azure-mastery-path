@@ -200,9 +200,9 @@ work.
 
 ## 🔀 Related lessons on other tracks
 
-- [Data Engineering — 01 · Enterprise Data Platform Architecture](https://sigilipelli.github.io/data-engineering-mastery-path/level-4/01-enterprise-platform-architecture/)
-- [Data Science — 03 · Building a Data Science Platform](https://sigilipelli.github.io/data-science-mastery-path/level-4/03-data-science-platform/)
-- [ETL & Data Lake — 09 · Building a Data Platform Team](https://sigilipelli.github.io/etl-datalake-mastery-path/level-4/09-building-a-platform-team/)
+- [Data Engineering — 01 · Enterprise Data Platform Architecture](https://learnmasterypath.com/data-engineering-mastery-path/level-4/01-enterprise-platform-architecture/)
+- [Data Science — 03 · Building a Data Science Platform](https://learnmasterypath.com/data-science-mastery-path/level-4/03-data-science-platform/)
+- [ETL & Data Lake — 09 · Building a Data Platform Team](https://learnmasterypath.com/etl-datalake-mastery-path/level-4/09-building-a-platform-team/)
 
 ## Exercise
 

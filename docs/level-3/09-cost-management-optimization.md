@@ -186,9 +186,9 @@ resource's current tag set.
 
 ## 🔀 Related lessons on other tracks
 
-- [AWS — 09 · Cost Management & Billing](https://sigilipelli.github.io/aws-mastery-path/level-2/09-cost-management-billing/)
-- [GCP — 09 · Cost Management & Billing](https://sigilipelli.github.io/gcp-mastery-path/level-2/09-cost-management-billing/)
-- [IBM Cloud — 07 · Cost Management & Governance](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-3/07-cost-management-governance/)
+- [AWS — 09 · Cost Management & Billing](https://learnmasterypath.com/aws-mastery-path/level-2/09-cost-management-billing/)
+- [GCP — 09 · Cost Management & Billing](https://learnmasterypath.com/gcp-mastery-path/level-2/09-cost-management-billing/)
+- [IBM Cloud — 07 · Cost Management & Governance](https://learnmasterypath.com/ibm-cloud-mastery-path/level-3/07-cost-management-governance/)
 
 ## Exercise
 

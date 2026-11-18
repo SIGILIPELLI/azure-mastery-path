@@ -221,8 +221,8 @@ public internet using IPsec between a VPN Gateway and your on-prem device.
 
 ## 🔀 Related lessons on other tracks
 
-- [IBM Cloud — 02 · Advanced Networking (Transit Gateway, VPN, Direct Link)](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-3/02-advanced-networking/)
-- [AWS — Advanced VPC (Peering, Transit Gateway, VPN)](https://sigilipelli.github.io/aws-mastery-path/level-3/01-advanced-vpc/)
+- [IBM Cloud — 02 · Advanced Networking (Transit Gateway, VPN, Direct Link)](https://learnmasterypath.com/ibm-cloud-mastery-path/level-3/02-advanced-networking/)
+- [AWS — Advanced VPC (Peering, Transit Gateway, VPN)](https://learnmasterypath.com/aws-mastery-path/level-3/01-advanced-vpc/)
 
 ## Exercise
 

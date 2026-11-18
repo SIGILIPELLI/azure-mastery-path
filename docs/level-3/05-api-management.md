@@ -183,7 +183,7 @@ no rate-limiting logic of its own.
 
 ## 🔀 Related lessons on other tracks
 
-- [IBM Cloud — 09 · API Management (API Connect)](https://sigilipelli.github.io/ibm-cloud-mastery-path/level-3/09-api-management/)
+- [IBM Cloud — 09 · API Management (API Connect)](https://learnmasterypath.com/ibm-cloud-mastery-path/level-3/09-api-management/)
 
 ## Exercise
 

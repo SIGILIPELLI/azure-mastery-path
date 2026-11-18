@@ -190,7 +190,7 @@ one of those services relies on, not re-implemented per application.
 
 ## 🔀 Related lessons on other tracks
 
-- [Cybersecurity — 03 · Zero Trust Architecture](https://sigilipelli.github.io/cybersecurity-mastery-path/level-4/03-zero-trust-architecture/)
+- [Cybersecurity — 03 · Zero Trust Architecture](https://learnmasterypath.com/cybersecurity-mastery-path/level-4/03-zero-trust-architecture/)
 
 ## Exercise
 

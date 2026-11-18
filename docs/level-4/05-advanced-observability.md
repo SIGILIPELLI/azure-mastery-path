@@ -184,8 +184,8 @@ current as of query time rather than a cached snapshot.
 
 ## 🔀 Related lessons on other tracks
 
-- [LLM Dev — 09 · Observability & Tracing](https://sigilipelli.github.io/llm-dev-mastery-path/level-3/09-observability-tracing/)
-- [RAG — 09 · Observability & Tracing](https://sigilipelli.github.io/rag-mastery-path/level-3/09-observability/)
+- [LLM Dev — 09 · Observability & Tracing](https://learnmasterypath.com/llm-dev-mastery-path/level-3/09-observability-tracing/)
+- [RAG — 09 · Observability & Tracing](https://learnmasterypath.com/rag-mastery-path/level-3/09-observability/)
 
 ## Exercise
 

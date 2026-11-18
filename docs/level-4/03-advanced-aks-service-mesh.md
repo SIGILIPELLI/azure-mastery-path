@@ -195,7 +195,7 @@ that already sees every request.
 
 ## 🔀 Related lessons on other tracks
 
-- [Server Ops — 07 · Service Mesh & Internal Networking Concepts](https://sigilipelli.github.io/server-ops-mastery-path/level-3/07-service-mesh-internal-networking/)
+- [Server Ops — 07 · Service Mesh & Internal Networking Concepts](https://learnmasterypath.com/server-ops-mastery-path/level-3/07-service-mesh-internal-networking/)
 
 ## Exercise
 
