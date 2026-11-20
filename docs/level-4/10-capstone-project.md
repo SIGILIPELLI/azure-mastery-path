@@ -1,5 +1,6 @@
 ---
 description: "Capstone Project — This capstone combines every Level 4 module into one enterprise platform build-out: a management group hierarchy with governed landing…"
+title: "Level 4 Capstone: Production-Grade Azure Architecture"
 ---
 
 # 10 · Capstone Project
