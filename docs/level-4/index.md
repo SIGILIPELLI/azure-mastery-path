@@ -1,3 +1,7 @@
+---
+description: "Level 4 (Master) of the free Azure Mastery Path: Enterprise Landing Zones (CAF), Management Groups & Governance at Scale, Advanced AKS (Service Mesh…"
+---
+
 # Level 4 · Master
 
 ## Modules

@@ -1,3 +1,7 @@
+---
+description: "Level 3 (Advanced) of the free Azure Mastery Path: Advanced Networking (VPN Gateway, ExpressRoute), Infrastructure as Code at Scale (Bicep/Terraform)…"
+---
+
 # Level 3 · Advanced
 
 ## Modules

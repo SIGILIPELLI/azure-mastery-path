@@ -1,3 +1,7 @@
+---
+description: "Level 2 (Intermediate) of the free Azure Mastery Path: App Service & Web Apps Deep Dive, Storage Deep Dive (Files, Queues, Tables), Networking Deep Dive…"
+---
+
 # Level 2 · Intermediate
 
 ## Modules

@@ -1,6 +1,6 @@
 ---
 title: "Learn Microsoft Azure Free: Beginner to Master Course"
-description: "Free Azure course from beginner to advanced -- hands-on cloud lessons with real capstone projects. Part of a 37-course free learning library."
+description: "Free Azure course from beginner to advanced -- hands-on cloud lessons with real capstone projects. Part of a 100+ course free learning library."
 ---
 
 # Azure Mastery Path

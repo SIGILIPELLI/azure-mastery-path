@@ -6,6 +6,7 @@ repo_name: azure-mastery-path
 
 theme:
   name: material
+  font: false
   favicon: assets/favicon.svg
   custom_dir: docs/overrides
   palette:
@@ -24,6 +25,7 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   features:
+    - navigation.path
     - navigation.tabs
     - navigation.sections
     - navigation.expand
@@ -54,6 +56,20 @@ extra_css:
 
 extra_javascript:
   - javascripts/progress-tracker.js
+
+
+
+
+extra:
+  related:
+    - name: "AWS"
+      url: https://learnmasterypath.com/aws-mastery-path/
+    - name: "GCP"
+      url: https://learnmasterypath.com/gcp-mastery-path/
+    - name: "IBM Cloud"
+      url: https://learnmasterypath.com/ibm-cloud-mastery-path/
+    - name: "Adobe"
+      url: https://learnmasterypath.com/adobe-mastery-path/
 
 nav:
   - Home: index.md

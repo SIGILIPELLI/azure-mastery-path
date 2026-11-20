@@ -1,3 +1,7 @@
+---
+description: "Level 1 (Entry) of the free Azure Mastery Path. Get comfortable with the Azure Portal and the az CLI, understand identity and access control, stand up…"
+---
+
 # Level 1 · Entry <span class="level-badge">Foundations</span>
 
 Goal: get comfortable with the Azure Portal and the `az` CLI, understand
