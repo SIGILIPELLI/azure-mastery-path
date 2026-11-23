@@ -81,8 +81,8 @@ not_in_nav: |
 
 nav:
   - Home: index.md
-  - "💼 Interview Questions": interview-questions.md
-  - "📋 Cheat Sheet": cheat-sheet.md
+  - Interview Questions: interview-questions.md
+  - Cheat Sheet: cheat-sheet.md
   - "Level 1 · Entry":
       - Overview: level-1/index.md
       - "01 · Setup & Azure CLI/Portal": level-1/01-setup-cli-portal.md
@@ -131,5 +131,5 @@ nav:
       - "08 · Data Platform at Scale (Synapse, Data Factory)": level-4/08-data-platform-at-scale.md
       - "09 · FinOps & Cost Governance at Scale": level-4/09-finops-cost-governance.md
       - "10 · Capstone Project": level-4/10-capstone-project.md
-  - "🎯 Final Quiz": quiz.md
+  - Final Quiz: quiz.md
 
