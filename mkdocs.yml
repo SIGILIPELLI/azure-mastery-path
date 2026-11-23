@@ -75,12 +75,14 @@ extra:
     - name: "Adobe"
       url: https://learnmasterypath.com/adobe-mastery-path/
 
+not_in_nav: |
+  privacy.md
+  license.md
+
 nav:
   - Home: index.md
   - "💼 Interview Questions": interview-questions.md
   - "📋 Cheat Sheet": cheat-sheet.md
-  - Privacy Policy: privacy.md
-  - License: license.md
   - "Level 1 · Entry":
       - Overview: level-1/index.md
       - "01 · Setup & Azure CLI/Portal": level-1/01-setup-cli-portal.md
