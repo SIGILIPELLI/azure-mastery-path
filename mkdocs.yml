@@ -94,7 +94,7 @@ nav:
       - "07 · Azure Functions": level-1/07-azure-functions.md
       - "08 · Azure Monitor & Log Analytics": level-1/08-azure-monitor-log-analytics.md
       - "09 · ARM Templates / Bicep Intro": level-1/09-arm-bicep-intro.md
-      - "10 · Capstone Project": level-1/10-capstone-project.md
+      - "10 · Project": level-1/10-capstone-project.md
   - "Level 2 · Intermediate":
       - Overview: level-2/index.md
       - "01 · App Service & Web Apps Deep Dive": level-2/01-app-service-deep-dive.md

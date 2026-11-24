@@ -1,9 +1,9 @@
 ---
 description: "Capstone Project — End-to-End Web App — Time to combine everything from this level into one working system: a static frontend, a serverless API backend…"
-title: "Level 1 Capstone: Azure Foundations Project"
+title: "Level 1 Project: Azure Foundations Project"
 ---
 
-# 10 · Capstone Project — End-to-End Web App
+# 10 · Project — End-to-End Web App
 
 Time to combine everything from this level into one working system: a static
 frontend, a serverless API backend, and a managed database — deployed with
