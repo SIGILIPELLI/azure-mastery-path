@@ -8,7 +8,7 @@ description: "Free Azure course from beginner to advanced -- hands-on cloud less
 A structured, module-wise Microsoft Azure training program that takes you from
 creating your first free account to designing production-grade, master-level
 cloud architecture — with runnable `az` CLI commands and config snippets in
-every module and a hands-on project at the end of each level.
+every module and a hands-on project at the end of Levels 1–3 and a capstone at the end of Level 4.
 
 ## How the program is organized
 
@@ -25,7 +25,7 @@ every module and a hands-on project at the end of each level.
 - Every topic page has runnable `az` CLI commands and config snippets — try
   them in [Azure Cloud Shell](https://shell.azure.com/) or a local terminal
   with the `az` CLI installed.
-- Each level ends with a project that combines everything learned in that level.
+- Levels 1–3 each end with a project that combines everything learned in that level, and Level 4 ends with the course capstone.
 - This site is written for Azure's **free account / free-tier services** where
   possible. Watch for the cost callouts in each module, and always clean up
   resource groups you create while practicing.
