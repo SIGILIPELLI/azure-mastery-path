@@ -1,0 +1,4173 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="179 Azure interview questions with answers and explanations, from beginner to advanced, organised by level. Free, from the Azure Mastery Path.">
+      
+      
+      
+        <link rel="canonical" href="https://learnmasterypath.com/azure-mastery-path/interview-questions/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../cheat-sheet/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
+    
+    
+  
+  <title>Azure Interview Questions and Answers (179 Questions)</title>
+
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/progress-tracker.css">
+    
+      <link rel="stylesheet" href="../stylesheets/final-quiz.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-05VBGCXN12"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-05VBGCXN12');
+  </script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mastery Path">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Azure Interview Questions and Answers (179 Questions)">
+  <meta property="og:description" content="179 Azure interview questions with answers and explanations, from beginner to advanced, organised by level. Free, from the Azure Mastery Path.">
+  <meta property="og:url" content="https://learnmasterypath.com/azure-mastery-path/interview-questions/">
+  <meta property="og:image" content="https://learnmasterypath.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mastery Path: free structured courses, beginner to master">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Azure Interview Questions and Answers (179 Questions)">
+  <meta name="twitter:description" content="179 Azure interview questions with answers and explanations, from beginner to advanced, organised by level. Free, from the Azure Mastery Path.">
+  <meta name="twitter:image" content="https://learnmasterypath.com/og-image.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9440969811959397"
+     crossorigin="anonymous"></script><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Mastery Path", "item": "https://learnmasterypath.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Azure Mastery Path", "item": "https://learnmasterypath.com/azure-mastery-path/"},
+      {"@type": "ListItem", "position": 3, "name": "Interview Questions", "item": "https://learnmasterypath.com/azure-mastery-path/interview-questions/"}
+    ]
+  }
+  </script>
+  <style>
+    .md-banner a:hover { text-decoration: underline !important; }
+    .mp-related { margin-top: 2.4rem; padding-top: 1rem; border-top: 1px solid var(--md-default-fg-color--lightest); font-size: .78rem; }
+    .mp-related h2 { font-size: .9rem; margin: 0 0 .5rem; }
+    .mp-related ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem .9rem; }
+    .mp-related li { margin: 0 !important; }
+  </style>
+  <script type="application/json" id="mp-course-meta">{"home": false, "id": "azure-mastery-path", "name": "Azure Mastery Path", "repo": "https://github.com/SIGILIPELLI/azure-mastery-path", "src": "interview-questions.md", "url": "https://learnmasterypath.com/azure-mastery-path/"}</script>
+  <link rel="stylesheet" href="https://learnmasterypath.com/assets/learn.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://learnmasterypath.com/assets/course.css?v=1">
+  <script src="https://learnmasterypath.com/assets/learn.js" defer></script>
+  <script src="https://learnmasterypath.com/assets/signup.js" defer></script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#azure-interview-questions-and-answers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <a href="https://learnmasterypath.com/" style="color: inherit; text-decoration: none;">
+    &larr; Mastery Path &middot; all 100+ free courses
+  </a>
+  <span style="opacity: .6; margin: 0 .6em;">|</span>
+  <a href="https://learnmasterypath.com/search/" style="color: inherit; text-decoration: none;">Search all courses</a>
+  <span style="opacity: .6; margin: 0 .6em;">|</span>
+  <a href="https://learnmasterypath.com/resume/" style="color: inherit; font-weight: 700; text-decoration: none;">
+    Got the skills? Free resume ATS check &rarr;
+  </a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Azure Mastery Path" class="md-header__button md-logo" aria-label="Azure Mastery Path" data-md-component="logo">
+      <svg class="mp-mark" viewBox="0 0 160 160" role="img" aria-label="Mastery Path logo">
+  <circle cx="80" cy="80" r="74" fill="#FAF7EF" stroke="#2FA98D" stroke-width="5"/>
+  <rect class="mp-bar mp-bar-1" x="36" y="90" width="17" height="24" rx="5" fill="#2FA98D"/>
+  <rect class="mp-bar mp-bar-2" x="59" y="74" width="17" height="40" rx="5" fill="#7FC9B7"/>
+  <rect class="mp-bar mp-bar-3" x="82" y="56" width="17" height="58" rx="5" fill="#E0B457"/>
+  <rect class="mp-bar mp-bar-4" x="105" y="38" width="17" height="76" rx="5" fill="#C97B4A"/>
+  <circle class="mp-dot" cx="44.5" cy="82" r="7" fill="#22261f"/>
+</svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Azure Mastery Path
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Azure Interview Questions and Answers (179 Questions)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SIGILIPELLI/azure-mastery-path" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    azure-mastery-path
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Interview Questions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../cheat-sheet/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cheat Sheet
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 1 · Entry
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-2/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 2 · Intermediate
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-3/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 3 · Advanced
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-4/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 4 · Master
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quiz/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Final Quiz
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Azure Mastery Path" class="md-nav__button md-logo" aria-label="Azure Mastery Path" data-md-component="logo">
+      <svg class="mp-mark" viewBox="0 0 160 160" role="img" aria-label="Mastery Path logo">
+  <circle cx="80" cy="80" r="74" fill="#FAF7EF" stroke="#2FA98D" stroke-width="5"/>
+  <rect class="mp-bar mp-bar-1" x="36" y="90" width="17" height="24" rx="5" fill="#2FA98D"/>
+  <rect class="mp-bar mp-bar-2" x="59" y="74" width="17" height="40" rx="5" fill="#7FC9B7"/>
+  <rect class="mp-bar mp-bar-3" x="82" y="56" width="17" height="58" rx="5" fill="#E0B457"/>
+  <rect class="mp-bar mp-bar-4" x="105" y="38" width="17" height="76" rx="5" fill="#C97B4A"/>
+  <circle class="mp-dot" cx="44.5" cy="82" r="7" fill="#22261f"/>
+</svg>
+    </a>
+    Azure Mastery Path
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SIGILIPELLI/azure-mastery-path" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    azure-mastery-path
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#level-1-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 1 · Entry
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 1 · Entry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-setup-azure-cliportal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Setup &amp; Azure CLI/Portal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-azure-ad-rbac-security-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Azure AD &amp; RBAC / Security Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-virtual-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Virtual Machines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-blob-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Blob Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-virtual-networks-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Virtual Networks Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-azure-sql-database-cosmos-db-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Azure SQL Database / Cosmos DB Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-azure-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Azure Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-azure-monitor-log-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Azure Monitor &amp; Log Analytics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-arm-templates-bicep-intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · ARM Templates / Bicep Intro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-capstone-project-end-to-end-web-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Capstone Project — End-to-End Web App
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-2-intermediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2 · Intermediate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 2 · Intermediate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-app-service-web-apps-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · App Service &amp; Web Apps Deep Dive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-storage-deep-dive-files-queues-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Storage Deep Dive (Files, Queues, Tables)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-networking-deep-dive-load-balancer-app-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Networking Deep Dive (Load Balancer, App Gateway)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-azure-kubernetes-service-aks-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Azure Kubernetes Service (AKS) Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-azure-devops-cicd-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Azure DevOps &amp; CI/CD Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-managed-identities-key-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Managed Identities &amp; Key Vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-container-instances-container-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Container Instances &amp; Container Registry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-cosmos-db-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Cosmos DB Deep Dive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-azure-functions-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Azure Functions Advanced
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-multi-tier-web-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Multi-Tier Web Application
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-3-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 3 · Advanced
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 3 · Advanced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-advanced-networking-vpn-gateway-expressroute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Advanced Networking (VPN Gateway, ExpressRoute)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-infrastructure-as-code-at-scale-bicepterraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Infrastructure as Code at Scale (Bicep/Terraform)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-advanced-aks-helm-ingress-autoscaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Advanced AKS (Helm, Ingress, Autoscaling)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-event-driven-architecture-event-grid-service-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Event-Driven Architecture (Event Grid, Service Bus)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-api-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · API Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-defender-for-cloud-governance-policy-blueprints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Defender for Cloud &amp; Governance (Policy, Blueprints)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-high-availability-disaster-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · High Availability &amp; Disaster Recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-cicd-for-containers-gitops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · CI/CD for Containers &amp; GitOps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-cost-management-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Cost Management &amp; Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-highly-available-microservices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Highly Available Microservices
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-4-master" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 4 · Master
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 4 · Master">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-enterprise-landing-zones-caf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Enterprise Landing Zones (CAF)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-management-groups-governance-at-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Management Groups &amp; Governance at Scale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-advanced-aks-service-mesh-multi-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Advanced AKS (Service Mesh, Multi-Cluster)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-azure-arc-hybrid-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Azure Arc &amp; Hybrid Cloud
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-advanced-observability-app-insights-tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Advanced Observability (App Insights, Tracing)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-performance-engineering-load-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Performance Engineering &amp; Load Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-security-deep-dive-sentinel-zero-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Security Deep Dive (Sentinel, Zero Trust)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-data-platform-at-scale-synapse-data-factory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Data Platform at Scale (Synapse, Data Factory)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-finops-cost-governance-at-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · FinOps &amp; Cost Governance at Scale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-capstone-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Capstone Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mixed-questions-across-all-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixed questions across all levels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-coding-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical coding questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical coding questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plan-non-overlapping-subnets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plan non-overlapping subnets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spot-a-hot-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spot a hot partition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cheat-sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cheat Sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 · Entry
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 1 · Entry
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/01-setup-cli-portal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Setup & Azure CLI/Portal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/02-azure-ad-rbac-security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Azure AD & RBAC / Security Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/03-virtual-machines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Virtual Machines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/04-blob-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Blob Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/05-virtual-networks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Virtual Networks Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/06-azure-sql-cosmos-db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Azure SQL Database / Cosmos DB Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/07-azure-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Azure Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/08-azure-monitor-log-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Azure Monitor & Log Analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/09-arm-bicep-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · ARM Templates / Bicep Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/10-capstone-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-2/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 2 · Intermediate
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 2 · Intermediate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/01-app-service-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · App Service & Web Apps Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/02-storage-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Storage Deep Dive (Files, Queues, Tables)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/03-networking-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Networking Deep Dive (Load Balancer, App Gateway)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/04-aks-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Azure Kubernetes Service (AKS) Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/05-azure-devops-cicd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Azure DevOps & CI/CD Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/06-managed-identities-key-vault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Managed Identities & Key Vault
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/07-aci-acr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Container Instances & Container Registry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/08-cosmos-db-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Cosmos DB Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/09-azure-functions-advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Azure Functions Advanced
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/10-project-multi-tier-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project — Multi-Tier Web Application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 3 · Advanced
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 3 · Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/01-advanced-networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Advanced Networking (VPN Gateway, ExpressRoute)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/02-iac-at-scale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Infrastructure as Code at Scale (Bicep/Terraform)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/03-advanced-aks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Advanced AKS (Helm, Ingress, Autoscaling)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/04-event-driven-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Event-Driven Architecture (Event Grid, Service Bus)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/05-api-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · API Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/06-defender-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Defender for Cloud & Governance (Policy, Blueprints)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/07-ha-disaster-recovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · High Availability & Disaster Recovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/08-cicd-containers-gitops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · CI/CD for Containers & GitOps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/09-cost-management-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Cost Management & Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/10-project-ha-microservices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project — Highly Available Microservices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-4/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 4 · Master
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 4 · Master
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/01-enterprise-landing-zones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Enterprise Landing Zones (CAF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/02-management-groups-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Management Groups & Governance at Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/03-advanced-aks-service-mesh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Advanced AKS (Service Mesh, Multi-Cluster)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/04-azure-arc-hybrid-cloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Azure Arc & Hybrid Cloud
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/05-advanced-observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Advanced Observability (App Insights, Tracing)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/06-performance-load-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Performance Engineering & Load Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/07-security-sentinel-zero-trust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Security Deep Dive (Sentinel, Zero Trust)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/08-data-platform-at-scale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Data Platform at Scale (Synapse, Data Factory)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/09-finops-cost-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · FinOps & Cost Governance at Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/10-capstone-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Capstone Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quiz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Final Quiz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#level-1-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 1 · Entry
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 1 · Entry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-setup-azure-cliportal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Setup &amp; Azure CLI/Portal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-azure-ad-rbac-security-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Azure AD &amp; RBAC / Security Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-virtual-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Virtual Machines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-blob-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Blob Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-virtual-networks-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Virtual Networks Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-azure-sql-database-cosmos-db-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Azure SQL Database / Cosmos DB Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-azure-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Azure Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-azure-monitor-log-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Azure Monitor &amp; Log Analytics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-arm-templates-bicep-intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · ARM Templates / Bicep Intro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-capstone-project-end-to-end-web-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Capstone Project — End-to-End Web App
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-2-intermediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2 · Intermediate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 2 · Intermediate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-app-service-web-apps-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · App Service &amp; Web Apps Deep Dive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-storage-deep-dive-files-queues-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Storage Deep Dive (Files, Queues, Tables)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-networking-deep-dive-load-balancer-app-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Networking Deep Dive (Load Balancer, App Gateway)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-azure-kubernetes-service-aks-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Azure Kubernetes Service (AKS) Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-azure-devops-cicd-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Azure DevOps &amp; CI/CD Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-managed-identities-key-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Managed Identities &amp; Key Vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-container-instances-container-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Container Instances &amp; Container Registry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-cosmos-db-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Cosmos DB Deep Dive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-azure-functions-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Azure Functions Advanced
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-multi-tier-web-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Multi-Tier Web Application
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-3-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 3 · Advanced
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 3 · Advanced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-advanced-networking-vpn-gateway-expressroute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Advanced Networking (VPN Gateway, ExpressRoute)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-infrastructure-as-code-at-scale-bicepterraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Infrastructure as Code at Scale (Bicep/Terraform)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-advanced-aks-helm-ingress-autoscaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Advanced AKS (Helm, Ingress, Autoscaling)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-event-driven-architecture-event-grid-service-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Event-Driven Architecture (Event Grid, Service Bus)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-api-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · API Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-defender-for-cloud-governance-policy-blueprints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Defender for Cloud &amp; Governance (Policy, Blueprints)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-high-availability-disaster-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · High Availability &amp; Disaster Recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-cicd-for-containers-gitops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · CI/CD for Containers &amp; GitOps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-cost-management-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Cost Management &amp; Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-highly-available-microservices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Highly Available Microservices
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-4-master" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 4 · Master
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 4 · Master">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-enterprise-landing-zones-caf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Enterprise Landing Zones (CAF)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-management-groups-governance-at-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Management Groups &amp; Governance at Scale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-advanced-aks-service-mesh-multi-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Advanced AKS (Service Mesh, Multi-Cluster)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-azure-arc-hybrid-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Azure Arc &amp; Hybrid Cloud
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-advanced-observability-app-insights-tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Advanced Observability (App Insights, Tracing)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-performance-engineering-load-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Performance Engineering &amp; Load Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-security-deep-dive-sentinel-zero-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Security Deep Dive (Sentinel, Zero Trust)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-data-platform-at-scale-synapse-data-factory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Data Platform at Scale (Synapse, Data Factory)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-finops-cost-governance-at-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · FinOps &amp; Cost Governance at Scale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-capstone-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Capstone Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mixed-questions-across-all-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixed questions across all levels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-coding-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical coding questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical coding questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plan-non-overlapping-subnets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plan non-overlapping subnets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spot-a-hot-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spot a hot partition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+  
+
+
+<h1 id="azure-interview-questions-and-answers">Azure Interview Questions and Answers<a class="headerlink" href="#azure-interview-questions-and-answers" title="Permanent link">&para;</a></h1>
+<p><strong>179 questions</strong> with the correct answer and a short explanation, organised from beginner (Level 1) to advanced (Level 4). Every question comes from a lesson in the free Azure Mastery Path, so you can open the lesson to go deeper.</p>
+<div class="admonition tip">
+<p class="admonition-title">Practise, don't just read</p>
+<p>Each lesson also ends with an interactive quiz, and the <a href="../quiz/">final quiz</a> tests all four levels. Try to answer each question below before reading the answer.</p>
+</div>
+<h2 id="level-1-entry">Level 1 · Entry<a class="headerlink" href="#level-1-entry" title="Permanent link">&para;</a></h2>
+<h3 id="01-setup-azure-cliportal"><a href="../level-1/01-setup-cli-portal/">01 · Setup &amp; Azure CLI/Portal</a><a class="headerlink" href="#01-setup-azure-cliportal" title="Permanent link">&para;</a></h3>
+<p><strong>Q1.</strong> What does a new Azure free account include?</p>
+<p><strong>Answer:</strong> A 30-day/$200 credit plus 'Always Free' services within usage caps</p>
+<p>A card is needed for identity verification; Azure won't auto-upgrade to a paid plan.</p>
+<p><strong>Q2.</strong> What is the #1 way a free trial turns into a bill?</p>
+<p><strong>Answer:</strong> An idle VM or database left running; delete practice resource groups</p>
+<p>Delete resource groups after practice.</p>
+<p><strong>Q3.</strong> Which two ways manage Azure?</p>
+<p><strong>Answer:</strong> The web-based Azure Portal and the az command-line interface (also Cloud Shell)</p>
+<p>Cloud Shell has az installed and authenticated.</p>
+<p><strong>Q4.</strong> How do you log in on a machine without a browser?</p>
+<p><strong>Answer:</strong> az login --use-device-code</p>
+<p>Open microsoft.com/devicelogin and enter the code.</p>
+<h3 id="02-azure-ad-rbac-security-basics"><a href="../level-1/02-azure-ad-rbac-security/">02 · Azure AD &amp; RBAC / Security Basics</a><a class="headerlink" href="#02-azure-ad-rbac-security-basics" title="Permanent link">&para;</a></h3>
+<p><strong>Q5.</strong> What is Microsoft Entra ID?</p>
+<p><strong>Answer:</strong> Azure's identity service (formerly Azure AD), holding a tenant's users, groups and app registrations</p>
+<p>Each subscription is linked to one tenant.</p>
+<p><strong>Q6.</strong> What three things define RBAC access?</p>
+<p><strong>Answer:</strong> Who (identity), what (role), where (scope)</p>
+<p>Roles are sets of permitted actions.</p>
+<p><strong>Q7.</strong> What's the scope hierarchy?</p>
+<p><strong>Answer:</strong> Management Group → Subscription → Resource Group → Resource, with inheritance downward</p>
+<p>A role assigned at a broader scope is inherited by everything beneath.</p>
+<p><strong>Q8.</strong> Why assign roles to groups?</p>
+<p><strong>Answer:</strong> Assign once to the group instead of per person</p>
+<p>Identity types: user, group, service principal/managed identity.</p>
+<h3 id="03-virtual-machines"><a href="../level-1/03-virtual-machines/">03 · Virtual Machines</a><a class="headerlink" href="#03-virtual-machines" title="Permanent link">&para;</a></h3>
+<p><strong>Q9.</strong> Which VM family is burstable and free-tier eligible?</p>
+<p><strong>Answer:</strong> B-series (e.g. Standard_B1s)</p>
+<p>Low steady CPU with burst credits.</p>
+<p><strong>Q10.</strong> Which family suits balanced web apps, and which suits CPU-heavy batch?</p>
+<p><strong>Answer:</strong> D-series general purpose; F-series compute optimised</p>
+<p>E-series is memory-optimised.</p>
+<p><strong>Q11.</strong> Which family suits in-memory caches and larger databases?</p>
+<p><strong>Answer:</strong> E-series (memory optimised)</p>
+<p>For example Standard_E2s_v5.</p>
+<p><strong>Q12.</strong> How do you connect to a Linux VM?</p>
+<p><strong>Answer:</strong> SSH to its public IP (the CLI can look the IP up for you)</p>
+<p>Stop idle VMs to avoid cost.</p>
+<h3 id="04-blob-storage"><a href="../level-1/04-blob-storage/">04 · Blob Storage</a><a class="headerlink" href="#04-blob-storage" title="Permanent link">&para;</a></h3>
+<p><strong>Q13.</strong> What do you create first for Blob Storage?</p>
+<p><strong>Answer:</strong> A storage account, then containers holding blobs</p>
+<p>Containers group blobs.</p>
+<p><strong>Q14.</strong> How can you authorise blob commands without account keys?</p>
+<p><strong>Answer:</strong> --auth-mode login using your RBAC identity</p>
+<p>Or use a connection string.</p>
+<p><strong>Q15.</strong> Which commands upload, list and download blobs?</p>
+<p><strong>Answer:</strong> az storage blob upload, list and download</p>
+<p>Used with a container name.</p>
+<p><strong>Q16.</strong> How much Blob Storage is 'Always Free' per the lesson?</p>
+<p><strong>Answer:</strong> 5 GB</p>
+<p>Within usage caps.</p>
+<h3 id="05-virtual-networks-basics"><a href="../level-1/05-virtual-networks/">05 · Virtual Networks Basics</a><a class="headerlink" href="#05-virtual-networks-basics" title="Permanent link">&para;</a></h3>
+<p><strong>Q17.</strong> What is a VNet?</p>
+<p><strong>Answer:</strong> A private network in Azure with an address space divided into subnets</p>
+<p>Subnets are slices of the address space.</p>
+<p><strong>Q18.</strong> How do you add another subnet?</p>
+<p><strong>Answer:</strong> az network vnet subnet create on the same VNet</p>
+<p>List with az network vnet subnet list.</p>
+<p><strong>Q19.</strong> What does an NSG on a subnet do?</p>
+<p><strong>Answer:</strong> Filters inbound and outbound traffic by rules</p>
+<p>Network Security Groups apply allow/deny rules.</p>
+<p><strong>Q20.</strong> What must address ranges avoid?</p>
+<p><strong>Answer:</strong> Overlapping ranges between networks you may peer or connect</p>
+<p>Plan address spaces up front.</p>
+<h3 id="06-azure-sql-database-cosmos-db-basics"><a href="../level-1/06-azure-sql-cosmos-db/">06 · Azure SQL Database / Cosmos DB Basics</a><a class="headerlink" href="#06-azure-sql-database-cosmos-db-basics" title="Permanent link">&para;</a></h3>
+<p><strong>Q21.</strong> Which SQL tier is free-tier eligible in the lesson?</p>
+<p><strong>Answer:</strong> General Purpose serverless</p>
+<p>Serverless can auto-pause.</p>
+<p><strong>Q22.</strong> Why add a firewall rule for your IP?</p>
+<p><strong>Answer:</strong> The server blocks connections by default, so your machine's IP must be allowed</p>
+<p>'Allow Azure services' lets App Service or Functions connect.</p>
+<p><strong>Q23.</strong> How does Cosmos DB differ from Azure SQL?</p>
+<p><strong>Answer:</strong> Cosmos DB is a globally distributed NoSQL database; Azure SQL is a managed relational database</p>
+<p>Cosmos has a free tier.</p>
+<p><strong>Q24.</strong> What's 'Allow Azure services' rule do?</p>
+<p><strong>Answer:</strong> Lets other Azure services such as App Service or Functions connect</p>
+<p>Keep rules as narrow as possible.</p>
+<h3 id="07-azure-functions"><a href="../level-1/07-azure-functions/">07 · Azure Functions</a><a class="headerlink" href="#07-azure-functions" title="Permanent link">&para;</a></h3>
+<p><strong>Q25.</strong> Which are Functions triggers?</p>
+<p><strong>Answer:</strong> HTTP, Timer, Blob, Queue, Cosmos DB (change feed) and Event Grid</p>
+<p>A trigger fires the function.</p>
+<p><strong>Q26.</strong> What does the Consumption plan do?</p>
+<p><strong>Answer:</strong> Scales automatically and bills per execution, with a free monthly grant</p>
+<p>Good for spiky workloads.</p>
+<p><strong>Q27.</strong> Why does a Function App need a storage account?</p>
+<p><strong>Answer:</strong> For internal state: triggers and logs</p>
+<p>Created alongside the app.</p>
+<p><strong>Q28.</strong> When does a Timer trigger fire?</p>
+<p><strong>Answer:</strong> On a CRON-like schedule</p>
+<p>NCRONTAB expressions.</p>
+<h3 id="08-azure-monitor-log-analytics"><a href="../level-1/08-azure-monitor-log-analytics/">08 · Azure Monitor &amp; Log Analytics</a><a class="headerlink" href="#08-azure-monitor-log-analytics" title="Permanent link">&para;</a></h3>
+<p><strong>Q29.</strong> What are platform metrics?</p>
+<p><strong>Answer:</strong> Free, automatic numeric data like CPU percentage for Azure resources</p>
+<p>Read via az monitor metrics list.</p>
+<p><strong>Q30.</strong> What is a Log Analytics workspace?</p>
+<p><strong>Answer:</strong> A store where logs are collected and queried</p>
+<p>Queried with KQL.</p>
+<p><strong>Q31.</strong> What is KQL?</p>
+<p><strong>Answer:</strong> Kusto Query Language, used to query logs</p>
+<p>Pipe-based queries.</p>
+<p><strong>Q32.</strong> Why average CPU in 5-minute buckets?</p>
+<p><strong>Answer:</strong> To read the last hour of trend with less noise</p>
+<p>Aggregation interval.</p>
+<h3 id="09-arm-templates-bicep-intro"><a href="../level-1/09-arm-bicep-intro/">09 · ARM Templates / Bicep Intro</a><a class="headerlink" href="#09-arm-templates-bicep-intro" title="Permanent link">&para;</a></h3>
+<p><strong>Q33.</strong> What is Bicep?</p>
+<p><strong>Answer:</strong> A concise declarative language that compiles to ARM templates</p>
+<p>ARM templates are JSON.</p>
+<p><strong>Q34.</strong> Why prefer Bicep over raw ARM JSON?</p>
+<p><strong>Answer:</strong> It's shorter and easier to read and maintain</p>
+<p>Same resources and deployment engine.</p>
+<p><strong>Q35.</strong> How do you install Bicep?</p>
+<p><strong>Answer:</strong> az bicep install</p>
+<p>The CLI bundles it.</p>
+<p><strong>Q36.</strong> What does infrastructure as code give you?</p>
+<p><strong>Answer:</strong> Repeatable, reviewable deployments</p>
+<p>Deploy with az deployment group create.</p>
+<h3 id="10-capstone-project-end-to-end-web-app"><a href="../level-1/10-capstone-project/">10 · Capstone Project — End-to-End Web App</a><a class="headerlink" href="#10-capstone-project-end-to-end-web-app" title="Permanent link">&para;</a></h3>
+<p><strong>Q37.</strong> What does the capstone build?</p>
+<p><strong>Answer:</strong> An end-to-end web app: resource group, database, Function App backend and frontend</p>
+<p>It combines earlier modules.</p>
+<p><strong>Q38.</strong> Why start with a resource group?</p>
+<p><strong>Answer:</strong> It holds related resources so they can be managed and deleted together</p>
+<p>Deleting the group cleans up everything.</p>
+<p><strong>Q39.</strong> How is the backend delivered?</p>
+<p><strong>Answer:</strong> As an Azure Function App</p>
+<p>Serverless HTTP backend.</p>
+<p><strong>Q40.</strong> What should you do at the end?</p>
+<p><strong>Answer:</strong> Delete the resource group to avoid costs</p>
+<p>Cost awareness.</p>
+<h2 id="level-2-intermediate">Level 2 · Intermediate<a class="headerlink" href="#level-2-intermediate" title="Permanent link">&para;</a></h2>
+<h3 id="01-app-service-web-apps-deep-dive"><a href="../level-2/01-app-service-deep-dive/">01 · App Service &amp; Web Apps Deep Dive</a><a class="headerlink" href="#01-app-service-web-apps-deep-dive" title="Permanent link">&para;</a></h3>
+<p><strong>Q41.</strong> Which App Service tier is for learning only?</p>
+<p><strong>Answer:</strong> F1 (Free), with a capped daily CPU quota and no slots</p>
+<p>Basic adds custom domains but no slots.</p>
+<p><strong>Q42.</strong> Which tiers support deployment slots and autoscale?</p>
+<p><strong>Answer:</strong> Standard (5 slots) and Premium v3 (20 slots)</p>
+<p>Premium v3 adds VNet integration.</p>
+<p><strong>Q43.</strong> What do deployment slots do?</p>
+<p><strong>Answer:</strong> Let you deploy to staging and swap into production with minimal downtime</p>
+<p>Swap staging with production.</p>
+<p><strong>Q44.</strong> What does an App Service plan define?</p>
+<p><strong>Answer:</strong> The compute (size and tier) that apps in it share</p>
+<p>Multiple apps can share a plan.</p>
+<h3 id="02-storage-deep-dive-files-queues-tables"><a href="../level-2/02-storage-deep-dive/">02 · Storage Deep Dive (Files, Queues, Tables)</a><a class="headerlink" href="#02-storage-deep-dive-files-queues-tables" title="Permanent link">&para;</a></h3>
+<p><strong>Q45.</strong> What is Azure Files?</p>
+<p><strong>Answer:</strong> Managed SMB/NFS file shares mountable like network drives</p>
+<p>Blob is object storage.</p>
+<p><strong>Q46.</strong> What is Queue Storage for?</p>
+<p><strong>Answer:</strong> Decoupling components with messages processed asynchronously</p>
+<p>A Queue trigger can drive a function.</p>
+<p><strong>Q47.</strong> What are Tables?</p>
+<p><strong>Answer:</strong> A NoSQL key-attribute store for structured data</p>
+<p>Cheap, schemaless.</p>
+<p><strong>Q48.</strong> Why use queues between services?</p>
+<p><strong>Answer:</strong> A burst doesn't overwhelm the consumer; messages wait until processed</p>
+<p>Load levelling and resilience.</p>
+<h3 id="03-networking-deep-dive-load-balancer-app-gateway"><a href="../level-2/03-networking-deep-dive/">03 · Networking Deep Dive (Load Balancer, App Gateway)</a><a class="headerlink" href="#03-networking-deep-dive-load-balancer-app-gateway" title="Permanent link">&para;</a></h3>
+<p><strong>Q49.</strong> Which layer does Azure Load Balancer work at?</p>
+<p><strong>Answer:</strong> Layer 4 (TCP/UDP)</p>
+<p>It distributes by IP and port.</p>
+<p><strong>Q50.</strong> What does Application Gateway add?</p>
+<p><strong>Answer:</strong> Layer 7 routing (HTTP paths, hosts), TLS termination and optionally WAF</p>
+<p>Path-based routing is the typical use.</p>
+<p><strong>Q51.</strong> Which fits path-based routing /api versus /images?</p>
+<p><strong>Answer:</strong> Application Gateway</p>
+<p>Load Balancer can't inspect HTTP.</p>
+<p><strong>Q52.</strong> What do health probes do?</p>
+<p><strong>Answer:</strong> Remove unhealthy backends from rotation</p>
+<p>Both services use them.</p>
+<h3 id="04-azure-kubernetes-service-aks-basics"><a href="../level-2/04-aks-basics/">04 · Azure Kubernetes Service (AKS) Basics</a><a class="headerlink" href="#04-azure-kubernetes-service-aks-basics" title="Permanent link">&para;</a></h3>
+<p><strong>Q53.</strong> What is AKS?</p>
+<p><strong>Answer:</strong> Azure Kubernetes Service: managed Kubernetes where Azure runs the control plane</p>
+<p>You manage node pools and workloads.</p>
+<p><strong>Q54.</strong> What does <code>kubectl get nodes</code> show?</p>
+<p><strong>Answer:</strong> Node names, status (Ready), roles, age and version</p>
+<p>Nodes are VM scale set instances.</p>
+<p><strong>Q55.</strong> How do you get kubectl credentials for AKS?</p>
+<p><strong>Answer:</strong> az aks get-credentials</p>
+<p>It merges into kubeconfig.</p>
+<p><strong>Q56.</strong> Why delete AKS clusters after practice?</p>
+<p><strong>Answer:</strong> Nodes bill while running</p>
+<p>Cost awareness.</p>
+<h3 id="05-azure-devops-cicd-pipelines"><a href="../level-2/05-azure-devops-cicd/">05 · Azure DevOps &amp; CI/CD Pipelines</a><a class="headerlink" href="#05-azure-devops-cicd-pipelines" title="Permanent link">&para;</a></h3>
+<p><strong>Q57.</strong> What does Azure DevOps organise?</p>
+<p><strong>Answer:</strong> Organizations, projects, repos, pipelines, boards and artifacts</p>
+<p>Repos host Git code.</p>
+<p><strong>Q58.</strong> Where is a pipeline defined?</p>
+<p><strong>Answer:</strong> YAML (azure-pipelines.yml) in the repo</p>
+<p>Triggers, stages, jobs and steps.</p>
+<p><strong>Q59.</strong> What does the trigger in pipeline YAML do?</p>
+<p><strong>Answer:</strong> Starts runs on events such as pushes to a branch</p>
+<p>For example branches: include: main.</p>
+<p><strong>Q60.</strong> Why pipeline-as-code?</p>
+<p><strong>Answer:</strong> Versioned and reviewable with the code</p>
+<p>Same as app code.</p>
+<h3 id="06-managed-identities-key-vault"><a href="../level-2/06-managed-identities-key-vault/">06 · Managed Identities &amp; Key Vault</a><a class="headerlink" href="#06-managed-identities-key-vault" title="Permanent link">&para;</a></h3>
+<p><strong>Q61.</strong> System-assigned versus user-assigned managed identity?</p>
+<p><strong>Answer:</strong> System-assigned is tied to one resource's lifecycle; user-assigned is created once and attached to many resources</p>
+<p>Both remove stored credentials.</p>
+<p><strong>Q62.</strong> Why use a managed identity?</p>
+<p><strong>Answer:</strong> The app authenticates to Azure services without secrets in code</p>
+<p>Azure manages the credentials.</p>
+<p><strong>Q63.</strong> What is Key Vault for?</p>
+<p><strong>Answer:</strong> Storing and controlling access to secrets, keys and certificates</p>
+<p>Grant access via RBAC to the identity.</p>
+<p><strong>Q64.</strong> How should an app read a secret?</p>
+<p><strong>Answer:</strong> Through its managed identity from Key Vault, not a hard-coded value</p>
+<p>No secrets in repos.</p>
+<h3 id="07-container-instances-container-registry"><a href="../level-2/07-aci-acr/">07 · Container Instances &amp; Container Registry</a><a class="headerlink" href="#07-container-instances-container-registry" title="Permanent link">&para;</a></h3>
+<p><strong>Q65.</strong> What is Azure Container Registry?</p>
+<p><strong>Answer:</strong> A private registry for container images</p>
+<p>Push images with az acr build or docker push.</p>
+<p><strong>Q66.</strong> What are Container Instances (ACI)?</p>
+<p><strong>Answer:</strong> Run a container serverlessly without managing VMs or clusters, billed per second</p>
+<p>Good for simple or bursty workloads.</p>
+<p><strong>Q67.</strong> How can ACR build an image without local Docker?</p>
+<p><strong>Answer:</strong> az acr build (builds in the cloud)</p>
+<p>Then deploy to ACI.</p>
+<p><strong>Q68.</strong> How should ACI pull from a private ACR?</p>
+<p><strong>Answer:</strong> With credentials or a managed identity granted pull access</p>
+<p>Avoid admin user in production.</p>
+<h3 id="08-cosmos-db-deep-dive"><a href="../level-2/08-cosmos-db-deep-dive/">08 · Cosmos DB Deep Dive</a><a class="headerlink" href="#08-cosmos-db-deep-dive" title="Permanent link">&para;</a></h3>
+<p><strong>Q69.</strong> What makes a good Cosmos DB partition key?</p>
+<p><strong>Answer:</strong> High cardinality with even request distribution, avoiding hot partitions</p>
+<p>Queries that include the key are cheaper.</p>
+<p><strong>Q70.</strong> What is a Request Unit (RU)?</p>
+<p><strong>Answer:</strong> A normalised measure of the throughput cost of operations (reads, writes, queries)</p>
+<p>You provision or autoscale RU/s.</p>
+<p><strong>Q71.</strong> What happens with a hot partition?</p>
+<p><strong>Answer:</strong> One partition gets most traffic and is throttled even if total RU/s is available</p>
+<p>Choose keys carefully.</p>
+<p><strong>Q72.</strong> Why are cross-partition queries costly?</p>
+<p><strong>Answer:</strong> They fan out to many partitions, consuming more RUs</p>
+<p>Include the partition key.</p>
+<h3 id="09-azure-functions-advanced"><a href="../level-2/09-azure-functions-advanced/">09 · Azure Functions Advanced</a><a class="headerlink" href="#09-azure-functions-advanced" title="Permanent link">&para;</a></h3>
+<p><strong>Q73.</strong> What problem do Durable Functions solve?</p>
+<p><strong>Answer:</strong> Stateful, long-running workflows in serverless code, with checkpointing</p>
+<p>Orchestrations survive restarts.</p>
+<p><strong>Q74.</strong> What are the three function types?</p>
+<p><strong>Answer:</strong> Client (starts), orchestrator (coordinates), activity (does work)</p>
+<p>Orchestrators must be deterministic.</p>
+<p><strong>Q75.</strong> Why must orchestrator code be deterministic?</p>
+<p><strong>Answer:</strong> It's replayed from history, so non-deterministic calls would break replay</p>
+<p>Do I/O in activities.</p>
+<p><strong>Q76.</strong> What pattern does chaining give?</p>
+<p><strong>Answer:</strong> Run activities in sequence, passing outputs along</p>
+<p>Fan-out/fan-in is the parallel pattern.</p>
+<h3 id="10-project-multi-tier-web-application"><a href="../level-2/10-project-multi-tier-app/">10 · Project — Multi-Tier Web Application</a><a class="headerlink" href="#10-project-multi-tier-web-application" title="Permanent link">&para;</a></h3>
+<p><strong>Q77.</strong> What does the multi-tier project architecture isolate?</p>
+<p><strong>Answer:</strong> Tiers into subnets of a VNet, with data reachable via a private endpoint</p>
+<p>The database isn't exposed to the internet.</p>
+<p><strong>Q78.</strong> What does a private endpoint give Cosmos DB?</p>
+<p><strong>Answer:</strong> A private IP in your VNet so traffic stays off the public internet</p>
+<p>Disable public network access.</p>
+<p><strong>Q79.</strong> Why start with resource group, VNet and subnets?</p>
+<p><strong>Answer:</strong> Network layout and boundaries underpin every later tier</p>
+<p>Step 1 of the project.</p>
+<p><strong>Q80.</strong> What should NSGs allow between tiers?</p>
+<p><strong>Answer:</strong> Only the traffic each tier needs</p>
+<p>Least privilege.</p>
+<h2 id="level-3-advanced">Level 3 · Advanced<a class="headerlink" href="#level-3-advanced" title="Permanent link">&para;</a></h2>
+<h3 id="01-advanced-networking-vpn-gateway-expressroute"><a href="../level-3/01-advanced-networking/">01 · Advanced Networking (VPN Gateway, ExpressRoute)</a><a class="headerlink" href="#01-advanced-networking-vpn-gateway-expressroute" title="Permanent link">&para;</a></h3>
+<p><strong>Q81.</strong> What is a site-to-site VPN Gateway?</p>
+<p><strong>Answer:</strong> An encrypted tunnel over the internet between an on-premises network and an Azure VNet</p>
+<p>Needs a gateway subnet and on-prem device.</p>
+<p><strong>Q82.</strong> How does ExpressRoute differ from VPN?</p>
+<p><strong>Answer:</strong> A private dedicated connection through a provider, not over the public internet, with more predictable performance</p>
+<p>Higher cost, higher reliability.</p>
+<p><strong>Q83.</strong> Which special subnet does a VPN gateway need?</p>
+<p><strong>Answer:</strong> GatewaySubnet</p>
+<p>Name must be exact.</p>
+<p><strong>Q84.</strong> When choose ExpressRoute?</p>
+<p><strong>Answer:</strong> Large, latency-sensitive or compliance-driven hybrid connectivity</p>
+<p>VPN suits modest needs.</p>
+<h3 id="02-infrastructure-as-code-at-scale-bicepterraform"><a href="../level-3/02-iac-at-scale/">02 · Infrastructure as Code at Scale (Bicep/Terraform)</a><a class="headerlink" href="#02-infrastructure-as-code-at-scale-bicepterraform" title="Permanent link">&para;</a></h3>
+<p><strong>Q85.</strong> What do Bicep modules do?</p>
+<p><strong>Answer:</strong> Package reusable resource definitions called from other Bicep files</p>
+<p>They enable composition.</p>
+<p><strong>Q86.</strong> How do parameter files help with environments?</p>
+<p><strong>Answer:</strong> One template, a parameter file per environment (dev, test, prod)</p>
+<p>Same code, different values.</p>
+<p><strong>Q87.</strong> What does <code>what-if</code> do?</p>
+<p><strong>Answer:</strong> Previews changes a deployment would make before applying</p>
+<p>Run it before every apply.</p>
+<p><strong>Q88.</strong> Bicep or Terraform?</p>
+<p><strong>Answer:</strong> Both express IaC; Bicep is Azure-native, Terraform is multi-cloud with state</p>
+<p>Choose by needs.</p>
+<h3 id="03-advanced-aks-helm-ingress-autoscaling"><a href="../level-3/03-advanced-aks/">03 · Advanced AKS (Helm, Ingress, Autoscaling)</a><a class="headerlink" href="#03-advanced-aks-helm-ingress-autoscaling" title="Permanent link">&para;</a></h3>
+<p><strong>Q89.</strong> What is Helm?</p>
+<p><strong>Answer:</strong> A package manager for Kubernetes: charts with configurable values</p>
+<p>helm install deploys a release.</p>
+<p><strong>Q90.</strong> What does an Ingress do?</p>
+<p><strong>Answer:</strong> Routes external HTTP(S) to services, e.g. by path, via an ingress controller</p>
+<p>Path-based routing is the lesson's example.</p>
+<p><strong>Q91.</strong> What does the Horizontal Pod Autoscaler scale?</p>
+<p><strong>Answer:</strong> Pod replicas based on metrics such as CPU</p>
+<p>The cluster autoscaler scales nodes.</p>
+<p><strong>Q92.</strong> Why use values files in Helm?</p>
+<p><strong>Answer:</strong> To configure charts per environment without editing templates</p>
+<p>Keep secrets out.</p>
+<h3 id="04-event-driven-architecture-event-grid-service-bus"><a href="../level-3/04-event-driven-architecture/">04 · Event-Driven Architecture (Event Grid, Service Bus)</a><a class="headerlink" href="#04-event-driven-architecture-event-grid-service-bus" title="Permanent link">&para;</a></h3>
+<p><strong>Q93.</strong> What is Event Grid for?</p>
+<p><strong>Answer:</strong> Reactive, fan-out events (resource changes, custom events) delivered to many subscribers</p>
+<p>Lightweight notifications.</p>
+<p><strong>Q94.</strong> What is Service Bus for?</p>
+<p><strong>Answer:</strong> Durable queues and topics for enterprise messaging with ordering, dead-lettering and transactions</p>
+<p>Topics allow multiple subscriptions.</p>
+<p><strong>Q95.</strong> Which fits 'a blob was created, notify several systems'?</p>
+<p><strong>Answer:</strong> Event Grid</p>
+<p>Fan-out of a notification.</p>
+<p><strong>Q96.</strong> Which fits 'process each order exactly via a durable queue'?</p>
+<p><strong>Answer:</strong> Service Bus</p>
+<p>Messages must not be lost.</p>
+<h3 id="05-api-management"><a href="../level-3/05-api-management/">05 · API Management</a><a class="headerlink" href="#05-api-management" title="Permanent link">&para;</a></h3>
+<p><strong>Q97.</strong> What is API Management (APIM)?</p>
+<p><strong>Answer:</strong> A gateway to publish, secure, throttle and monitor APIs in front of backends</p>
+<p>Import a backend and apply policies.</p>
+<p><strong>Q98.</strong> What do APIM policies do?</p>
+<p><strong>Answer:</strong> Apply rate limiting, authentication and transformations to requests and responses (XML)</p>
+<p>Applied at global, product, API or operation scope.</p>
+<p><strong>Q99.</strong> How do you import a backend API?</p>
+<p><strong>Answer:</strong> From an OpenAPI definition or an existing service</p>
+<p>The gateway exposes operations.</p>
+<p><strong>Q100.</strong> Why rate-limit at the gateway?</p>
+<p><strong>Answer:</strong> To protect backends from abuse or overload</p>
+<p>Policy rate-limit.</p>
+<h3 id="06-defender-for-cloud-governance-policy-blueprints"><a href="../level-3/06-defender-governance/">06 · Defender for Cloud &amp; Governance (Policy, Blueprints)</a><a class="headerlink" href="#06-defender-for-cloud-governance-policy-blueprints" title="Permanent link">&para;</a></h3>
+<p><strong>Q101.</strong> What is Defender for Cloud?</p>
+<p><strong>Answer:</strong> A service providing security posture management and threat protection with a Secure Score</p>
+<p>Enable plans per resource type.</p>
+<p><strong>Q102.</strong> What does Secure Score show?</p>
+<p><strong>Answer:</strong> A measure of your security posture with recommendations to improve it</p>
+<p>Higher is better.</p>
+<p><strong>Q103.</strong> What does Azure Policy do?</p>
+<p><strong>Answer:</strong> Enforces or audits rules at scale (e.g. allowed regions, required tags) with effects like deny</p>
+<p>Assign at management group or subscription scope.</p>
+<p><strong>Q104.</strong> Audit versus deny effect?</p>
+<p><strong>Answer:</strong> Audit reports non-compliance; deny blocks the non-compliant deployment</p>
+<p>Start with audit then deny.</p>
+<h3 id="07-high-availability-disaster-recovery"><a href="../level-3/07-ha-disaster-recovery/">07 · High Availability &amp; Disaster Recovery</a><a class="headerlink" href="#07-high-availability-disaster-recovery" title="Permanent link">&para;</a></h3>
+<p><strong>Q105.</strong> Availability Zones versus Availability Sets?</p>
+<p><strong>Answer:</strong> Zones are physically separate datacentres in a region; sets spread VMs across fault/update domains within a datacentre</p>
+<p>Zones protect against datacentre failure.</p>
+<p><strong>Q106.</strong> What are RTO and RPO?</p>
+<p><strong>Answer:</strong> RTO: how long you can be down; RPO: how much data loss (time) is acceptable</p>
+<p>They drive DR design.</p>
+<p><strong>Q107.</strong> What does Azure Site Recovery do?</p>
+<p><strong>Answer:</strong> Replicates VMs to another region for failover during a regional disaster</p>
+<p>Cross-region DR.</p>
+<p><strong>Q108.</strong> Zone-redundant versus zonal PaaS?</p>
+<p><strong>Answer:</strong> Zone-redundant replicates across zones automatically; zonal pins to one zone</p>
+<p>Choose by availability needs.</p>
+<h3 id="08-cicd-for-containers-gitops"><a href="../level-3/08-cicd-containers-gitops/">08 · CI/CD for Containers &amp; GitOps</a><a class="headerlink" href="#08-cicd-for-containers-gitops" title="Permanent link">&para;</a></h3>
+<p><strong>Q109.</strong> What does the pipeline do for containers?</p>
+<p><strong>Answer:</strong> Builds the image, pushes it to ACR and updates a deployment</p>
+<p>azure-pipelines.yml with Docker tasks.</p>
+<p><strong>Q110.</strong> What is GitOps?</p>
+<p><strong>Answer:</strong> Git is the source of truth for desired cluster state, applied automatically by an agent</p>
+<p>Flux syncs a repo to the cluster.</p>
+<p><strong>Q111.</strong> What does Flux do on AKS?</p>
+<p><strong>Answer:</strong> Continuously reconciles the cluster to the Git repo's manifests</p>
+<p>Drift is corrected.</p>
+<p><strong>Q112.</strong> Benefit of GitOps?</p>
+<p><strong>Answer:</strong> Auditable, reviewable changes and easy rollback via Git history</p>
+<p>Pull-based deployment.</p>
+<h3 id="09-cost-management-optimization"><a href="../level-3/09-cost-management-optimization/">09 · Cost Management &amp; Optimization</a><a class="headerlink" href="#09-cost-management-optimization" title="Permanent link">&para;</a></h3>
+<p><strong>Q113.</strong> How do budgets help?</p>
+<p><strong>Answer:</strong> Alert (or act) when spending crosses thresholds</p>
+<p>Set alerts at percentages.</p>
+<p><strong>Q114.</strong> What does Azure Advisor recommend?</p>
+<p><strong>Answer:</strong> Right-sizing and cost, reliability, security and performance improvements</p>
+<p>For example resize or shut down underused VMs.</p>
+<p><strong>Q115.</strong> What is right-sizing?</p>
+<p><strong>Answer:</strong> Matching resource size to actual usage to avoid overpaying</p>
+<p>Check CPU and memory.</p>
+<p><strong>Q116.</strong> How can you read cost data?</p>
+<p><strong>Answer:</strong> Cost analysis grouped by resource group, tag or service, and via az consumption/CLI</p>
+<p>Tags enable chargeback.</p>
+<h3 id="10-project-highly-available-microservices"><a href="../level-3/10-project-ha-microservices/">10 · Project — Highly Available Microservices</a><a class="headerlink" href="#10-project-highly-available-microservices" title="Permanent link">&para;</a></h3>
+<p><strong>Q117.</strong> Why spread AKS nodes across zones?</p>
+<p><strong>Answer:</strong> Survive a zone failure</p>
+<p>Zone spread with the cluster autoscaler.</p>
+<p><strong>Q118.</strong> What does the cluster autoscaler do?</p>
+<p><strong>Answer:</strong> Adds or removes nodes based on pending pods</p>
+<p>Combined with HPA.</p>
+<p><strong>Q119.</strong> Why a network foundation first?</p>
+<p><strong>Answer:</strong> Subnets, NSGs and address plans underpin the cluster and data tier</p>
+<p>Step 1.</p>
+<p><strong>Q120.</strong> What makes the microservices 'highly available'?</p>
+<p><strong>Answer:</strong> Redundancy across zones, health probes and autoscaling, with no single point of failure</p>
+<p>Architecture section.</p>
+<h2 id="level-4-master">Level 4 · Master<a class="headerlink" href="#level-4-master" title="Permanent link">&para;</a></h2>
+<h3 id="01-enterprise-landing-zones-caf"><a href="../level-4/01-enterprise-landing-zones/">01 · Enterprise Landing Zones (CAF)</a><a class="headerlink" href="#01-enterprise-landing-zones-caf" title="Permanent link">&para;</a></h3>
+<p><strong>Q121.</strong> What is a landing zone?</p>
+<p><strong>Answer:</strong> A pre-configured, governed environment (management groups, policy, networking, identity) where workloads land, per the Cloud Adoption Framework</p>
+<p>CAF defines the pattern.</p>
+<p><strong>Q122.</strong> What does the management group hierarchy do?</p>
+<p><strong>Answer:</strong> Organises subscriptions so policy and RBAC inherit downward</p>
+<p>For example platform and landing zones branches.</p>
+<p><strong>Q123.</strong> How do you move a subscription into a landing zone?</p>
+<p><strong>Answer:</strong> Place it under the right management group so policies apply</p>
+<p>az account management-group subscription add.</p>
+<p><strong>Q124.</strong> Why standardise landing zones?</p>
+<p><strong>Answer:</strong> Consistent guardrails and faster, safer onboarding of workloads</p>
+<p>Governance at scale.</p>
+<h3 id="02-management-groups-governance-at-scale"><a href="../level-4/02-management-groups-governance/">02 · Management Groups &amp; Governance at Scale</a><a class="headerlink" href="#02-management-groups-governance-at-scale" title="Permanent link">&para;</a></h3>
+<p><strong>Q125.</strong> How does policy inherit?</p>
+<p><strong>Answer:</strong> Downward through management groups, subscriptions, resource groups and resources</p>
+<p>Assign once at a high scope.</p>
+<p><strong>Q126.</strong> What's the difference between exemptions and exclusions?</p>
+<p><strong>Answer:</strong> Exemptions are time-bound, auditable waivers for a resource; exclusions (notScopes) remove a scope from assignment</p>
+<p>Prefer exemptions for traceability.</p>
+<p><strong>Q127.</strong> What is the evaluation behaviour with deny?</p>
+<p><strong>Answer:</strong> A deny effect blocks non-compliant creates/updates regardless of lower-level wishes</p>
+<p>Deny wins over allow-like effects.</p>
+<p><strong>Q128.</strong> Why govern at management-group level?</p>
+<p><strong>Answer:</strong> Consistent rules across many subscriptions with less repetition</p>
+<p>Scale.</p>
+<h3 id="03-advanced-aks-service-mesh-multi-cluster"><a href="../level-4/03-advanced-aks-service-mesh/">03 · Advanced AKS (Service Mesh, Multi-Cluster)</a><a class="headerlink" href="#03-advanced-aks-service-mesh-multi-cluster" title="Permanent link">&para;</a></h3>
+<p><strong>Q129.</strong> What does a service mesh like Istio add?</p>
+<p><strong>Answer:</strong> mTLS, traffic management and observability between services via sidecars/proxies</p>
+<p>Enabled as an AKS add-on.</p>
+<p><strong>Q130.</strong> What does mTLS enforcement do?</p>
+<p><strong>Answer:</strong> Requires mutual authentication and encryption between workloads</p>
+<p>Strict mode rejects plaintext.</p>
+<p><strong>Q131.</strong> How do canary releases use traffic splitting?</p>
+<p><strong>Answer:</strong> Send a small percentage (e.g. 10%) to the new version, then increase if healthy</p>
+<p>Weighted routes.</p>
+<p><strong>Q132.</strong> Why a multi-cluster setup?</p>
+<p><strong>Answer:</strong> Resilience, isolation and regional reach</p>
+<p>At higher cost and complexity.</p>
+<h3 id="04-azure-arc-hybrid-cloud"><a href="../level-4/04-azure-arc-hybrid-cloud/">04 · Azure Arc &amp; Hybrid Cloud</a><a class="headerlink" href="#04-azure-arc-hybrid-cloud" title="Permanent link">&para;</a></h3>
+<p><strong>Q133.</strong> What is Azure Arc?</p>
+<p><strong>Answer:</strong> Extends Azure management to servers and Kubernetes clusters outside Azure</p>
+<p>On-prem or other clouds.</p>
+<p><strong>Q134.</strong> How do you Arc-enable a server?</p>
+<p><strong>Answer:</strong> Install the Connected Machine agent and onboard it to a resource group</p>
+<p>It appears as an Azure resource.</p>
+<p><strong>Q135.</strong> What can you apply to Arc servers?</p>
+<p><strong>Answer:</strong> Azure Policy, monitoring and RBAC like native resources</p>
+<p>One governance plane.</p>
+<p><strong>Q136.</strong> Why use Arc?</p>
+<p><strong>Answer:</strong> Consistent governance and tooling across hybrid estates</p>
+<p>Hybrid management.</p>
+<h3 id="05-advanced-observability-app-insights-tracing"><a href="../level-4/05-advanced-observability/">05 · Advanced Observability (App Insights, Tracing)</a><a class="headerlink" href="#05-advanced-observability-app-insights-tracing" title="Permanent link">&para;</a></h3>
+<p><strong>Q137.</strong> What is Application Insights?</p>
+<p><strong>Answer:</strong> APM that collects requests, dependencies, exceptions and traces for applications</p>
+<p>Part of Azure Monitor.</p>
+<p><strong>Q138.</strong> What does distributed tracing show?</p>
+<p><strong>Answer:</strong> A request's path across services via an operation id, with timings</p>
+<p>KQL: where operation_Id == ...</p>
+<p><strong>Q139.</strong> Which KQL fields help trace a request?</p>
+<p><strong>Answer:</strong> operation_Id, name, duration, success, cloud_RoleName</p>
+<p>Order by timestamp.</p>
+<p><strong>Q140.</strong> Why add cloud role names?</p>
+<p><strong>Answer:</strong> To tell which service produced each telemetry item</p>
+<p>Needed for service maps.</p>
+<h3 id="06-performance-engineering-load-testing"><a href="../level-4/06-performance-load-testing/">06 · Performance Engineering &amp; Load Testing</a><a class="headerlink" href="#06-performance-engineering-load-testing" title="Permanent link">&para;</a></h3>
+<p><strong>Q141.</strong> What is Azure Load Testing for?</p>
+<p><strong>Answer:</strong> Generating load against an endpoint to measure performance and find limits</p>
+<p>Configured with a YAML test config.</p>
+<p><strong>Q142.</strong> What's 'finding the breaking point'?</p>
+<p><strong>Answer:</strong> Increasing load until errors or latency exceed thresholds, to learn capacity limits</p>
+<p>Do it in non-production.</p>
+<p><strong>Q143.</strong> Which metrics matter?</p>
+<p><strong>Answer:</strong> Response time percentiles, throughput and error rate</p>
+<p>Percentiles show tail latency.</p>
+<p><strong>Q144.</strong> Why run load tests in CI?</p>
+<p><strong>Answer:</strong> Catch regressions before release</p>
+<p>Fail the build on thresholds.</p>
+<h3 id="07-security-deep-dive-sentinel-zero-trust"><a href="../level-4/07-security-sentinel-zero-trust/">07 · Security Deep Dive (Sentinel, Zero Trust)</a><a class="headerlink" href="#07-security-deep-dive-sentinel-zero-trust" title="Permanent link">&para;</a></h3>
+<p><strong>Q145.</strong> What is Microsoft Sentinel?</p>
+<p><strong>Answer:</strong> A cloud-native SIEM/SOAR that collects security data, detects threats and automates response</p>
+<p>Built on a Log Analytics workspace.</p>
+<p><strong>Q146.</strong> What does the analytics rule detect?</p>
+<p><strong>Answer:</strong> More than 5 failed sign-ins from more than 2 countries for a user: a correlation of failures and locations</p>
+<p>KQL with summarize and make_set.</p>
+<p><strong>Q147.</strong> What is Zero Trust?</p>
+<p><strong>Answer:</strong> Never trust, always verify: authenticate and authorise every request regardless of network location</p>
+<p>Least privilege and assume breach.</p>
+<p><strong>Q148.</strong> What do analytics rules produce?</p>
+<p><strong>Answer:</strong> Alerts and incidents for investigation</p>
+<p>Playbooks can automate response.</p>
+<h3 id="08-data-platform-at-scale-synapse-data-factory"><a href="../level-4/08-data-platform-at-scale/">08 · Data Platform at Scale (Synapse, Data Factory)</a><a class="headerlink" href="#08-data-platform-at-scale-synapse-data-factory" title="Permanent link">&para;</a></h3>
+<p><strong>Q149.</strong> What does Data Factory do?</p>
+<p><strong>Answer:</strong> Orchestrates data pipelines that move and transform data between sources</p>
+<p>Activities and triggers.</p>
+<p><strong>Q150.</strong> Synapse dedicated SQL pools versus serverless?</p>
+<p><strong>Answer:</strong> Dedicated: provisioned capacity for predictable heavy workloads; serverless: pay per query over data in the lake</p>
+<p>Choose by workload shape.</p>
+<p><strong>Q151.</strong> When does serverless fit?</p>
+<p><strong>Answer:</strong> Ad-hoc exploration of files in a data lake</p>
+<p>No capacity to manage.</p>
+<p><strong>Q152.</strong> What's the typical pattern?</p>
+<p><strong>Answer:</strong> Ingest with Data Factory, store in the lake, analyse in Synapse</p>
+<p>Platform at scale.</p>
+<h3 id="09-finops-cost-governance-at-scale"><a href="../level-4/09-finops-cost-governance/">09 · FinOps &amp; Cost Governance at Scale</a><a class="headerlink" href="#09-finops-cost-governance-at-scale" title="Permanent link">&para;</a></h3>
+<p><strong>Q153.</strong> Why tagging as the foundation of FinOps?</p>
+<p><strong>Answer:</strong> Tags attribute costs to owners, projects and environments</p>
+<p>Enforce with Policy.</p>
+<p><strong>Q154.</strong> Showback versus chargeback?</p>
+<p><strong>Answer:</strong> Showback reports costs to teams; chargeback actually bills them internally</p>
+<p>Both need good allocation.</p>
+<p><strong>Q155.</strong> How do you enforce tags?</p>
+<p><strong>Answer:</strong> Azure Policy requiring or inheriting tags</p>
+<p>Deny or modify effects.</p>
+<p><strong>Q156.</strong> What's FinOps?</p>
+<p><strong>Answer:</strong> A culture and practice of cloud financial accountability across engineering, finance and business</p>
+<p>Continuous optimisation.</p>
+<h3 id="10-capstone-project"><a href="../level-4/10-capstone-project/">10 · Capstone Project</a><a class="headerlink" href="#10-capstone-project" title="Permanent link">&para;</a></h3>
+<p><strong>Q157.</strong> What does the capstone begin with?</p>
+<p><strong>Answer:</strong> A management group hierarchy and subscription vending</p>
+<p>Governance first.</p>
+<p><strong>Q158.</strong> What is subscription vending?</p>
+<p><strong>Answer:</strong> Automated creation of subscriptions placed in the right management group with baseline policies</p>
+<p>Repeatable onboarding.</p>
+<p><strong>Q159.</strong> What's a baseline governance initiative?</p>
+<p><strong>Answer:</strong> A bundle of policies applied together as standard guardrails</p>
+<p>Step 2.</p>
+<p><strong>Q160.</strong> What does the capstone integrate?</p>
+<p><strong>Answer:</strong> Landing zones, governance, networking, security, observability and cost controls</p>
+<p>All levels.</p>
+<h2 id="mixed-questions-across-all-levels">Mixed questions across all levels<a class="headerlink" href="#mixed-questions-across-all-levels" title="Permanent link">&para;</a></h2>
+<p><strong>Q161.</strong> A new Azure free account is created. What happens when the credit or 30 days runs out?</p>
+<p><strong>Answer:</strong> The trial stops working unless you manually upgrade; it won't auto-charge</p>
+<p>A card is only for identity verification.</p>
+<p><strong>Q162.</strong> An idle test VM is left running for a month. What's the likely result?</p>
+<p><strong>Answer:</strong> A bill: idle VMs and databases are the #1 way a free trial costs money; delete practice resource groups</p>
+<p>Delete the resource group to clean up everything.</p>
+<p><strong>Q163.</strong> A user needs read access to every resource in one resource group, and nothing else. Which RBAC setup?</p>
+<p><strong>Answer:</strong> Assign Reader to the user (or a group) at that resource group's scope</p>
+<p>Narrow scope and least privilege; roles inherit downward.</p>
+<p><strong>Q164.</strong> Which VM family suits a low-traffic dev box eligible for the free tier?</p>
+<p><strong>Answer:</strong> B-series (burstable), e.g. Standard_B1s</p>
+<p>F is compute-optimised, E memory-optimised, D general purpose.</p>
+<p><strong>Q165.</strong> A blob upload command should avoid account keys. Which option?</p>
+<p><strong>Answer:</strong> --auth-mode login with an RBAC identity</p>
+<p>Data-plane RBAC avoids key sprawl.</p>
+<p><strong>Q166.</strong> A website needs routing /api to one backend pool and /images to another. Which service?</p>
+<p><strong>Answer:</strong> Application Gateway (layer 7)</p>
+<p>Load Balancer works on IP and port.</p>
+<p><strong>Q167.</strong> A burst of orders must not overwhelm a slow processor. What decouples them?</p>
+<p><strong>Answer:</strong> A queue (Storage Queue or Service Bus) between them</p>
+<p>Messages wait until the consumer is ready.</p>
+<p><strong>Q168.</strong> Event: 'a blob was created; notify five systems'. Event Grid or Service Bus?</p>
+<p><strong>Answer:</strong> Event Grid: reactive fan-out notifications</p>
+<p>Service Bus fits durable, ordered business messages.</p>
+<p><strong>Q169.</strong> Your Cosmos DB uses a constant partition key. What goes wrong?</p>
+<p><strong>Answer:</strong> A hot partition: one physical partition takes all traffic and is throttled even if total RU/s is available</p>
+<p>Choose a high-cardinality key. Verified with a small distribution check.</p>
+<p><strong>Q170.</strong> A Function App needs a secret. How should it get it?</p>
+<p><strong>Answer:</strong> Through a managed identity reading Key Vault, with no secret in code</p>
+<p>Grant the identity access via RBAC.</p>
+<p><strong>Q171.</strong> Orchestrations must survive restarts and be replayed. Which Functions feature?</p>
+<p><strong>Answer:</strong> Durable Functions (orchestrator, activity, client), with deterministic orchestrator code</p>
+<p>I/O belongs in activities.</p>
+<p><strong>Q172.</strong> Which App Service tier is the first with deployment slots?</p>
+<p><strong>Answer:</strong> Standard (S1+), with 5 slots</p>
+<p>Premium v3 offers 20 slots.</p>
+<p><strong>Q173.</strong> A deployment is previewed before applying. Which command?</p>
+<p><strong>Answer:</strong> az deployment group what-if (Bicep/ARM)</p>
+<p>Run it before every apply.</p>
+<p><strong>Q174.</strong> You need a private, dedicated connection from on-prem to Azure with predictable performance. Which?</p>
+<p><strong>Answer:</strong> ExpressRoute</p>
+<p>VPN is encrypted over the public internet.</p>
+<p><strong>Q175.</strong> An RTO of 1 hour and RPO of 5 minutes mean:</p>
+<p><strong>Answer:</strong> Service must be back within an hour, with at most five minutes of data loss</p>
+<p>RTO is time to recover; RPO is data loss window.</p>
+<p><strong>Q176.</strong> Which policy effect blocks non-compliant resource creation?</p>
+<p><strong>Answer:</strong> Deny (Audit only reports)</p>
+<p>Start with audit, then deny.</p>
+<p><strong>Q177.</strong> Where should most guardrails be assigned so many subscriptions inherit them?</p>
+<p><strong>Answer:</strong> At a management group</p>
+<p>Policy and RBAC inherit downward.</p>
+<p><strong>Q178.</strong> Where do you analyse a request's path across microservices in Application Insights?</p>
+<p><strong>Answer:</strong> Distributed tracing via operation_Id, with cloud_RoleName identifying each service</p>
+<p>KQL with where operation_Id == ...</p>
+<p><strong>Q179.</strong> Costs must be attributed to teams. What foundation do you need?</p>
+<p><strong>Answer:</strong> A consistent tagging strategy enforced by Azure Policy</p>
+<p>Tags drive showback and chargeback.</p>
+<h2 id="practical-coding-questions">Practical coding questions<a class="headerlink" href="#practical-coding-questions" title="Permanent link">&para;</a></h2>
+<h3 id="plan-non-overlapping-subnets">Plan non-overlapping subnets<a class="headerlink" href="#plan-non-overlapping-subnets" title="Permanent link">&para;</a></h3>
+<p>Allocate subnets from a 10.0.0.0/16 VNet for web (120 hosts), app (250), db (60) and gateway (20). Azure reserves 5 addresses per subnet, so each needs hosts + 5. Use the smallest power-of-two block, largest first, aligned and never overlapping. Print each subnet and its usable count, then whether any overlap.</p>
+<p>Starter code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>import ipaddress
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>VNET = ipaddress.ip_network("10.0.0.0/16")
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>WANTED = {"web": 120, "app": 250, "db": 60, "gateway": 20}   # hosts needed per subnet
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>def plan(vnet, wanted):
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    # largest first; each subnet needs hosts + 5 (Azure reserves 5 addresses);
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    # pick the smallest power-of-two block, align it, and never overlap
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    pass
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>result = plan(VNET, WANTED)
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>for name in WANTED:
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    n = result[name]
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    print(f"{name}: {n} usable={n.num_addresses - 5}")
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>nets = list(result.values())
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>print("overlaps:", any(a.overlaps(b) for i, a in enumerate(nets) for b in nets[i + 1:]))
+</code></pre></div>
+<p>Expected output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>web: 10.0.1.0/25 usable=123
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>app: 10.0.0.0/24 usable=251
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>db: 10.0.1.128/25 usable=123
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>gateway: 10.0.2.0/27 usable=27
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>overlaps: False
+</code></pre></div>
+<p>??? success "Show a solution"</p>
+<div class="highlight"><pre><span></span><code>```
+import ipaddress
+
+VNET = ipaddress.ip_network("10.0.0.0/16")
+WANTED = {"web": 120, "app": 250, "db": 60, "gateway": 20}   # hosts needed per subnet
+
+def plan(vnet, wanted):
+    """Allocate the smallest subnet that fits each request (Azure reserves 5 addresses per subnet)."""
+    cursor = int(vnet.network_address)
+    out = {}
+    for name, hosts in sorted(wanted.items(), key=lambda kv: -kv[1]):
+        needed = hosts + 5
+        prefix = 32
+        while 2 ** (32 - prefix) &lt; needed:
+            prefix -= 1
+        size = 2 ** (32 - prefix)
+        cursor = (cursor + size - 1) // size * size      # align to the subnet size
+        net = ipaddress.ip_network((cursor, prefix))
+        assert net.subnet_of(vnet)
+        out[name] = net
+        cursor += size
+    return out
+
+result = plan(VNET, WANTED)
+for name in WANTED:
+    n = result[name]
+    print(f"{name}: {n} usable={n.num_addresses - 5}")
+nets = list(result.values())
+print("overlaps:", any(a.overlaps(b) for i, a in enumerate(nets) for b in nets[i + 1:]))
+```
+
+Azure reserves five addresses in each subnet, so a /24 gives 251 usable. Planning address space up front avoids overlaps that block peering later. Verified by running the solution.
+</code></pre></div>
+<h3 id="spot-a-hot-partition">Spot a hot partition<a class="headerlink" href="#spot-a-hot-partition" title="Permanent link">&para;</a></h3>
+<p>Write hot_partitions(keys, partitions=4, threshold=0.4): hash each key to a partition (sum of character codes modulo partitions) and return {partition: share} for any partition holding more than the threshold of requests. Compare a well-distributed key set with a tenant-skewed one.</p>
+<p>Starter code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>from collections import Counter
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>def hot_partitions(keys, partitions=4, threshold=0.4):
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    # hash each key to a partition (sum of char codes % partitions),
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    # return {partition: share} for partitions holding more than `threshold` of requests
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    pass
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>good = [f"user-{i}" for i in range(100)]
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>bad = ["tenant-a"] * 70 + [f"tenant-{i}" for i in range(30)]
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>print("good:", hot_partitions(good))
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>print("bad:", hot_partitions(bad))
+</code></pre></div>
+<p>Expected output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>good: {}
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>bad: {0: 0.78}
+</code></pre></div>
+<p>??? success "Show a solution"</p>
+<div class="highlight"><pre><span></span><code>```
+from collections import Counter
+
+def hot_partitions(keys, partitions=4, threshold=0.4):
+    """Hash each partition key to a physical partition and flag any holding more than `threshold` of requests."""
+    def h(k):  # simple stable hash
+        return sum(ord(c) for c in k) % partitions
+    counts = Counter(h(k) for k in keys)
+    total = len(keys)
+    return {p: round(c / total, 2) for p, c in sorted(counts.items()) if c / total &gt; threshold}
+
+good = [f"user-{i}" for i in range(100)]
+bad = ["tenant-a"] * 70 + [f"tenant-{i}" for i in range(30)]
+print("good:", hot_partitions(good))
+print("bad:", hot_partitions(bad))
+```
+
+A partition key with low cardinality or skew concentrates traffic on one physical partition, which gets throttled even when total RU/s is available. Verified by running the solution.
+</code></pre></div>
+<hr />
+<p>More free practice: the <a href="../">Azure Mastery Path</a> curriculum, the <a href="https://learnmasterypath.com/interview-pack/">Interview Prep Pack</a> and the <a href="https://learnmasterypath.com/resume/">free resume ATS check</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+  <nav class="mp-related" aria-label="Related free courses">
+    <h2>Related free courses</h2>
+    <ul>
+      <li><a href="https://learnmasterypath.com/aws-mastery-path/">AWS</a></li><li><a href="https://learnmasterypath.com/gcp-mastery-path/">GCP</a></li><li><a href="https://learnmasterypath.com/ibm-cloud-mastery-path/">IBM Cloud</a></li><li><a href="https://learnmasterypath.com/adobe-mastery-path/">Adobe</a></li>
+      <li><a href="https://learnmasterypath.com/">All 100+ courses &rarr;</a></li>
+    </ul>
+  </nav>
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../cheat-sheet/" class="md-footer__link md-footer__link--next" aria-label="Next: Cheat Sheet">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Cheat Sheet
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <div class="mp-foot">
+    <div class="mp-foot-inner">
+      <a class="mp-foot-brand" href="https://learnmasterypath.com/"><svg class="mp-mark" viewBox="0 0 160 160" role="img" aria-label="Mastery Path logo">
+  <circle cx="80" cy="80" r="74" fill="#FAF7EF" stroke="#2FA98D" stroke-width="5"/>
+  <rect class="mp-bar mp-bar-1" x="36" y="90" width="17" height="24" rx="5" fill="#2FA98D"/>
+  <rect class="mp-bar mp-bar-2" x="59" y="74" width="17" height="40" rx="5" fill="#7FC9B7"/>
+  <rect class="mp-bar mp-bar-3" x="82" y="56" width="17" height="58" rx="5" fill="#E0B457"/>
+  <rect class="mp-bar mp-bar-4" x="105" y="38" width="17" height="76" rx="5" fill="#C97B4A"/>
+  <circle class="mp-dot" cx="44.5" cy="82" r="7" fill="#22261f"/>
+</svg><span>Mastery Path</span></a>
+      <nav class="mp-sitelinks" aria-label="Site and legal links">
+        <a href="https://learnmasterypath.com/">All courses</a>
+        <a href="https://learnmasterypath.com/about.html">About</a>
+        <a href="https://learnmasterypath.com/contact.html">Contact</a>
+        <a href="https://learnmasterypath.com/azure-mastery-path/privacy/">Privacy Policy</a>
+        <a href="https://learnmasterypath.com/terms.html">Terms</a>
+        <a href="https://learnmasterypath.com/azure-mastery-path/license/">License</a>
+        <a href="https://learnmasterypath.com/verify/">Verify a certificate</a>
+      </nav>
+    </div>
+    <p class="mp-license-note">
+      © 2026 Vinod Kumar Sigilipelli · Except where otherwise noted, lesson content is licensed under
+      <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and code examples under the
+      <a href="https://opensource.org/license/mit">MIT License</a>.
+    </p>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.path", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../javascripts/progress-tracker.js"></script>
+      
+        <script src="../javascripts/final-quiz.js"></script>
+      
+    
+  </body>
+</html>
